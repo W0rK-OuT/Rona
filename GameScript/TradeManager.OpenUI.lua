@@ -1,0 +1,16 @@
+return function (self) 
+self:UpdatePartnerName("", "")
+self:UpdatePartnerCharacter(nil, nil)
+self:UpdatePartnerItem(nil)
+self:UpdateItem(nil)
+self:UpdatePartnerMeso(-1)
+self:UpdateMeso(0)
+self:UpdateTradeButton(false)
+self:UpdateDone(true, false)
+self:UpdateDone(false, false)
+_TradeCountManager:CloseUI()
+_TradeYesNoManager:CloseUI()
+
+self.main:SetEnable(true)
+_UIManager:Add(self.main)
+end

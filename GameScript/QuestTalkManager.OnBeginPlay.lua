@@ -1,0 +1,17 @@
+return function (self) 
+self.main = _NpcTalkLogic.main:Clone(self.entityName)
+self:DisposeQuest()
+
+self.questStart = self.questUI:GetChildByName("StartQuest")
+self.questStarted = self.questUI:GetChildByName("StartedQuest")
+self.questEnd = self.questUI:GetChildByName("EndQuest")
+self.select = self.questUI:GetChildByName("Select")
+self.gain = self.questUI:GetChildByName("Gain")
+self.itemText = self.questUI:GetChildByName("ItemText")
+self.gainExp = self.questUI:GetChildByName("GainExp")
+self.randItem = self.questUI:GetChildByName("RandItem")
+self.etc = self.questUI:GetChildByName("Etc")
+self.itemSelect = self.questUI:GetChildByName("ItemSelect")
+self.sel = self.questUI:GetChildByName("Sel")
+self.empty = self.questUI:GetChildByName("Empty")
+end
