@@ -23,7 +23,7 @@ if skill == nil then
 end
 
 local sInfo = skill["info"]
-if _SkillStart:ConvertValue(sInfo["noTeach"], 0) == 1 then
+if _GameUtil:ConvertValue(sInfo["noTeach"], 0) == 1 then
 	return false
 end
 
@@ -34,7 +34,7 @@ end
 
 local oriSkillLevel = playerSkill:GetSkillLevel(skillID)
 
-local baseLevel = _SkillStart:ConvertValue(skill["baseLevel"], -1)
+local baseLevel = _GameUtil:ConvertValue(skill["baseLevel"], -1)
 if baseLevel >= 0 then
 	if oriSkillLevel >= playerSkill:GetMasterLevel(skillID) then
 		return false

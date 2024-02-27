@@ -10,9 +10,9 @@ local isEquip = itemID < 2000000
 if quantity > 0 then
 	local eq = {"장비", "소비", "설치", "기타", "캐시"}
 	if isEquip then
-		msgStr = _SkillStart:ConvertString(eq[math.floor(itemID / 1000000)], "?") .. " 아이템을 얻었습니다 (" .. itemName .. ")"
+		msgStr = _GameUtil:ConvertString(eq[math.floor(itemID / 1000000)], "?") .. " 아이템을 얻었습니다 (" .. itemName .. ")"
 	else
-		msgStr = _SkillStart:ConvertString(eq[math.floor(itemID / 1000000)], "?") .. " 아이템을 얻었습니다 (" .. itemName .. " " .. math.floor(quantity) .. "개)"
+		msgStr = _GameUtil:ConvertString(eq[math.floor(itemID / 1000000)], "?") .. " 아이템을 얻었습니다 (" .. itemName .. " " .. math.floor(quantity) .. "개)"
 	end
 else
 	if isEquip then

@@ -12,7 +12,7 @@ for k, v in pairs(cards) do
 	if clone == nil then
 		clone = self.sample:Clone("" .. k)
 	end
-	local count = _SkillStart:ConvertValue(player.PlayerStats.card["" .. v], 0)
+	local count = _GameUtil:ConvertValue(player.PlayerStats.card["" .. v], 0)
 	local itemData = _ItemData:GetItem(v + 2380000)
 	
 	clone:GetChildByName("ruid").SpriteGUIRendererComponent.ImageRUID = itemData["ruid"]

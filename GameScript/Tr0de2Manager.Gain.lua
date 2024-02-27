@@ -236,16 +236,16 @@ elseif finalAttack > 0 then -- 파이널 어택
 	local oriSkillInfo = _SkillInfo:SkillInfo(finalAttack, skillLevel)
 	local finalInfo = _SkillInfo:SkillInfo(skillID, finalLevel)
 	
-	monsterAttackCount = _SkillStart:ConvertValue(oriSkillInfo["mobCount"], 1)
+	monsterAttackCount = _GameUtil:ConvertValue(oriSkillInfo["mobCount"], 1)
 	motion = _SkillData:GetFinalMotion(self.attack)
 	if motion == nil then
 		return 1
 	end
 	
-	local baseRange = _SkillStart:ConvertValue(oriSkillInfo["baseRange"], 0)
+	local baseRange = _GameUtil:ConvertValue(oriSkillInfo["baseRange"], 0)
 	if baseRange >= 1 then
 		if not isSoulArrow then
-			local throwConsume = _SkillStart:ConvertValue(oriSkillInfo["throwConsume"], 0)
+			local throwConsume = _GameUtil:ConvertValue(oriSkillInfo["throwConsume"], 0)
 			if throwConsume > 0 then
 				throwSlot = player.PlayerInventory:CalcThrow(0, stats.weaponID, throwConsume, stats.level)
 				if _UtilLogic:IsNilorEmptyString(throwSlot) then
@@ -253,7 +253,7 @@ elseif finalAttack > 0 then -- 파이널 어택
 				end
 			end
 		end
-		local zeroAttack = _SkillStart:ConvertValue(oriSkillInfo["zeroAttack"], 0)
+		local zeroAttack = _GameUtil:ConvertValue(oriSkillInfo["zeroAttack"], 0)
 		if zeroAttack > 0 then
 			local zeroMotion = _SkillData:GetNormalRandMotion(self.attack)
 			local posAndBox = _SkillData:GetNormalRange(self.afterImage .. "_" .. zeroMotion)
@@ -303,7 +303,7 @@ elseif finalAttack > 0 then -- 파이널 어택
 		box = simul:OverlapBoxAll("monster", calcVec, range, 0)
 		self:RangeUI(calcVec, range, nil)
 		
-	    local splash = _SkillStart:ConvertValue(oriSkillInfo["splash"], 0)
+	    local splash = _GameUtil:ConvertValue(oriSkillInfo["splash"], 0)
 	    if splash > 0 and range.x * 100 < splash then
 			local splashCheck = false
 			for k, v in pairs(box) do
@@ -335,13 +335,13 @@ else
 		return 1
 	end
 	skillInfo = _SkillInfo:SkillInfo(skillID, skillLevel)
-	local linkSkill = _SkillStart:ConvertValue(skillInfo["linkSkill"], 0)
+	local linkSkill = _GameUtil:ConvertValue(skillInfo["linkSkill"], 0)
 	if linkSkill > 0 and playerSkill:GetTotalSkillLevel(linkSkill) > 0 then
-		self:Attack(linkSkill, lastTick, finalAttack, charge)
+		self:Gain(linkSkill, lastTick, finalAttack, charge)
 		return
 	end
 	
-	local isMoveSkill = _SkillStart:ConvertValue(skillInfo["moveSkill"], 0) > 0
+	local isMoveSkill = _GameUtil:ConvertValue(skillInfo["moveSkill"], 0) > 0
 	
 	if isMoveSkill then
 		local fieldLimit = player.CurrentMap.MapInfo.fieldLimit
@@ -350,17 +350,17 @@ else
 		end
 	end
 	
-	local coolTime = _SkillStart:ConvertValue(skillInfo["cooltime"], 0)
+	local coolTime = _GameUtil:ConvertValue(skillInfo["cooltime"], 0)
 	if coolTime > 0 and not playerSkill:CheckCoolTime(skillID, lastTick) then
 		_MessageLogic:ShowMessage("아직은 스킬을 사용할 수 없습니다.")
 		return 1
 	end
-	local hitCooltime = _SkillStart:ConvertValue(skillInfo["hitCoolTime"], 0)
+	local hitCooltime = _GameUtil:ConvertValue(skillInfo["hitCoolTime"], 0)
 	if hitCooltime > 0 and not playerSkill:CheckHitCoolTime(skillID, lastTick) then
 		return 1
 	end
 	
-	local delayTime = _SkillStart:ConvertValue(skillInfo["delayTime"], 0)
+	local delayTime = _GameUtil:ConvertValue(skillInfo["delayTime"], 0)
 	if delayTime > 0 then
 		local nextTime = self.delayTime[skillID]
 		if nextTime ~= nil and nextTime > lastTick then
@@ -368,10 +368,10 @@ else
 		end
 	end
 	
-	local hpCon = _SkillStart:ConvertValue(skillInfo["hpCon"], 0)
-	local hpRCon = _SkillStart:ConvertValue(skillInfo["hpRCon"], 0)
-	isRapid = _SkillStart:ConvertValue(skillInfo["rapid"], 0) > 0
-	roar = _SkillStart:ConvertValue(skillInfo["roarStun"], 0)
+	local hpCon = _GameUtil:ConvertValue(skillInfo["hpCon"], 0)
+	local hpRCon = _GameUtil:ConvertValue(skillInfo["hpRCon"], 0)
+	isRapid = _GameUtil:ConvertValue(skillInfo["rapid"], 0) > 0
+	roar = _GameUtil:ConvertValue(skillInfo["roarStun"], 0)
 	if roar > 0 and stats.hp < stats.currentHp / 2 then
 		_MessageLogic:ShowMessage("HP가 부족하여 스킬을 사용할 수 없습니다.")
 		return 1
@@ -383,7 +383,7 @@ else
 		_MessageLogic:ShowMessage("HP가 부족하여 스킬을 사용할 수 없습니다.")
 		return 1
 	end
-	local mpCon = _SkillStart:ConvertValue(skillInfo["mpCon"], 0)
+	local mpCon = _GameUtil:ConvertValue(skillInfo["mpCon"], 0)
 	if _GameUtil:JobType(math.floor(skillID / 10000)) == 2 and playerSkill.mpAmplification > 0 then
 		mpCon = math.floor(mpCon * (playerSkill.mpAmplification + 100) / 100)
 	end
@@ -398,18 +398,18 @@ else
 		return 1
 	end
 	
-	local oneHand = _SkillStart:ConvertValue(skillInfo["oneHand"], 0)
+	local oneHand = _GameUtil:ConvertValue(skillInfo["oneHand"], 0)
 	if oneHand > 0 and not _GameUtil:IsOneHand(weaponID) then
 		_MessageLogic:ShowMessage("한손 무기를 장착한 상태에서만 스킬을 사용할 수 있습니다.")
 		return 1
 	end
 	
-	local conCombo = _SkillStart:ConvertValue(skillInfo["conCombo"], 0)
+	local conCombo = _GameUtil:ConvertValue(skillInfo["conCombo"], 0)
 	if conCombo > 0 and playerBuff.combo < conCombo then
 		return 1
 	end
 
-	local jumpAttack = _SkillStart:ConvertValue(skillInfo["jumpAttack"], 0)
+	local jumpAttack = _GameUtil:ConvertValue(skillInfo["jumpAttack"], 0)
 	if jumpAttack == 0 and not _PlayerComponent.rigid:IsOnGround() and not _PlayerWeather.swim then
 		return 2
 	end
@@ -445,7 +445,7 @@ else
 		end
 	end
 	
-	local canTaming = _SkillStart:ConvertValue(skillInfo["canTaming"], 0)
+	local canTaming = _GameUtil:ConvertValue(skillInfo["canTaming"], 0)
 	if canTaming > 0 then
 		if playerBuff.incTaming ~= canTaming then
 			_MessageLogic:ShowMessage("배틀쉽 탑승 중에만 사용할 수 있는 스킬입니다.")
@@ -460,17 +460,17 @@ else
 		end
 	end
 	
-	local canEnergy = _SkillStart:ConvertValue(skillInfo["canEnergy"], 0)
+	local canEnergy = _GameUtil:ConvertValue(skillInfo["canEnergy"], 0)
 	if canEnergy > 0 and not playerSkill.energyState then
 		_MessageLogic:ShowMessage("에너지가 완충된 상태에서만 사용할 수 있는 스킬입니다.")
 		return 1
 	end
 	
-	local skillAttackSpeed = _SkillStart:ConvertValue(skillInfo["attackSpeed"], 0)
+	local skillAttackSpeed = _GameUtil:ConvertValue(skillInfo["attackSpeed"], 0)
 	
 	if not isSoulArrow then
-		local canConsume = _SkillStart:ConvertValue(skillInfo["canConsume"], 0)
-		local throwConsume = _SkillStart:ConvertValue(skillInfo["throwConsume"], 0)
+		local canConsume = _GameUtil:ConvertValue(skillInfo["canConsume"], 0)
+		local throwConsume = _GameUtil:ConvertValue(skillInfo["throwConsume"], 0)
 		if throwConsume > 0 then
 			throwSlot = player.PlayerInventory:CalcThrow(canConsume, stats.weaponID, throwConsume, stats.level)
 			if _UtilLogic:IsNilorEmptyString(throwSlot) then
@@ -480,7 +480,7 @@ else
 		end
 	end
 
-	local zeroAttack = _SkillStart:ConvertValue(skillInfo["zeroAttack"], 0)
+	local zeroAttack = _GameUtil:ConvertValue(skillInfo["zeroAttack"], 0)
 	if zeroAttack > 0 then
 		local zeroMotion = _SkillData:GetNormalRandMotion(self.attack)
 		local posAndBox = _SkillData:GetNormalRange(self.afterImage .. "_" .. zeroMotion)
@@ -534,7 +534,7 @@ else
 	
 	local skillPos = skillInfo["skillPos"]
 	local range
-	local baseRange = _SkillStart:ConvertValue(skillInfo["baseRange"], 0)
+	local baseRange = _GameUtil:ConvertValue(skillInfo["baseRange"], 0)
 	if baseRange == 1 then
 		local x = 2.5 + playerSkill.rangeX / 100 
 		local y = 1 -- 2
@@ -570,7 +570,7 @@ else
 		end
 		isRangeAttack = true
 	elseif baseRange == 3 then
-		local nRange = _SkillStart:ConvertValue(skillInfo["skillRangeX"], 0)
+		local nRange = _GameUtil:ConvertValue(skillInfo["skillRangeX"], 0)
 		range = Vector2(nRange / 100, 0.4)
 		isRangeAttack = true
 	elseif baseRange == 4 then
@@ -593,12 +593,12 @@ else
 			end
 		end
 	end
-	local setRange = _SkillStart:ConvertValue(skillInfo["setRange"], 0)
+	local setRange = _GameUtil:ConvertValue(skillInfo["setRange"], 0)
 	if setRange > 0 then
 		isRangeAttack = true
 	end
 	
-	local yRange = _SkillStart:ConvertValue(skillInfo["yRange"], 0)
+	local yRange = _GameUtil:ConvertValue(skillInfo["yRange"], 0)
 	if yRange > 0 then
 		local x = range.x
 		local y = yRange / 100
@@ -616,7 +616,7 @@ else
 		end
 	end	
 	
-	local heal = _SkillStart:ConvertValue(skillInfo["heal"], 0)
+	local heal = _GameUtil:ConvertValue(skillInfo["heal"], 0)
 	if heal > 0 then
 		local nRange = skillInfo["partyBuff"]
 		self:RangeUI(playerBasePos, nRange, Vector3(255, 255, 0))
@@ -632,7 +632,7 @@ else
 		isHeal = true
 	end
 	
-	local mesoCount = _SkillStart:ConvertValue(skillInfo["mesoCount"], 0)
+	local mesoCount = _GameUtil:ConvertValue(skillInfo["mesoCount"], 0)
 	if mesoCount > 0 then
 		local mesoRange = Vector2(3, 0.8)
 		local calcVec = playerBasePos + Vector2((isLeft and -mesoRange.x or mesoRange.x) / 2, mesoRange.y / 2)
@@ -652,7 +652,7 @@ else
 		end
 		isLastMobCalc = false
 	elseif skillPos == nil then
-		local py = _SkillStart:ConvertValue(skillInfo["skillPosY"], 0)
+		local py = _GameUtil:ConvertValue(skillInfo["skillPosY"], 0)
 		local calcVec = playerPos + Vector2((isLeft and -range.x or range.x) / 2, py / 100)
 		box = simul:OverlapBoxAll("monster", calcVec, range, 0)
 		self:RangeUI(calcVec, range, nil)
@@ -662,7 +662,7 @@ else
 		self:RangeUI(calcVec, range, nil)
 	end
 	
-    local splash = _SkillStart:ConvertValue(skillInfo["splash"], 0)
+    local splash = _GameUtil:ConvertValue(skillInfo["splash"], 0)
     if splash > 0 then
 		local splashBox = {}
 		local splashCheck = false
@@ -817,7 +817,7 @@ else
 		_PlayerComponent:SeForce(Vector2(isLeft and addForce.x or -addForce.x, addForce.y))
 	end
 	
-	local fixSpeed = _SkillStart:ConvertValue(skillInfo["fixSpeed"], 0)
+	local fixSpeed = _GameUtil:ConvertValue(skillInfo["fixSpeed"], 0)
 	if fixSpeed > 0 then
 		calcAttackSpeed = fixSpeed + playerBuff.attackSpeed + playerBuff.incInfusion
 	else
@@ -825,11 +825,11 @@ else
 	end
 	
 	if finalAttack == 0 and playerBuff.finalRand > 0 and playerBuff.finalAttack > 0 then
-		local ableFinal = _SkillStart:ConvertValue(skillInfo["ableFinal"], 0)
+		local ableFinal = _GameUtil:ConvertValue(skillInfo["ableFinal"], 0)
 		if ableFinal > 0 and math.random(1, 100) <= playerBuff.finalRand then
 			local delay = math.ceil(600 * (math.max(2, calcAttackSpeed) + 10) / 16 / 30) * 30
 			local func = function()
-				self:Attack(playerBuff.finalAttack, _UtilLogic.ServerElapsedSeconds, skillID, 0)
+				self:Gain(playerBuff.finalAttack, _UtilLogic.ServerElapsedSeconds, skillID, 0)
 			end
 			_TimerService:SetTimerOnce(func, delay / 1000)
 		end
@@ -840,8 +840,8 @@ else
 			local delay = 50 + math.ceil(1820 * (math.max(2, calcAttackSpeed) + 10) / 16 / 30) * 30
 			local func = function()
 				local now = _UtilLogic.ServerElapsedSeconds
-				if _SkillBegin.nextAttackDelay < now then
-					self:Attack(skillID, now, -skillID, 0)
+				if _Tr0de2Manager.nextAttackDelay < now then
+					self:Gain(skillID, now, -skillID, 0)
 				end
 			end
 			_TimerService:SetTimerOnce(func, delay / 1000)
@@ -850,10 +850,10 @@ else
 		end
 	end
 	
-	masteryEff = _SkillStart:ConvertValue(skillInfo["noMastery"], 0) == 0
-	noHitCancel = _SkillStart:ConvertValue(skillInfo["noHitCancel"], 0) > 0
-	monsterAttackCount = _SkillStart:ConvertValue(skillInfo["mobCount"], 1)
-	attackCount = _SkillStart:ConvertValue(skillInfo["attackCount"], 1)
+	masteryEff = _GameUtil:ConvertValue(skillInfo["noMastery"], 0) == 0
+	noHitCancel = _GameUtil:ConvertValue(skillInfo["noHitCancel"], 0) > 0
+	monsterAttackCount = _GameUtil:ConvertValue(skillInfo["mobCount"], 1)
+	attackCount = _GameUtil:ConvertValue(skillInfo["attackCount"], 1)
 	sMotion = true
 	
 	if delayTime > 0 then
@@ -931,7 +931,7 @@ if mobTableCount > 0 then
 		_MessageLogic:ShowMessage("클릭이 감지되지 않아서 공격이 취소되었습니다.")
 		return 1
 	end
-	local hitInvincibility = _SkillStart:ConvertValue(skillInfo["hitInvincibility"], 0)
+	local hitInvincibility = _GameUtil:ConvertValue(skillInfo["hitInvincibility"], 0)
 	if hitInvincibility > 0 then
 		local cal = lastTick + hitInvincibility
 		if _PlayerHitByMonster.nextHitTime < cal then
@@ -939,9 +939,9 @@ if mobTableCount > 0 then
 		end
 	end
 	
-	local hitMove = _SkillStart:ConvertValue(skillInfo["hitMove"], 0)
+	local hitMove = _GameUtil:ConvertValue(skillInfo["hitMove"], 0)
 	if hitMove ~= 0 then
-		local hitMoveDir = _SkillStart:ConvertValue(skillInfo["hitMoveDir"], 0)
+		local hitMoveDir = _GameUtil:ConvertValue(skillInfo["hitMoveDir"], 0)
 		local footHoldCom =  player.CurrentMap.FootholdComponent
 		local telPos = Vector2(_PlayerComponent.trans.WorldPosition.x + (isLeft and -hitMove or hitMove) / 100, _PlayerComponent.trans.WorldPosition.y)
 		local footHold
@@ -966,7 +966,7 @@ if mobTableCount > 0 then
 			_PlayerComponent.rigid:SetWorldPosition(Vector2(findPosX, findPosY))
 		end
 	end
-	local hitSlide = _SkillStart:ConvertValue(skillInfo["hitSlide"], 0)
+	local hitSlide = _GameUtil:ConvertValue(skillInfo["hitSlide"], 0)
 	if hitSlide ~= 0 then
 		local firPos = _PlayerComponent.trans.WorldPosition.x
 		local footHoldCom =  player.CurrentMap.FootholdComponent
@@ -1061,7 +1061,7 @@ if roar > 0 then
 	self:RoarStun(roar)
 end
 
-_SkillStart:Attack(player, finalMobTable, skillID, isLeft, throwSlot, isProneStab, isRangeAttack, playerBasePos, lastTick, healPlayers, isSoulArrow, motion, math.max(2, calcAttackSpeed), finalAttack, charge)
+_SkillStart1:Attack(player, finalMobTable, skillID, isLeft, throwSlot, isProneStab, isRangeAttack, playerBasePos, lastTick, healPlayers, isSoulArrow, motion, math.max(2, calcAttackSpeed), finalAttack, charge)
 
 if fixZero then
 	return 2

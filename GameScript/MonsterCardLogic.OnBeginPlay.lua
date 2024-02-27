@@ -12,7 +12,7 @@ for idx = 0, 8 do
 end
 
 for _, v in pairs(_Util:FindTable_All("ConsumeData")) do
-	local id = _SkillStart:ConvertValue(v["id"], 0)
+	local id = _GameUtil:ConvertValue(v["id"], 0)
 	
 	if _GameUtil:IsCard(id) then
 		local cardID = id % 10000

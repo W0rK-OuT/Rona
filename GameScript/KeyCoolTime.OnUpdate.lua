@@ -2,7 +2,20 @@ return function (self,delta)
 local total = self.endTime - self.startTime
 if total > 0 then
 	self.now += delta
-	local per = (self.endTime - self.now) / total
+	local calTime = self.endTime - self.now
+	
+	if calTime <= 0 then
+		self:Close(false)
+		self.Enable = false
+		return
+	end
+
+	local sec = tostring(math.floor(calTime))
+	if self.text.Text ~= sec then
+		self.text.Text = sec
+	end
+
+	local per = calTime / total
 	if self.lastPer == per then
 		return
 	end

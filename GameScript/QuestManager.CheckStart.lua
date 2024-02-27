@@ -13,14 +13,14 @@ local playerQuest = player.PlayerQuest
 local pStatus = playerQuest:QuestStatus(questID)
 
 if status == 0 and pStatus == 2 then
-	local interval = _SkillStart:ConvertValue(checkData["interval"], -1)
-	local dayByDay = _SkillStart:ConvertValue(checkData["dayByDay"], 0)
+	local interval = _GameUtil:ConvertValue(checkData["interval"], -1)
+	local dayByDay = _GameUtil:ConvertValue(checkData["dayByDay"], 0)
 	local isRepete = interval >= 0 or dayByDay >= 1
 	if not isRepete then
 		return 0
 	end
 	
-	local lvmax = _SkillStart:ConvertValue(checkData["lvmax"], 0)
+	local lvmax = _GameUtil:ConvertValue(checkData["lvmax"], 0)
 	if lvmax > 0 and player.PlayerStats.level > lvmax then
 		return 0
 	end
@@ -67,7 +67,7 @@ for k, v in pairs(checkData) do
 	elseif k == "quest" then
 		for _, vv in pairs(v) do
 			local id = vv["id"]
-			local state = _SkillStart:ConvertValue(vv["state"], 0)
+			local state = _GameUtil:ConvertValue(vv["state"], 0)
 			if playerQuest:QuestStatus(id) ~= state then
 				return 0
 			end
@@ -83,7 +83,7 @@ for k, v in pairs(checkData) do
             return 0
         end
 	elseif k == "infoex" then
-		local infoNumber = _SkillStart:ConvertValue(checkData["infoNumber"], questID)
+		local infoNumber = _GameUtil:ConvertValue(checkData["infoNumber"], questID)
 		local data = player.PlayerQuest:QuestInfoData(infoNumber)
 		local check = false
 		for _, vv in pairs(v) do
@@ -111,7 +111,7 @@ for k, v in pairs(checkData) do
 		local pi = player.PlayerInventory
 		for _, vv in pairs(v) do
 			local id = vv["id"]
-			local count = _SkillStart:ConvertValue(vv["count"], 0)
+			local count = _GameUtil:ConvertValue(vv["count"], 0)
 			local quantity = pi:ItemQuantity(id)
 			if count <= 0 then
 				if quantity > 0 then
@@ -135,11 +135,11 @@ for k, v in pairs(checkData) do
 		local job = player.PlayerStats.job
 		local ps = player.PlayerSkill
 		for _, vv in pairs(v) do
-			local id = _SkillStart:ConvertValue(vv["id"], -1)
+			local id = _GameUtil:ConvertValue(vv["id"], -1)
 			if id == -1 then
 				continue
 			end
-			local acquire = _SkillStart:ConvertValue(vv["acquire"], -1)
+			local acquire = _GameUtil:ConvertValue(vv["acquire"], -1)
 			if acquire == -1 then
 				if ps:GetSkillLevel(id) > 0 or ps:GetMasterLevel(id) > 0 then
 					return 0
@@ -152,7 +152,7 @@ for k, v in pairs(checkData) do
 				if gs == nil then
 					return 0
 				end
-				local baseSkill = _SkillStart:ConvertValue(gs["baseSkill"], -1)
+				local baseSkill = _GameUtil:ConvertValue(gs["baseSkill"], -1)
 				if baseSkill >= 0 and ps:GetSkillLevel(id) <= 0 and ps:GetMasterLevel(id) <= 0 then
 					return 0
 				end
@@ -178,8 +178,8 @@ for k, v in pairs(checkData) do
 		local cards = player.PlayerStats.card
 		for _, vv in pairs(v) do
 			local id = vv["id"]
-			local min = _SkillStart:ConvertValue(vv["min"], 0)
-			local cardCount = _SkillStart:ConvertValue(cards[tostring(id % 10000)], 0)
+			local min = _GameUtil:ConvertValue(vv["min"], 0)
+			local cardCount = _GameUtil:ConvertValue(cards[tostring(id % 10000)], 0)
 			if cardCount < min then
 				return 0
 			end

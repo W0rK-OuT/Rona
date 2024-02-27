@@ -15,8 +15,8 @@ if update then
 	local qName = info["name"]
 	local qInfo = info["" .. status]
 	
-	local lvmin = _SkillStart:ConvertValue(check["lvmin"], 0)
-	local lvmax = _SkillStart:ConvertValue(check["lvmax"], 0)
+	local lvmin = _GameUtil:ConvertValue(check["lvmin"], 0)
+	local lvmax = _GameUtil:ConvertValue(check["lvmax"], 0)
 	
 	local levelText = ""
 	if lvmin > 0 then

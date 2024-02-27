@@ -10,5 +10,11 @@ elseif buttonName == "MesoIcon" then
 		return
 	end
 	_TradeMesoManager:OpenUI()
+elseif buttonName == "Enter" then
+	local textCom = self.main:GetChildByName("Right"):GetChildByName("UIText").TextComponent
+	if not _UtilLogic:IsNilorEmptyString(textCom.Text) then
+		self:SendText(textCom.Text)
+		textCom.Text = ""
+	end
 end
 end

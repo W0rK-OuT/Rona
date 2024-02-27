@@ -17,9 +17,9 @@ for key, value in pairs(motionActionTable) do
         nTable["action"] = value["action"]
         nTable["delay"] = math.abs(tonumber(value["delay"]))
         nTable["frame"] = tonumber(value["frame"])
-		nTable["moveX"] = _SkillStart:ConvertValue(value["moveX"], 0)
-		nTable["moveY"] = _SkillStart:ConvertValue(value["moveY"], 0)
-		nTable["rotate"] = _SkillStart:ConvertValue(value["rotate"], 0) 
+		nTable["moveX"] = _GameUtil:ConvertValue(value["moveX"], 0)
+		nTable["moveY"] = _GameUtil:ConvertValue(value["moveY"], 0)
+		nTable["rotate"] = _GameUtil:ConvertValue(value["rotate"], 0) 
         self.motionAction[value["id"]][tonumber(value["index"]) + 1] = nTable
     end
 end

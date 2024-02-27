@@ -25,7 +25,7 @@ else
 		for k, v in pairs(items) do
 			local itemID = tonumber(v["id"])
 			local price = tonumber(v["price"])
-			local quantity = _SkillStart:ConvertValue(v["quantity"], 1)
+			local quantity = _GameUtil:ConvertValue(v["quantity"], 1)
 			local buyType = tonumber(v["buyType"])
 			
 			if buyType ~= nil and buyType > 0 then

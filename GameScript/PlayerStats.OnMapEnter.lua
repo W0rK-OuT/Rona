@@ -45,7 +45,7 @@ else
 		return
 	end
 	_CoolTime.idleTime = 0
-	_SkillBegin.simulator = _CollisionService:GetSimulator(enteredMap)
+	_Tr0de2Manager.simulator = _CollisionService:GetSimulator(enteredMap)
 
 	local info = enteredMap.MapInfo
 	if info ~= nil then

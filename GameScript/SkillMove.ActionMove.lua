@@ -34,12 +34,12 @@ if skillLevel <= 0 then
 	return
 end
 local skillInfo = _SkillInfo:SkillInfo(skillID, skillLevel)
-local hpCon = _SkillStart:ConvertValue(skillInfo["hpCon"], 0)
+local hpCon = _GameUtil:ConvertValue(skillInfo["hpCon"], 0)
 if hpCon > 0 and player.PlayerStats.hp < hpCon + 1 then
 	_MessageLogic:ShowMessage("HP가 부족하여 스킬을 사용할 수 없습니다.")
 	return
 end
-local mpCon = _SkillStart:ConvertValue(skillInfo["mpCon"], 0)
+local mpCon = _GameUtil:ConvertValue(skillInfo["mpCon"], 0)
 if playerBuff.incManaRate > 0 then
 	mpCon = math.ceil(mpCon * (100 - playerBuff.incManaRate) * 0.01)
 end
@@ -52,9 +52,9 @@ if mpCon > 0 and player.PlayerStats.mp < mpCon then
 end
 
 local stateName = _PlayerComponent.state.CurrentStateName
-local teleport = _SkillStart:ConvertValue(skillInfo["teleport"], 0)
-local flashJump = _SkillStart:ConvertValue(skillInfo["flashJump"], 0)
-local wings = _SkillStart:ConvertValue(skillInfo["wings"], 0)
+local teleport = _GameUtil:ConvertValue(skillInfo["teleport"], 0)
+local flashJump = _GameUtil:ConvertValue(skillInfo["flashJump"], 0)
+local wings = _GameUtil:ConvertValue(skillInfo["wings"], 0)
 
 if teleport > 0 then
 	--텔포 오른쪽 왼쪽은 아래 검사 -> 위 검사
@@ -179,7 +179,7 @@ elseif wings > 0 then
 	if stateName == "SIT" then
 		return
 	end
-	local time = _SkillStart:ConvertValue(skillInfo["time"], 0)
+	local time = _GameUtil:ConvertValue(skillInfo["time"], 0)
 	if self:StartWings(time, wings) then
 		self:ActionServer(skillID, player, now)
 	end

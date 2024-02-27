@@ -19,7 +19,7 @@ for k, v in pairs(players) do
 	if clone == nil then
 		clone = sample:Clone("" .. k)
 	end
-	local targetMap = _SkillStart:ConvertString(_MapData:GetMapName(v[3])["mapName"], "")
+	local targetMap = _GameUtil:ConvertString(_MapData:GetMapName(v[3])["mapName"], "")
 	clone:GetChildByName("UIText").TextComponent.Text = v[1] .. "\n" .. targetMap
 	self.players[k] = {v[1], v[2], v[3]}
 	clone:SetEnable(true)

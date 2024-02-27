@@ -15,7 +15,7 @@ if clone == nil then
 end
 clone:GetChildByName("RUID").SpriteGUIRendererComponent.ImageRUID = ruid
 --clone.SpriteGUIRendererComponent.ImageRUID = ruid
-local localTime = _SkillStart:ConvertValue(buff["time"], 0)
+local localTime = _GameUtil:ConvertValue(buff["time"], 0)
 if localTime == -1 then
 	clone.BuffButton.Enable = false
 	clone.BuffButton.text.Text = ""

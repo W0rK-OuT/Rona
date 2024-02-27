@@ -14,11 +14,11 @@ if not _UserService.LocalPlayer.PlayerStats:IsActing() then
 end
 
 local petOption = _UserService.LocalPlayer.PlayerSetting.petOption
-local healValue = _SkillStart:ConvertValue(petOption[type == 0 and "Hp" or "Mp"], 0)
+local healValue = _GameUtil:ConvertValue(petOption[type == 0 and "Hp" or "Mp"], 0)
 if healValue == 0 then
 	return
 end
-local healCode = _SkillStart:ConvertValue(petOption[type == 0 and "HpCode" or "MpCode"], 0)
+local healCode = _GameUtil:ConvertValue(petOption[type == 0 and "HpCode" or "MpCode"], 0)
 if healCode == 0 then
 	return
 end

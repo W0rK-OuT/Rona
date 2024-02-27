@@ -32,7 +32,7 @@ for questID, _ in pairs(self.startedQuest) do
 	if item ~= nil then
 		for k, v in pairs(item) do
 			if v["id"] == id then
-				local count = _SkillStart:ConvertValue(v["count"], 0)
+				local count = _GameUtil:ConvertValue(v["count"], 0)
 				if count > 0 and oriCount < count then
 					local quantity = player.PlayerInventory:ItemQuantity(id)
 					_MessageLogic:TopMessage(4, _ItemData:GetItem(id)["name"] .. " " .. quantity .. " / " .. count)

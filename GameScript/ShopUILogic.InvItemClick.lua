@@ -16,12 +16,12 @@ local grid = self.invGrid
 
 local oriChild = grid:GetChildByName(tostring(ori))
 if oriChild ~= nil then
-	oriChild:GetChildByName("SpriteA").SpriteGUIRendererComponent.Color = Color(187 / 255, 204 / 255, 221 / 255)
+	oriChild:GetChildByName("SpriteA"):SetEnable(false)
 end
 
 local newChild = grid:GetChildByName(tostring(slot))
 if newChild ~= nil then
-	newChild:GetChildByName("SpriteA").SpriteGUIRendererComponent.Color = Color(238 / 255, 153 / 255, 34 / 255)
+	newChild:GetChildByName("SpriteA"):SetEnable(true)
 end
 
 if ori ~= slot then

@@ -3,5 +3,5 @@ local summonData = self.summonData[id]
 if summonData == nil then
 	return 0
 end
-return _SkillStart:ConvertValue(summonData[key .. "Frame"], 0)
+return _GameUtil:ConvertValue(summonData[key .. "Frame"], 0)
 end

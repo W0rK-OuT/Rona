@@ -17,7 +17,7 @@ while _UtilLogic:Contains(str, "{") do
 	end
 	local findStr = string.sub(str, first, second)
 	local findCode = string.sub(findStr, 2, #findStr - 1)
-	str = _UtilLogic:Replace(str, findStr, _SkillStart:ConvertString(skillInfo[findCode], "?"))
+	str = _UtilLogic:Replace(str, findStr, _GameUtil:ConvertString(skillInfo[findCode], "?"))
 end
 return str
 end

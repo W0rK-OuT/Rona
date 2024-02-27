@@ -8,6 +8,7 @@ self:UpdateMeso(0)
 self:UpdateTradeButton(false)
 self:UpdateDone(true, false)
 self:UpdateDone(false, false)
+self:ClearText()
 _TradeCountManager:CloseUI()
 _TradeYesNoManager:CloseUI()
 

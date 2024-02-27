@@ -4,7 +4,7 @@ clone:SetEnable(true)
 _UIManager:Add(clone)
 
 clone:GetChildByName("NpcRUID").SpriteGUIRendererComponent.ImageRUID = self.ruid
-clone:GetChildByName("NpcName").TextComponent.Text = self.name
+clone:GetChildByName("NpcBack"):GetChildByName("NpcName").TextComponent.Text = self.name
 
 local grid = clone:GetChildByName("TextGrid")
 
@@ -80,8 +80,8 @@ elseif textType == 8 then
 		for k, v in pairs(items) do			
 			if _QuestManager:CheckGetItem(player, v) then
 				local id = v["id"]
-				local count = _SkillStart:ConvertValue(v["count"], 0)
-				local prop = _SkillStart:ConvertValue(v["prop"], 0)
+				local count = _GameUtil:ConvertValue(v["count"], 0)
+				local prop = _GameUtil:ConvertValue(v["prop"], 0)
 				if prop > 0 then
 					check = true
 					randItem = true
@@ -103,7 +103,7 @@ elseif textType == 8 then
 	if skills ~= nil then
 		local myJob = player.PlayerStats.job
 		for _, skiTable in pairs(skills) do
-			local skillID = _SkillStart:ConvertValue(skiTable["id"], 0)
+			local skillID = _GameUtil:ConvertValue(skiTable["id"], 0)
 			if skillID == 0 then
 				continue
 			end

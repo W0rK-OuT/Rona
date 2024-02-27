@@ -1,6 +1,6 @@
 return function (self,monster,startPos,offset,damage,delay) 
 ---@type CollisionSimulator
-local simul = _SkillBegin.simulator
+local simul = _Tr0de2Manager.simulator
 local playerPos = monster.TransformComponent.Position:ToVector2()
 local calcVec = startPos:ToVector2() + Vector2(-0.1, offset.y / 2)
 

@@ -16,5 +16,7 @@ elseif name == "ChatOption" then
 	_ChatBanManager:OpenUI()
 elseif name == "ThrowOption" then
 	_ThrowManager:CheckUI()
+elseif name == "DecoOption" then
+	_DecoManager:CheckUI()
 end
 end

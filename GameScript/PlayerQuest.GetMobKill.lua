@@ -3,5 +3,5 @@ local mobs = self.mobs["" .. questID]
 if mobs == nil then
 	return 0
 end
-return _SkillStart:ConvertValue(mobs["" .. index], 0)
+return _GameUtil:ConvertValue(mobs["" .. index], 0)
 end

@@ -3,8 +3,8 @@ if mapID == nil then
 	return 1
 end
 local info = _MapData:GetMapInfo(mapID)
-local fieldLimit = _SkillStart:ConvertValue(info["fieldLimit"], 0)
-local forcedReturn = _SkillStart:ConvertValue(info["forcedReturn"], 999999999)
+local fieldLimit = _GameUtil:ConvertValue(info["fieldLimit"], 0)
+local forcedReturn = _GameUtil:ConvertValue(info["forcedReturn"], 999999999)
 
 if _FieldLimit:Check(fieldLimit, _FieldLimit.MoveSkill) then
 	return 2

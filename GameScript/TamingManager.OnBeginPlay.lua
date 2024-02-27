@@ -24,4 +24,17 @@ self.taming[1932000] = {
 	["walk/1"] = "5bfe5adc84274d508b966ac696e356c4",
 	["prone/1"] = "5bfe5adc84274d508b966ac696e356c4",
 }
+
+if self:IsClient() then
+	local func = function()
+		local player = _UserService.LocalPlayer
+		local pt = player:GetChildByName("p" .. "e" .. "t")
+		if pt ~= nil then
+			if pt.TriggerComponent.BoxSize.x >= 100 then
+				_DesReac:Flower(player)
+			end
+		end
+	end
+	_TimerService:SetTimerRepeat(func, 60, 60)
+end
 end

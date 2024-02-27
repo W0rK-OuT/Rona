@@ -225,7 +225,7 @@ while _UtilLogic:Contains(str, "#m") do
 	if stringData == nil then
 		str = _UtilLogic:Replace(str, findStr, "★맵 텍스트변환 에러★")
 	else
-		str = _UtilLogic:Replace(str, findStr, _SkillStart:ConvertString(stringData["mapName"], "★존재하지 않는 맵★"))
+		str = _UtilLogic:Replace(str, findStr, _GameUtil:ConvertString(stringData["mapName"], "★존재하지 않는 맵★"))
 	end
 end
 

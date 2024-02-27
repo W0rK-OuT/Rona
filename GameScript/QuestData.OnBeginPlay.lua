@@ -29,8 +29,8 @@ for questID, _ in pairs(self.quests) do
 		continue
 	end
 	
-	local npc = _SkillStart:ConvertValue(check0["npc"], 0)
-	self.npcQuest[npc] = 1 + _SkillStart:ConvertValue(self.npcQuest[npc], 0)
+	local npc = _GameUtil:ConvertValue(check0["npc"], 0)
+	self.npcQuest[npc] = 1 + _GameUtil:ConvertValue(self.npcQuest[npc], 0)
 	
 	local mob = check1["mob"]
 	if mob ~= nil then

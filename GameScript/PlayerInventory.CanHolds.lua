@@ -15,10 +15,10 @@ for _, value in pairs(itmes) do
 	
 	local itemType = math.floor(itemID / 1000000)
 	if _ItemData:IsOneItem(value) then
-		invs[itemType] = _SkillStart:ConvertValue(invs[itemType], 0) + 1
+		invs[itemType] = _GameUtil:ConvertValue(invs[itemType], 0) + 1
 	else
 		if self:ItemQuantity(itemID) == 0 then -- 소지 중이면 x
-			invs[itemType] = _SkillStart:ConvertValue(invs[itemType], 0) + 1
+			invs[itemType] = _GameUtil:ConvertValue(invs[itemType], 0) + 1
 		end
 	end
 end

@@ -19,7 +19,7 @@ self.pcRecharge:SetEnable(false)
 self.rechargeClone = self.pcRecharge:Clone(self.rechargeEntityName)
 self:CloseRecharge()
 
-self.meso = self.clone:GetChildByName("RightTop"):GetChildByName("Meso"):GetChildByName("MesoBar"):GetChildByName("Text").TextComponent
+self.meso = self.clone:GetChildByName("RightTop"):GetChildByName("Text").TextComponent
 self.clone:GetChildByName("LeftBotton"):GetChildByName("Sample"):Destroy()
 self.invGrid = self.clone:GetChildByName("RightBotton"):GetChildByName("InvGrid")
 self.invGrid:GetChildByName("Sample"):Destroy()

@@ -45,7 +45,7 @@ end
 grid:GetChildByName("NpcText").TextComponent.Text = _TextManager:MapleStr(msg)
 
 clone:GetChildByName("NpcRUID").SpriteGUIRendererComponent.ImageRUID = ruid
-clone:GetChildByName("NpcName").TextComponent.Text = name
+clone:GetChildByName("NpcBack"):GetChildByName("NpcName").TextComponent.Text = name
 
 local nTable = {"Ok", "Next", "Prev", "Yes", "No", "Accept", "Decline", "NumText", "StrText"}
 for _, value in pairs(nTable) do

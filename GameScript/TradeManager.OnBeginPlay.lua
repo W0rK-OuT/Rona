@@ -15,5 +15,9 @@ for idx = 1, 9 do
 end
 pSample:Destroy()
 
+self.textGrid = self.main:GetChildByName("Right"):GetChildByName("Grid")
+self.textSample = self.main:GetChildByName("Right"):GetChildByName("Sample")
+self.textSample:SetEnable(false)
+
 self:UpdateName(_UserService.LocalPlayer.PlayerComponent.Nickname)
 end

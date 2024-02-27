@@ -40,7 +40,7 @@ for key, value in pairs(skills) do
 		if spawn == nil then
 			continue
 		end
-		if _SkillStart:ConvertValue(sInfo["levelView"], 0) == 1 and playerSkill:GetSkillLevel(key) <= 0 and playerSkill:GetMasterLevel(key) <= 0 then
+		if _GameUtil:ConvertValue(sInfo["levelView"], 0) == 1 and playerSkill:GetSkillLevel(key) <= 0 and playerSkill:GetMasterLevel(key) <= 0 then
 			continue
 		end
 		-- ruid name desc h masterLevel req
@@ -52,10 +52,10 @@ for key, value in pairs(skills) do
 		elseif not _SkillData:CheckReqSkill(player, skill["req"]) then
 			spawn:GetChildByName("Button").SpriteGUIRendererComponent.Color = Color(204 / 255, 204 / 255, 204 / 255)
 			spawn:GetChildByName("Back"):SetVisible(true)
-		elseif _SkillStart:ConvertValue(sInfo["noTeach"], 0) == 1 or sp <= 0 then
+		elseif _GameUtil:ConvertValue(sInfo["noTeach"], 0) == 1 or sp <= 0 then
 			spawn:GetChildByName("Button").SpriteGUIRendererComponent.Color = Color(204 / 255, 204 / 255, 204 / 255)
 			spawn:GetChildByName("Back"):SetVisible(false)
-		elseif _SkillStart:ConvertValue(skill["baseLevel"], -1) >= 0 and oriSkillLevel >= playerSkill:GetMasterLevel(key) then
+		elseif _GameUtil:ConvertValue(skill["baseLevel"], -1) >= 0 and oriSkillLevel >= playerSkill:GetMasterLevel(key) then
 			spawn:GetChildByName("Button").SpriteGUIRendererComponent.Color = Color(204 / 255, 204 / 255, 204 / 255)
 			spawn:GetChildByName("Back"):SetVisible(false)
 		else

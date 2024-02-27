@@ -3,5 +3,5 @@ local quest = self.quest["" .. id]
 if quest == nil then
 	return ""
 end
-return _SkillStart:ConvertString(quest["i"], "")
+return _GameUtil:ConvertString(quest["i"], "")
 end

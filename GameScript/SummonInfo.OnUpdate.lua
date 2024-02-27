@@ -67,18 +67,18 @@ if self.tick >= self.nextTick then
 	else
 		local attackInfo = _SummonData:GetAttack(self.id)
 		if attackInfo ~= nil then	
-			local attType = _SkillStart:ConvertValue(attackInfo["type"], 0)
+			local attType = _GameUtil:ConvertValue(attackInfo["type"], 0)
 			local range = attackInfo["range"]
 			local r = range["r"] / 100
 						
 			---@type CollisionSimulator
-			local simul = _SkillBegin.simulator
+			local simul = _Tr0de2Manager.simulator
 			local pos = self.Entity.TransformComponent.WorldPosition:ToVector2()
 			local tri = self.Entity.TriggerComponent
 			
 			local isMonster = false
 			local mobTable = {}
-			local box = _SkillBegin:BoxMonster(pos + Vector2(0, attType == 0 and 0.4 or 0.6), Vector2(r, attType == 0 and 0.8 or 1.2))
+			local box = _Tr0de2Manager:BoxMonster(pos + Vector2(0, attType == 0 and 0.4 or 0.6), Vector2(r, attType == 0 and 0.8 or 1.2))
 			for k, _ in pairs(box) do
 				table.insert(mobTable, k)
 				isMonster = true
@@ -100,13 +100,13 @@ if self.tick >= self.nextTick then
 					local nPos = Vector2((rb.x + lt.x) / 200, -(rb.y + lt.y) / 200)
 					local nRange = Vector2((rb.x - lt.x) / 100, (rb.y - lt.y) / 100)
 					
-					attackBox = _SkillBegin:BoxMonster(fPos + Vector2(isLeftAttack and -nPos.x or nPos.x, nPos.y), nRange)
+					attackBox = _Tr0de2Manager:BoxMonster(fPos + Vector2(isLeftAttack and -nPos.x or nPos.x, nPos.y), nRange)
 				end
 				attackBox[firstMonster] = true
 				
 				if not _Util:IsTableEmpty(attackBox) then
 					local useEffect = attackInfo["effect"]
-					local effectAfter = _SkillStart:ConvertValue(attackInfo["effectAfter"], 0)
+					local effectAfter = _GameUtil:ConvertValue(attackInfo["effectAfter"], 0)
 					if not _UtilLogic:IsNilorEmptyString(useEffect) then
 						local effDelay = function()
 							_EffectService:PlayEffectAttached(useEffect, self.Entity, Vector3.zero, 0, Vector3.one)

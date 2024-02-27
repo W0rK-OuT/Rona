@@ -14,7 +14,7 @@ if _CoolTime.portalDelay < 0 then
 end
 
 ---@type CollisionSimulator
-local simul = _SkillBegin.simulator
+local simul = _Tr0de2Manager.simulator
 
 local playerPos = _PlayerComponent.trans.Position:ToVector2()
 local tri = _UserService.LocalPlayer.TriggerComponent

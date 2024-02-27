@@ -21,8 +21,8 @@ local charInfo = nTable[tostring(num)]
 if charInfo == nil then
 	return
 end
-local level = _SkillStart:ConvertValue(charInfo["level"], 0)
-local job = _SkillStart:ConvertValue(charInfo["job"], 0)
+local level = _GameUtil:ConvertValue(charInfo["level"], 0)
+local job = _GameUtil:ConvertValue(charInfo["job"], 0)
 local jobName = _GameUtil:JobName(job)
 if level == 0 then
 	return

@@ -26,7 +26,7 @@ itemEntity:GetChildByName("ruid").SpriteGUIRendererComponent.ImageRUID = _GameUt
 self.main:GetChildByName("Name").TextComponent.Text = itemData["name"]
 
 for k, v in pairs(grid.Children) do
-	local itemValue = _SkillStart:ConvertValue(item[v.Name], 0)
+	local itemValue = _GameUtil:ConvertValue(item[v.Name], 0)
 	if itemValue ~= 0 then
 		v:GetChildByName("Op").TextComponent.Text = "" .. itemValue
 	else

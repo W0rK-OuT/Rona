@@ -24,7 +24,7 @@ npc.SpriteGUIRendererComponent.ImageRUID = ruid
 local grid = self.clone:GetChildByName("LeftBotton")
 for key, value in pairs(grid.Children) do
 	value:SetEnable(false)
-	value:GetChildByName("SpriteA").SpriteGUIRendererComponent.Color = Color(187 / 255, 204 / 255, 221 / 255)
+	value:GetChildByName("SpriteA"):SetEnable(false)
 end
 
 if items ~= nil then
@@ -45,9 +45,9 @@ if items ~= nil then
 		local clone = grid:GetChildByName(tostring(key)) 
 		if clone == nil then
 			clone = _SpawnService:SpawnByEntity(self.sample, tostring(key), Vector3.zero, grid)
+			clone:GetChildByName("SpriteA"):SetEnable(false)
 		end
 		if id < 2000000 then
-			clone:GetChildByName("Shadow"):SetVisible(false)
 			bundle = 1
 		end
 		if bundle > 1 then

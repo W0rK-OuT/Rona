@@ -9,6 +9,7 @@ for k, v in pairs(grid.Children) do
 end
 local sample = grid:GetChildByName("Sample")
 
+local myName = _UserService.LocalPlayer.Name
 local nTable = _HttpService:JSONDecode(str)
 for k, playerData in pairs(nTable) do
 	local clone = grid:GetChildByName("" .. k)
@@ -19,6 +20,7 @@ for k, playerData in pairs(nTable) do
 	clone:GetChildByName("name").TextComponent.Text = playerData["name"]
 	clone:GetChildByName("map").TextComponent.Text = playerData["map"]
 	clone:GetChildByName("lie").TextComponent.Text = playerData["lie"]
+	clone:GetChildByName("Button"):SetEnable(playerData["id"] ~= myName)
 	
 	clone:SetEnable(true)
 end

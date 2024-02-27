@@ -5,7 +5,7 @@ if _UtilLogic:IsNilorEmptyString(self.data) then
 else
 	nTable = _HttpService:JSONDecode(self.data)
 end
-nTable[key] = _SkillStart:ConvertValue(nTable[key], 0) + value
+nTable[key] = _GameUtil:ConvertValue(nTable[key], 0) + value
 self.data = _HttpService:JSONEncode(nTable)
 return nTable[key]
 end

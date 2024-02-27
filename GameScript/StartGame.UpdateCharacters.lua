@@ -61,8 +61,8 @@ for idx = 1, self.showCount do
 		char1:SetEnable(false)
 		cahr2:SetEnable(true)
 		
-		local level = _SkillStart:ConvertValue(charInfo["level"], 0)
-		local job = _SkillStart:ConvertValue(charInfo["job"], 0)
+		local level = _GameUtil:ConvertValue(charInfo["level"], 0)
+		local job = _GameUtil:ConvertValue(charInfo["job"], 0)
 		local jobType = _GameUtil:JobType(job)
 		local caps = {"1e9a8e362fa54f67a280ad35d1e78557", "1548a4f5e515456a84b466d866f9d1db" , "b69deecec4bd434a91adc9483a31173e", "74c68e10e9d449b69d7dd3785e6d6042", "b699cd800a694e2faebf5e7ce78860d2"}
 		local clothes = {"6cadc72275ae429eb3e1ac5493428a35", "e86656c2b9704c8bbb128e0551f33557" , "11587251a5624be4b1b86bc40e4364a0", "96de625a4c10477d83bf3184b374caa1", "cee98a407139404791aa365a7f89012d"}
@@ -147,8 +147,8 @@ for idx = 1, self.showCount do
 		clone:GetChildByName("Char2"):SendEvent(StateChangeEvent("MOVE", "STAND"))
 		
 		if charInfo ~= nil then
-			local level = _SkillStart:ConvertValue(charInfo["level"], 0)
-			local job = _SkillStart:ConvertValue(charInfo["job"], 0)
+			local level = _GameUtil:ConvertValue(charInfo["level"], 0)
+			local job = _GameUtil:ConvertValue(charInfo["job"], 0)
 			
 			if not infoUI.Enable then
 				infoUI.SpriteGUIRendererComponent.ImageRUID = ""

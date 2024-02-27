@@ -11,5 +11,5 @@ local num = tonumber(Entity.Name)
 if num == nil then
 	return
 end
-_UserService.LocalPlayer.PlayerLie:End(num)
+_UserService.LocalPlayer.PlayerLie:End2(num)
 end

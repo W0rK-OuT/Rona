@@ -27,14 +27,14 @@ for k, _ in pairs(items) do
 	local check = false
 	local spec = _ItemData:GetSpec(id)
 	if self.itemType == "Hp" then
-		local hp = _SkillStart:ConvertValue(spec["hp"], 0)
-		local hpR = _SkillStart:ConvertValue(spec["hpR"], 0)
+		local hp = _GameUtil:ConvertValue(spec["hp"], 0)
+		local hpR = _GameUtil:ConvertValue(spec["hpR"], 0)
 		if hp > 0 or hpR > 0 then
 			check = true
 		end
 	elseif self.itemType == "Mp" then
-		local mp = _SkillStart:ConvertValue(spec["mp"], 0)
-		local mpR = _SkillStart:ConvertValue(spec["mpR"], 0)
+		local mp = _GameUtil:ConvertValue(spec["mp"], 0)
+		local mpR = _GameUtil:ConvertValue(spec["mpR"], 0)
 		if mp > 0 or mpR > 0 then
 			check = true
 		end

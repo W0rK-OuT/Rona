@@ -44,8 +44,8 @@ end
 
 if self:IsClient() then
 	local mobData = _MonsterData:GetMonster(id)
-	self.clientTColor = _SkillStart:ConvertValue(mobData["hpTagColor"], 0)
-	self.clientBColor = _SkillStart:ConvertValue(mobData["hpTagBgcolor"], 0)
+	self.clientTColor = _GameUtil:ConvertValue(mobData["hpTagColor"], 0)
+	self.clientBColor = _GameUtil:ConvertValue(mobData["hpTagBgcolor"], 0)
 	if self.clientTColor == 0 and self.clientBColor == 0 then
 		local hpBar = _SpawnService:SpawnByModelId("model://ee08026b-c1e4-4d13-954d-2e26ecd443a9", "HpBar", Vector3(0, y + 0.2, 0), self.Entity)
 		hpBar.SpriteRendererComponent.SortingLayer = self.Entity.SpriteRendererComponent.SortingLayer

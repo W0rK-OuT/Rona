@@ -61,7 +61,7 @@ if self:IsClient() then
 	nameTag.Bold = true
 	
 	local info = _NpcData:GetInfo(self.id)
-	local hideName = _SkillStart:ConvertValue(info["hideName"], 0)
+	local hideName = _GameUtil:ConvertValue(info["hideName"], 0)
 	if hideName > 0 then
 		nameTag.Enable = false
 	end
@@ -73,10 +73,10 @@ if self:IsClient() then
 	
 	--dcLeft=-75,dcTop=-92,dcRight=85,dcBottom=0
 
-	local dcTop = _SkillStart:ConvertValue(npcDataInfo["dcTop"], 0)
-	local dcBottom = _SkillStart:ConvertValue(npcDataInfo["dcBottom"], 0)
-	local dcLeft = _SkillStart:ConvertValue(npcDataInfo["dcLeft"], 0)
-	local dcRight = _SkillStart:ConvertValue(npcDataInfo["dcRight"], 0)
+	local dcTop = _GameUtil:ConvertValue(npcDataInfo["dcTop"], 0)
+	local dcBottom = _GameUtil:ConvertValue(npcDataInfo["dcBottom"], 0)
+	local dcLeft = _GameUtil:ConvertValue(npcDataInfo["dcLeft"], 0)
+	local dcRight = _GameUtil:ConvertValue(npcDataInfo["dcRight"], 0)
 	if dcLeft ~= 0 or dcTop ~= 0 or dcRight ~= 0 or dcBottom ~= 0 then
 		if self.Entity.TouchReceiveComponent then
 			self.Entity.TouchReceiveComponent.Enable = false

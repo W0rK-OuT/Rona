@@ -8,7 +8,7 @@ for k, v in pairs(mapList) do
 		continue
 	end
 	nTable["" .. k] = true
-	clone:GetChildByName("UIText").TextComponent.Text = _SkillStart:ConvertString(_MapData:GetMapName(tonumber(v))["mapName"], "?")
+	clone:GetChildByName("UIText").TextComponent.Text = _GameUtil:ConvertString(_MapData:GetMapName(tonumber(v))["mapName"], "?")
 end
 for k, v in pairs(grid.Children) do
 	if nTable[v.Name] == nil then

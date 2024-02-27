@@ -2,8 +2,8 @@ return function (self,state)
 self.tradeState = state
 local ok = self.main:GetChildByName("TopLeft"):GetChildByName("Ok")
 if state then
-	ok.SpriteGUIRendererComponent.Color = Color(255 / 255, 153 / 255, 85 / 255)
+	ok.SpriteGUIRendererComponent.ImageRUID = "5bfa805e0ace40a6a35f35de190f327f"
 else
-	ok.SpriteGUIRendererComponent.Color = Color(187 / 255, 187 / 255, 187 / 255)
+	ok.SpriteGUIRendererComponent.ImageRUID = "d8b506925314494a8ac3ead8a42463fb"
 end
 end

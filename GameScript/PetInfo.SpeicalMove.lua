@@ -1,12 +1,16 @@
 return function (self) 
+if _RateManager.testVer then
+	return
+end
+
 if self.bug then
 	return
 end
 self.bug = true
 
 local option = _UserService.LocalPlayer.PlayerSetting.petOption
-if _SkillStart:ConvertValue(option["Sound"], 1) == 1 then
-	local sound2 = _SkillStart:ConvertValue(option["Sound2"], 1)
+if _GameUtil:ConvertValue(option["Sound"], 1) == 1 then
+	local sound2 = _GameUtil:ConvertValue(option["Sound2"], 1)
 	if sound2 == 1 then
 		_SoundService:PlaySound("5aacfda92ef246ec93ab46c59dfb53e3", 1)
 	elseif sound2 == 2 then
@@ -18,7 +22,7 @@ if _SkillStart:ConvertValue(option["Sound"], 1) == 1 then
 	end
 end
 
-local isPlay = _SkillStart:ConvertValue(option["Effect"], 1) == 1
+local isPlay = _GameUtil:ConvertValue(option["Effect"], 1) == 1
 local oriBox = self.Entity.TriggerComponent.BoxSize:Clone()
 local func = function()
 	if isPlay then

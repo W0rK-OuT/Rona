@@ -20,6 +20,10 @@ if skillID == 4221007 then
 	root:SetVisible(false)
 end
 
+if not isHide and not root.Visible then
+	root:SetVisible(true)
+end
+
 local pDelay = 0
 for key, value in pairs(actionTable) do
 	local attackActionName = value["action"]
@@ -31,33 +35,37 @@ for key, value in pairs(actionTable) do
 	local oriDelay = _MotionDelayManager.motionPriDelay[attackActionName .. "_" .. attackFrame]
 	local calRate = oriDelay * playRate / attackDelay
 	local motionDelay = function()
-		local event = ActionStateChangedEvent(attackActionName, attackActionName, calRate, SpriteAnimClipPlayType.Onetime, attackFrame, attackFrame)
-		body:SendEvent(event)
-		if isLeft then
-			rootTrans.Position.x = moveX / 100
-			rootTrans.Position.y = -moveY / 100
-			rootTrans.ZRotation = -rotate
-		else
-			rootTrans.Position.x = -moveX / 100
-			rootTrans.Position.y = -moveY / 100
-			rootTrans.ZRotation = rotate
+		if not isTaming then
+			local event = ActionStateChangedEvent(attackActionName, attackActionName, calRate, SpriteAnimClipPlayType.Onetime, attackFrame, attackFrame)
+			body:SendEvent(event)
+			if isLeft then
+				rootTrans.Position.x = moveX / 100
+				rootTrans.Position.y = -moveY / 100
+				rootTrans.ZRotation = -rotate
+			else
+				rootTrans.Position.x = -moveX / 100
+				rootTrans.Position.y = -moveY / 100
+				rootTrans.ZRotation = rotate
+			end
+			player.PlayerMotion.attState = attackActionName
 		end
-		player.PlayerMotion.attState = attackActionName
 	end
 	local timeValue = _TimerService:SetTimerOnce(motionDelay, pDelay / 1000)
 	pDelay = pDelay + attackDelay / playRate
 end
 local endTimer = function()
-	if rootTrans.Position.x ~= 0 then
-		rootTrans.Position.x = 0
+	if not isTaming then
+		if rootTrans.Position.x ~= 0 then
+			rootTrans.Position.x = 0
+		end
+		if rootTrans.Position.y ~= 0 then
+			rootTrans.Position.y = 0
+		end
+		if rootTrans.ZRotation ~= 0 then
+			rootTrans.ZRotation = 0
+		end
+		player.PlayerMotion.attState = ""
 	end
-	if rootTrans.Position.y ~= 0 then
-		rootTrans.Position.y = 0
-	end
-	if rootTrans.ZRotation ~= 0 then
-		rootTrans.ZRotation = 0
-	end
-	player.PlayerMotion.attState = ""
 	if isHide then
 		root:SetVisible(true)
 	end

@@ -6,4 +6,5 @@ self.now = 0
 self.startTime = 0
 self.endTime = 0
 self.Entity.SpriteGUIRendererComponent.FillAmount = 0
+self.text.Text = ""
 end

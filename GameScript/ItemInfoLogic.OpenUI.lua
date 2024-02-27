@@ -11,8 +11,8 @@ end
 local isRand = false
 local isUp = false
 if nOps ~= nil then
-	isRand = _SkillStart:ConvertValue(nOps["rand"], 0) > 0
-	isUp = _SkillStart:ConvertValue(nOps["up"], 0) > 0
+	isRand = _GameUtil:ConvertValue(nOps["rand"], 0) > 0
+	isUp = _GameUtil:ConvertValue(nOps["up"], 0) > 0
 end
 
 local name = info["name"]
@@ -29,7 +29,7 @@ if isEquip then
 	local top = entity:GetChildByName("Top")
 	local itemNameText = name
 	local extraName = ""
-	local upscroll = _SkillStart:ConvertValue(itemInfo["upscroll"], 0)
+	local upscroll = _GameUtil:ConvertValue(itemInfo["upscroll"], 0)
 	if upscroll > 0 then
 		if not _UtilLogic:IsNilorEmptyString(extraName) then
 			extraName ..= " "
@@ -224,7 +224,7 @@ if isEquip then
 	}
 	for key, value in pairs(optionTable) do
 		local opValue = _Util:ConvertNumber(itemInfo[value[1]])
-		local oriValue = _SkillStart:ConvertValue(equipInfo[value[1]], 0)
+		local oriValue = _GameUtil:ConvertValue(equipInfo[value[1]], 0)
 		if _UtilLogic:Contains(value[1], "inc") then
 			if opValue > 0 or oriValue > 0 then
 				local gabValue = opValue - oriValue
@@ -252,18 +252,18 @@ if isEquip then
 		end
 	end
 	
-	local knockback = _SkillStart:ConvertValue(equipInfo["knockback"], 0)
+	local knockback = _GameUtil:ConvertValue(equipInfo["knockback"], 0)
 	if knockback > 0 then
 		optionStr = optionStr .. "\n" .. string.format("직접 타격시 %s%%의 확률로 넉백", knockback)
 		textEnter = textEnter + 1
 	end
 	
-	local upgrade = _SkillStart:ConvertValue(itemInfo["upgrade"], -1)
+	local upgrade = _GameUtil:ConvertValue(itemInfo["upgrade"], -1)
 	if upgrade >= 0 then
 		optionStr = optionStr .. "\n" .. string.format("업그레이드 가능 횟수 : %s", upgrade)
 		textEnter = textEnter + 1
 	else
-		local tuc = _SkillStart:ConvertValue(equipInfo["tuc"], 0)
+		local tuc = _GameUtil:ConvertValue(equipInfo["tuc"], 0)
 		if tuc > 0 then
 			optionStr = optionStr .. "\n" .. string.format("업그레이드 가능 횟수 : %s", tuc)
 			textEnter = textEnter + 1
@@ -280,7 +280,7 @@ if isEquip then
 	entity.UITransformComponent.RectSize = Vector2(self.sizeX, baseSize + self.sizeY + textEnter * 38)
 else
 	local equipInfo = _ItemData:GetItemInfo(id)
-	local reqLevel = _SkillStart:ConvertValue(equipInfo["reqLevel"], 0)
+	local reqLevel = _GameUtil:ConvertValue(equipInfo["reqLevel"], 0)
 	
 	if reqLevel > 0 then
 		if playerInfo.level >= reqLevel then

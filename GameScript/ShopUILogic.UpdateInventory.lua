@@ -39,20 +39,20 @@ for idx = 1, slotMax do
     --    continue
     --end
 	
-	local price = _SkillStart:ConvertValue(itemInfo["price"], 0)
+	local price = _GameUtil:ConvertValue(itemInfo["price"], 0)
 	local clone = grid:GetChildByName(tostring(invIdx))
 	if clone == nil then
 		clone = _SpawnService:SpawnByEntity(self.invItemSample, tostring(invIdx), Vector3.zero, grid)
 	end
 	if invIdx == self.invIndex then
-		clone:GetChildByName("SpriteA").SpriteGUIRendererComponent.Color = Color(238 / 255, 153 / 255, 34 / 255)
+		clone:GetChildByName("SpriteA"):SetEnable(true)
 	else
-		clone:GetChildByName("SpriteA").SpriteGUIRendererComponent.Color = Color(187 / 255, 204 / 255, 221 / 255)
+		clone:GetChildByName("SpriteA"):SetEnable(false)
 	end
-	local unitPrice = _SkillStart:ConvertValue(itemInfo["unitPrice"], 0)
+	local unitPrice = _GameUtil:ConvertValue(itemInfo["unitPrice"], 0)
 	local unitMsg = ""
 	if unitPrice > 0 and self:IsRecharge(id) then
-		local max = _SkillStart:ConvertValue(itemInfo["slotMax"], 0)
+		local max = _GameUtil:ConvertValue(itemInfo["slotMax"], 0)
 		if (math.floor(id / 10000) == 207 and jobType == 4) or (math.floor(id / 10000) == 233 and jobType == 5) then
 			max += player.PlayerSkill.recharge			
 		end
@@ -71,7 +71,6 @@ for idx = 1, slotMax do
 		clone:GetChildByName("Recharge"):SetEnable(false)
 	end
 	if id < 2000000 then
-		clone:GetChildByName("Shadow"):SetVisible(false)
 		clone:GetChildByName("quantity").TextComponent.Text = ""
 	else
 		clone:GetChildByName("quantity").TextComponent.Text = "" .. item["quantity"]

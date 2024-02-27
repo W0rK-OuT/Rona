@@ -84,7 +84,7 @@ else
 			_ItemData:SetNativeSize(ruidEntity, itemID)
 
 			clone:GetChildByName("Name").TextComponent.Text = itemData["name"]
-			local reqLevel = _SkillStart:ConvertValue(_ItemData:GetItemInfo(itemID)["reqLevel"], 0)
+			local reqLevel = _GameUtil:ConvertValue(_ItemData:GetItemInfo(itemID)["reqLevel"], 0)
 			clone:GetChildByName("Level").TextComponent.Text = "" .. reqLevel
 			
 			clone:GetChildByName("option").TextComponent.Text = _HttpService:JSONEncode(v)

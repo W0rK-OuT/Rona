@@ -22,7 +22,7 @@ if storage == nil then
 	return
 end
 
-local stoMeso = _SkillStart:ConvertValue(storage.meso, 0)
+local stoMeso = _GameUtil:ConvertValue(storage.meso, 0)
 if self.isGet then
 	if num > stoMeso then
 		_MessageLogic:DropMessage(_Util:ConvertComma(stoMeso) .. " 이하의 메소만 가능합니다.")

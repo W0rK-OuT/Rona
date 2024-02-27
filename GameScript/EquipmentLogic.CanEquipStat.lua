@@ -11,30 +11,30 @@ local pop = stat.pop
 local gender = stat.gender
 local subJob = stat.subJob
 
-local reqJob = _SkillStart:ConvertValue(item["reqJob"], 0)
+local reqJob = _GameUtil:ConvertValue(item["reqJob"], 0)
 if not _GameUtil:ReqJob(jobType, reqJob) then
 	return 2
 end
 
-local reqLevel = _SkillStart:ConvertValue(item["reqLevel"], 0)
+local reqLevel = _GameUtil:ConvertValue(item["reqLevel"], 0)
 if reqLevel > level then
 	return 3
 end
-local reqPOP = _SkillStart:ConvertValue(item["reqPOP"], 0)
+local reqPOP = _GameUtil:ConvertValue(item["reqPOP"], 0)
 if reqPOP > 0 and reqPOP > pop then
 	return 4
 end
 
-if str < _SkillStart:ConvertValue(item["reqSTR"], 0) then
+if str < _GameUtil:ConvertValue(item["reqSTR"], 0) then
 	return 5
 end
-if dex < _SkillStart:ConvertValue(item["reqDEX"], 0) then
+if dex < _GameUtil:ConvertValue(item["reqDEX"], 0) then
 	return 5
 end
-if int < _SkillStart:ConvertValue(item["reqINT"], 0) then
+if int < _GameUtil:ConvertValue(item["reqINT"], 0) then
 	return 5
 end
-if luk < _SkillStart:ConvertValue(item["reqLUK"], 0) then
+if luk < _GameUtil:ConvertValue(item["reqLUK"], 0) then
 	return 5
 end
 

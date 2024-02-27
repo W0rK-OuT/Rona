@@ -9,5 +9,5 @@ if check0 == nil then
 	return 0
 end
 
-return _SkillStart:ConvertValue(check0["npc"], 0)
+return _GameUtil:ConvertValue(check0["npc"], 0)
 end

@@ -16,9 +16,9 @@ local AnimPlayer = event.AnimPlayer
 local alpha = self.alphas[FrameIndex]
 local scale = self.scales[FrameIndex]
 if alpha ~= nil then
-	local a0 = _SkillStart:ConvertValue(alpha["a0"], -1)
-	local a1 = _SkillStart:ConvertValue(alpha["a1"], -1)
-	local delay = _SkillStart:ConvertValue(alpha["delay"], 100) / self.Entity.SpriteRendererComponent.PlayRate
+	local a0 = _GameUtil:ConvertValue(alpha["a0"], -1)
+	local a1 = _GameUtil:ConvertValue(alpha["a1"], -1)
+	local delay = _GameUtil:ConvertValue(alpha["delay"], 100) / self.Entity.SpriteRendererComponent.PlayRate
 	
 	local color = self.Entity.SpriteRendererComponent.Color
 	if a0 > -1 then
@@ -32,9 +32,9 @@ if alpha ~= nil then
 	end
 end
 if scale ~= nil then
-	local z0 = _SkillStart:ConvertValue(scale["z0"], -1)
-	local z1 = _SkillStart:ConvertValue(scale["z1"], -1)
-	local delay = _SkillStart:ConvertValue(scale["delay"], 100) / self.Entity.SpriteRendererComponent.PlayRate
+	local z0 = _GameUtil:ConvertValue(scale["z0"], -1)
+	local z1 = _GameUtil:ConvertValue(scale["z1"], -1)
+	local delay = _GameUtil:ConvertValue(scale["delay"], 100) / self.Entity.SpriteRendererComponent.PlayRate
 	
 	local tScale = self.Entity.TransformComponent.Scale
 	if z0 > -1 then

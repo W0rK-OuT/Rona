@@ -36,31 +36,31 @@ if playerBuff.incTaming > 0 then
 	end
 end
 
-local linkSkill = _SkillStart:ConvertValue(skillInfo["linkSkill"], 0)
+local linkSkill = _GameUtil:ConvertValue(skillInfo["linkSkill"], 0)
 if linkSkill > 0 and player.PlayerSkill:GetTotalSkillLevel(linkSkill) > 0 then
 	self:StartBuff(linkSkill, lastTick)
 	return
 end
 
-local conCombo = _SkillStart:ConvertValue(skillInfo["conCombo"], 0)
+local conCombo = _GameUtil:ConvertValue(skillInfo["conCombo"], 0)
 if conCombo > 0 and playerBuff.combo < conCombo then
 	return
 end
 
-local mobCount = _SkillStart:ConvertValue(skillInfo["mobCount"], 0)
-local noRope = _SkillStart:ConvertValue(skillInfo["noRope"], 0)
+local mobCount = _GameUtil:ConvertValue(skillInfo["mobCount"], 0)
+local noRope = _GameUtil:ConvertValue(skillInfo["noRope"], 0)
 if noRope > 0 then
 	if stateName == "LADDER" or stateName == "CLIMB" then
 		return
 	end
 end
-local noJump = _SkillStart:ConvertValue(skillInfo["noJump"], 0)
+local noJump = _GameUtil:ConvertValue(skillInfo["noJump"], 0)
 if noJump > 0 and not _PlayerWeather.swim then
 	if not player.RigidbodyComponent:IsOnGround() then
 		return
 	end
 end
-local dispel = _SkillStart:ConvertValue(skillInfo["dispel"], 0)
+local dispel = _GameUtil:ConvertValue(skillInfo["dispel"], 0)
 if dispel == 0 and playerBuff.seal then
 	return
 end
@@ -87,13 +87,13 @@ if not player.PlayerSkill:CheckCoolTime(skillID, lastTick) then
 	_CoolTime.attackDelay = -0.12
 	return
 end
-local hpCon = _SkillStart:ConvertValue(skillInfo["hpCon"], 0)
+local hpCon = _GameUtil:ConvertValue(skillInfo["hpCon"], 0)
 if hpCon > 0 and stat.hp < hpCon + 1 then
 	_MessageLogic:ShowMessage("HP가 부족하여 스킬을 사용할 수 없습니다.")
 	_CoolTime.attackDelay = -0.12
 	return
 end
-local mpCon = _SkillStart:ConvertValue(skillInfo["mpCon"], 0)
+local mpCon = _GameUtil:ConvertValue(skillInfo["mpCon"], 0)
 if playerBuff.incManaRate > 0 then
 	mpCon = math.ceil(mpCon * (100 - playerBuff.incManaRate) * 0.01)
 end
@@ -105,24 +105,24 @@ if mpCon > 0 and stat.mp < mpCon then
 	_CoolTime.attackDelay = -0.12
 	return
 end
-local isMystic = _SkillStart:ConvertValue(skillInfo["incMysticDoor"], 0) > 0
+local isMystic = _GameUtil:ConvertValue(skillInfo["incMysticDoor"], 0) > 0
 if isMystic then
 	if not _MysticDoorManager:ClientCheck() then
 		_CoolTime.attackDelay = -0.12
 		return
 	end
 end
-local itemCon = _SkillStart:ConvertValue(skillInfo["itemCon"], 0)
+local itemCon = _GameUtil:ConvertValue(skillInfo["itemCon"], 0)
 if itemCon > 0 then
-	local itemConNo = _SkillStart:ConvertValue(skillInfo["itemConNo"], 1)
+	local itemConNo = _GameUtil:ConvertValue(skillInfo["itemConNo"], 1)
 	if not player.PlayerInventory:HaveItem(itemCon, itemConNo) then
-		local itemName = _SkillStart:ConvertString(_ItemData:GetItem(itemCon)["name"], "")
+		local itemName = _GameUtil:ConvertString(_ItemData:GetItem(itemCon)["name"], "")
 		_MessageLogic:ShowMessage("스킬을 사용하는 데 필요한 " .. itemName .. "의 개수가 부족합니다.")
 		_CoolTime.attackDelay = -0.12
 		return
 	end
 end
-local incSpiritClaw = _SkillStart:ConvertValue(skillInfo["incSpiritClaw"], 0)
+local incSpiritClaw = _GameUtil:ConvertValue(skillInfo["incSpiritClaw"], 0)
 if incSpiritClaw > 0 and not self:CheckSpiritClaw(player) then
 	_MessageLogic:ShowMessage("스킬을 사용하는 데 필요한 표창이 부족합니다.")
 	_CoolTime.attackDelay = -0.12
@@ -158,12 +158,12 @@ if motion ~= nil then
 			motion = "rope"
 		end
 	end
-	_SkillBegin:SpecialAction(skillID, motion, 6, false, lastTick)
+	_Tr0de2Manager:SpecialAction(skillID, motion, 6, false, lastTick)
 else
 	_CoolTime.attackDelay = -0.24 -- 모션이 없으면 딜레이
 end
 
-local incTaming = _SkillStart:ConvertValue(skillInfo["incTaming"], 0)
+local incTaming = _GameUtil:ConvertValue(skillInfo["incTaming"], 0)
 if incTaming > 0 then
 	_CoolTime.attackDelay = -0.6
 	if playerBuff.incTaming > 0 then
@@ -183,7 +183,7 @@ local buffPlayers = {}
 local partyBuff = skillInfo["partyBuff"]
 if partyBuff ~= nil then
 	---@type CollisionSimulator
-	local simul = _SkillBegin.simulator
+	local simul = _Tr0de2Manager.simulator
 	local buffPos = _PlayerComponent.trans.Position:ToVector2()
 	
 	---@type Vector2
@@ -196,13 +196,13 @@ if partyBuff ~= nil then
 	for k, v in pairs(box) do
 		table.insert(buffPlayers, v.Entity)
 	end
-	_SkillBegin:RangeUI(buffPos, partyBuff, nil)
+	_Tr0de2Manager:RangeUI(buffPos, partyBuff, nil)
 end
 
 local buffMonsters = {}
 if mobCount > 0 then
 	---@type CollisionSimulator
-	local simul = _SkillBegin.simulator
+	local simul = _Tr0de2Manager.simulator
 	local buffPos = _PlayerComponent.trans.Position:ToVector2() + skillInfo["skillPos"]
 	local buffRange = skillInfo["skillRange"]
 	
@@ -212,7 +212,7 @@ if mobCount > 0 then
 			table.insert(buffMonsters, v.Entity)
 		end
 	end
-	_SkillBegin:RangeUI(buffPos, buffRange, nil)
+	_Tr0de2Manager:RangeUI(buffPos, buffRange, nil)
 end
 
 if _SkillMove.lastNum >= 30 then

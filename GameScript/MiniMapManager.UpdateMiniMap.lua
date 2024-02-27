@@ -27,8 +27,8 @@ local fieldX = tonumber(miniData["fieldX"])
 local fieldY = tonumber(miniData["fieldY"])
 
 local names = _MapData:GetMapName(mapID)
-local street = _SkillStart:ConvertString(names["streetName"], "")
-local mapName = _SkillStart:ConvertString(names["mapName"], "")
+local street = _GameUtil:ConvertString(names["streetName"], "")
+local mapName = _GameUtil:ConvertString(names["mapName"], "")
 
 local textName = street .. "\n" .. mapName
 local textCom = self.main:GetChildByName("Name").TextComponent

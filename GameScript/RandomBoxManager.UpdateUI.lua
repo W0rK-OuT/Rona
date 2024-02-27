@@ -26,7 +26,7 @@ else
 		else
 			clone:GetChildByName("ruid").SpriteGUIRendererComponent.ImageRUID = itemData["ruid"]
 		end
-		clone:GetChildByName("text").TextComponent.Text = _SkillStart:ConvertString(itemData["name"], "이름 없음") .. " -> " .. math.floor(rand / totalRand * 10000) / 100 .. "%"
+		clone:GetChildByName("text").TextComponent.Text = _GameUtil:ConvertString(itemData["name"], "이름 없음") .. " -> " .. math.floor(rand / totalRand * 10000) / 100 .. "%"
 		clone:GetChildByName("code").TextComponent.Text = id
 		clone:SetEnable(true)
 	end

@@ -36,8 +36,8 @@ if attackInfo == nil then
 	return
 end
 
-local effectAfter = _SkillStart:ConvertValue(attackInfo["effectAfter"], 0)
-local attackAfter = _SkillStart:ConvertValue(attackInfo["attackAfter"], 0)
+local effectAfter = _GameUtil:ConvertValue(attackInfo["effectAfter"], 0)
+local attackAfter = _GameUtil:ConvertValue(attackInfo["attackAfter"], 0)
 local range = attackInfo["range"]
 local type = attackInfo["type"]
 
@@ -45,14 +45,14 @@ local effects = {"effect", "effect0"}
 for _, effStr in pairs(effects) do
 	local effect = attackInfo[effStr]
 	if effect ~= nil then
-		local effType = _SkillStart:ConvertValue(effect["effectType"], 0)
+		local effType = _GameUtil:ConvertValue(effect["effectType"], 0)
 		local effFunc = function()
 			if effType == 0 then
 				_EffectService:PlayEffectAttached(effect, monster, Vector3.zero, 0, Vector3.one)
 			elseif effType == 1 then
-				local effectDistance = _SkillStart:ConvertValue(effect["effectDistance"], 100)
-				local isRandomPos = _SkillStart:ConvertValue(effect["randomPos"], 0) > 0
-				local delay = _SkillStart:ConvertValue(effect["delay"], 0)
+				local effectDistance = _GameUtil:ConvertValue(effect["effectDistance"], 100)
+				local isRandomPos = _GameUtil:ConvertValue(effect["randomPos"], 0) > 0
+				local delay = _GameUtil:ConvertValue(effect["delay"], 0)
 				---@type Vector2
 				local lt = effect["lt"]
 				---@type Vector2
@@ -100,18 +100,18 @@ for _, effStr in pairs(effects) do
 				local mobPos = monster.TransformComponent.WorldPosition
 				local map = monster.CurrentMap
 				
-				local count = _SkillStart:ConvertValue(effect["count"], 0)
-				local baseDelay = _SkillStart:ConvertValue(effect["delay"], 0)
-				local duration = _SkillStart:ConvertValue(effect["duration"], 0)
-				local fall = _SkillStart:ConvertValue(effect["fall"], 0)
-				local interval = _SkillStart:ConvertValue(effect["interval"], 100)
+				local count = _GameUtil:ConvertValue(effect["count"], 0)
+				local baseDelay = _GameUtil:ConvertValue(effect["delay"], 0)
+				local duration = _GameUtil:ConvertValue(effect["duration"], 0)
+				local fall = _GameUtil:ConvertValue(effect["fall"], 0)
+				local interval = _GameUtil:ConvertValue(effect["interval"], 100)
 				
 				---@type Vector2
 				local lt = effect["lt"]
 				---@type Vector2
 				local rb = effect["rb"]
-				local x = _SkillStart:ConvertValue(effect["x"], 100)
-				local y = _SkillStart:ConvertValue(effect["y"], 100)
+				local x = _GameUtil:ConvertValue(effect["x"], 100)
+				local y = _GameUtil:ConvertValue(effect["y"], 100)
 				
 				local ruids = {}
 				local size = 0
@@ -170,11 +170,11 @@ if type == 0 then
 	local rb = range["rb"]
 	local rangeX = -lt.x + rb.x
 	local rangeY = -lt.y + rb.y + 20
-	local isJumpAttack = _SkillStart:ConvertValue(attackInfo["jumpAttack"], 0) > 0
+	local isJumpAttack = _GameUtil:ConvertValue(attackInfo["jumpAttack"], 0) > 0
 	
 	local func = function()
 		---@type CollisionSimulator
-		local simul = _SkillBegin.simulator
+		local simul = _Tr0de2Manager.simulator
 		local nPos = monster.TransformComponent.WorldPosition:ToVector2() + Vector2((isLeft and 1 or -1) * (lt.x + rb.x) / 2 * 0.01, (-lt.y + rb.y) / 2 * 0.01)
 		local nBox = Vector2(rangeX / 100, rangeY / 100)
 		local box = simul:OverlapBoxAll("player", nPos, nBox, 0)
@@ -187,7 +187,7 @@ if type == 0 then
 				break
 			end
 		end
-		_SkillBegin:RangeUI(nPos, nBox, nil)
+		_Tr0de2Manager:RangeUI(nPos, nBox, nil)
 	end
 	_TimerService:SetTimerOnce(func, attackAfter / 1000)
 elseif type == 1 then
@@ -205,7 +205,7 @@ elseif type == 2 then
 	local nY = -sp.y / 100 + monster.TransformComponent.WorldPosition.y
 	
 	local ruid = attackInfo["ball"]
-	local speed = _SkillStart:ConvertValue(attackInfo["bulletSpeed"], 200)
+	local speed = _GameUtil:ConvertValue(attackInfo["bulletSpeed"], 200)
 	
 	local func = function()
 	
@@ -263,7 +263,7 @@ else
 	
 	local func = function()
 		---@type CollisionSimulator
-		local simul = _SkillBegin.simulator
+		local simul = _Tr0de2Manager.simulator
 		for k, v in pairs(infos) do
 			if v == 1 then
 				local nPosX = sp + rangeX * (k - 1)
@@ -284,7 +284,7 @@ else
 						break
 					end
 				end
-				_SkillBegin:RangeUI(nPos, nBox, nil)
+				_Tr0de2Manager:RangeUI(nPos, nBox, nil)
 			end
 		end
 	end

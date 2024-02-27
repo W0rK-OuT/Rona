@@ -3,10 +3,10 @@ local joyTable = _UserService.LocalPlayer.PlayerKey.mobileOption
 
 local isA = false
 
-local a = _SkillStart:ConvertValue(joyTable["a"], 100)
-local x = _SkillStart:ConvertValue(joyTable["x"], 210)
-local y = _SkillStart:ConvertValue(joyTable["y"], 130)
-local ax = _SkillStart:ConvertValue(joyTable["ax"], 0)
+local a = _GameUtil:ConvertValue(joyTable["a"], 100)
+local x = _GameUtil:ConvertValue(joyTable["x"], 210)
+local y = _GameUtil:ConvertValue(joyTable["y"], 130)
+local ax = _GameUtil:ConvertValue(joyTable["ax"], 0)
 
 self.main:GetChildByName("ColorA").SliderComponent.Value = a
 

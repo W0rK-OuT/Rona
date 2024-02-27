@@ -15,7 +15,7 @@ for idx = 1, maxSlot do
 		local quantity = item["quantity"]
 		if quantity > 0 then
 			local throwInfo = _ItemData:GetThrowInfo(itemID)
-			local throwLevel = _SkillStart:ConvertValue(throwInfo["reqLevel"], 0)
+			local throwLevel = _GameUtil:ConvertValue(throwInfo["reqLevel"], 0)
 			if level >= throwLevel then
 				nowCount += quantity
 				if nowCount >= canCount then

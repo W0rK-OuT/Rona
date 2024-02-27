@@ -3,5 +3,5 @@ local skillInfo = self.skills[tostring(id)]
 if skillInfo == nil then
 	return 0
 end
-return _SkillStart:ConvertValue(skillInfo["level"], 0)
+return _GameUtil:ConvertValue(skillInfo["level"], 0)
 end

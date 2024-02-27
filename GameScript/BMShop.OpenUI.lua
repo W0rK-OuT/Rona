@@ -1,6 +1,10 @@
 return function (self) 
 _SoundService:PlaySound("e22a5d10bf934b3fb311f9bc45d74ec2", 1)
 
+if _RateManager.testVer then
+	self.init = true
+end
+
 if not self.init then
 	local sample = self.main:GetChildByName("Grid"):GetChildByName("Sample")
 	local dataName = _RateManager.rate and "R_BMData" or "V_BMData"

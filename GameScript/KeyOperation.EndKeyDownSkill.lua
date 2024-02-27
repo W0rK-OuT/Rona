@@ -7,5 +7,5 @@ if charge < 1 then
 elseif charge > 100 then
 	charge = 100
 end
-_SkillBegin:Attack(id, now, 0, charge)
+_Tr0de2Manager:Gain(id, now, 0, charge)
 end

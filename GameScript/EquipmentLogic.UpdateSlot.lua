@@ -14,15 +14,15 @@ else
 end
 if slot == "31" then
 	if item == nil then
-		_SkillBegin.afterImage = ""
-		_SkillBegin.attack = 0
-		_SkillBegin.sfx = ""
+		_Tr0de2Manager.afterImage = ""
+		_Tr0de2Manager.attack = 0
+		_Tr0de2Manager.sfx = ""
 	else
 		local id = item["id"]
 		local info = _ItemData:GetItemInfo(id)
-		_SkillBegin.attack = _Util:ConvertNumber(info["attack"])
-		_SkillBegin.afterImage = _Util:ConvertString(info["afterImage"])
-		_SkillBegin.sfx = _Util:ConvertString(info["sfx"])
+		_Tr0de2Manager.attack = _Util:ConvertNumber(info["attack"])
+		_Tr0de2Manager.afterImage = _Util:ConvertString(info["afterImage"])
+		_Tr0de2Manager.sfx = _Util:ConvertString(info["sfx"])
 	end
 end
 

@@ -22,7 +22,7 @@ for _, v in pairs(reacotrs) do
 	end
 	
 	for _, event in pairs(events) do
-		local type = _SkillStart:ConvertValue(event["type"], -1)
+		local type = _GameUtil:ConvertValue(event["type"], -1)
 		if type >= 0 and type <= 3 then
 			local check = type == 0
 			if type == 2 and not isLeft then

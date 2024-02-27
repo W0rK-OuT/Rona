@@ -24,8 +24,8 @@ for questID, _ in pairs(questTable) do
 		continue
 	end
 	
-	local name = _SkillStart:ConvertString(info["name"], "")
-	local area = _SkillStart:ConvertValue(info["area"], 0)
+	local name = _GameUtil:ConvertString(info["name"], "")
+	local area = _GameUtil:ConvertValue(info["area"], 0)
 	
 	table.insert(sortTable, {questID, area, name})
 	
@@ -72,7 +72,7 @@ for k, v in pairs(sortTable) do
 	
 	if nTable[area] == nil then
 		nTable[area] = true
-		local areaName = _SkillStart:ConvertString(categorys[area], "none")
+		local areaName = _GameUtil:ConvertString(categorys[area], "none")
 		local spawn = _SpawnService:SpawnByEntity(self.gridSample, "" .. area, Vector3.zero, grid)
 		spawn.TextComponent.Text = areaName
 	end

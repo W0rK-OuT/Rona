@@ -28,6 +28,10 @@ if skillID == 4221007 then
 	end
 end
 
+if not isHide and not self.root.Visible then
+	self.root:SetVisible(true)
+end
+
 _PlayerComponent:SetState(false, false)
 _PlayerComponent.controller.Enable = false
 self.nextAttackDelay = lastTick + delay / 1000

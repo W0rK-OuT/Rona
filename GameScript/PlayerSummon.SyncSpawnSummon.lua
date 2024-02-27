@@ -1,7 +1,7 @@
 return function (self,animation,index,summonInfo) 
 self:SyncRemoveSummon(false, index)
 
-local summonFrame = _SkillStart:ConvertValue(summonInfo["summonFrame"], 0)
+local summonFrame = _GameUtil:ConvertValue(summonInfo["summonFrame"], 0)
 local id = summonInfo["id"]
 local pos = _UserService.LocalPlayer.TransformComponent.WorldPosition
 
@@ -19,7 +19,7 @@ local si = summon.SummonInfo
 si.index = index
 si.id = id
 si.type = summonInfo["type"]
-si.attackTick = _SkillStart:ConvertValue(summonInfo["tickCount"], 0)
+si.attackTick = _GameUtil:ConvertValue(summonInfo["tickCount"], 0)
 si:Setting()
 
 if animation then

@@ -8,7 +8,7 @@ if _SkillInfo:IsMoveSkill(id) then
 else
 	if _CoolTime.attackDelay >= 0 then
 		local now = _UtilLogic.ServerElapsedSeconds
-		if _SkillBegin.nextAttackDelay < now then
+		if _Tr0de2Manager.nextAttackDelay < now then
 			_CoolTime.attackDelay = -0.03
 			if _SkillInfo:IsBuff(id) then
 				_SkillBuff:StartBuff(id, now)
@@ -17,7 +17,7 @@ else
 			elseif _SkillInfo:IsRapid(id) then
 				self:StartKeyDonwSkill(true, id)
 			else
-            	_SkillBegin:Attack(id, now, 0, 0)
+            	_Tr0de2Manager:Gain(id, now, 0, 0)
 			end
 		end
 	end

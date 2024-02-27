@@ -15,7 +15,7 @@ if findNItem > 0 then
 		local itemID = item["id"]
 		if itemID == findNItem and item["quantity"] >= count then
 			local throwInfo = _ItemData:GetThrowInfo(itemID)
-			local throwLevel = _SkillStart:ConvertValue(throwInfo["reqLevel"], 0)
+			local throwLevel = _GameUtil:ConvertValue(throwInfo["reqLevel"], 0)
 			if level >= throwLevel then
 				return tostring(idx)
 			end
@@ -36,7 +36,7 @@ for idx = 1, self.ms2 do
 	local findType = math.floor(item["id"] / 1000)
 	if findType == findItem and item["quantity"] >= count then
 		local throwInfo = _ItemData:GetThrowInfo(itemID)
-		local throwLevel = _SkillStart:ConvertValue(throwInfo["reqLevel"], 0)
+		local throwLevel = _GameUtil:ConvertValue(throwInfo["reqLevel"], 0)
 		if level >= throwLevel then
 			return tostring(idx)
 		end

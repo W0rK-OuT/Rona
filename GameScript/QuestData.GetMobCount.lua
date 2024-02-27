@@ -7,5 +7,5 @@ local one = data[index]
 if one == nil then
 	return 0
 end
-return _SkillStart:ConvertValue(one["count"], 0)
+return _GameUtil:ConvertValue(one["count"], 0)
 end

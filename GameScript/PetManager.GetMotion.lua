@@ -102,6 +102,15 @@ self.pets = {
 		["eff"] = "34f2737e2912480aa77907d6cba51086",
 	},
 	
+	[23] = {
+		["stand0"] = "1dc9e428354b4dbe89bc48e9550529ed",
+		["stand1"] = "5f0b6c4758d74b1594ab8756f7be96cb",
+		["jump"] = "7648fb15d9054bbc8579c37b60cd5092",
+		["move"] = "e5ca571365434d53a9833bed8ead9931",
+		["hang"] = "880bffc43c85412986b2c99d7915af87",
+		["eff"] = "210d7bda90cf40cc95788966dbb8135d",
+	},
+	
 	[24] = {
 		["stand0"] = "4541101aa49b445cb85b6bc170c7ba25",
 		["stand1"] = "0bfd2836fbb64a02890f012f3e3ffb08",
@@ -120,6 +129,15 @@ self.pets = {
 		["eff"] = "39bb538602394d86985bf05cfb5a084c",
 	},
 	
+	[43] = {
+		["stand0"] = "c0f86415b1b641ea8040944d310c91c8",
+		["stand1"] = "bd8df3e70ce24326a9ba1ba65644d210",
+		["jump"] = "14abfe4c8bfe424dafbaf6f9d9a25712",
+		["move"] = "3f78e66d03234299a484edcb98d44ddd",
+		["hang"] = "884b7bd3232c4af8a4abaa30838318ba",
+		["eff"] = "ff3644d0fec846bdb3eed109c2a3159d",
+	},
+	
 	[54] = {
 		["stand0"] = "fbbda81710ba44288a16f6852f5a112b",
 		["stand1"] = "837f1f2bc6634e3abe18819a6ee053f1",
@@ -127,6 +145,15 @@ self.pets = {
 		["move"] = "2aedfaf3abf74115bfe454f8b82698cc",
 		["hang"] = "837f1f2bc6634e3abe18819a6ee053f1",
 		["eff"] = "d29b45199bd541208d8b28db9ee63fd6",
+	},
+	
+	[64] = {
+		["stand0"] = "b06beb6fca774c4e8bfea2b6c6b2afcb",
+		["stand1"] = "2596ce743d97487dbe04e23fd2321f69",
+		["jump"] = "f3d5ca9bce6046e2b552e289c6708dd4",
+		["move"] = "e5491cb1882c4f90a4578e48487e2cc6",
+		["hang"] = "4714524256994aebb25c651ae118ca61",
+		["eff"] = "145739c3102a4669bd9158e3b23af904",
 	},
 }
 end

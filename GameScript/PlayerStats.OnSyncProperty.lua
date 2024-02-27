@@ -9,7 +9,7 @@ end
 
 if name == "level" then
 	local level = math.floor(value)
-	_PlayerStatusUILogic:LevelUpdate(level)
+	_PlayerStatuUILogic:LevelUpdate(level)
 	_StatUILogic:UpdateLevel(level)
 	_StatUILogic:UpdateStatBlock()
 	_QuestManager:AllUpdateQuest()
@@ -17,7 +17,7 @@ elseif name == "gender" then
 	_StatUILogic:UpdateGender(value)
 elseif name == "job" then
 	local jobName = _GameUtil:JobName(value)
-	_PlayerStatusUILogic:JobUpdate(jobName)
+	_PlayerStatuUILogic:JobUpdate(jobName)
 	_StatUILogic:UpdateJob(jobName)
 	_SkillManager:UpdateSkills(value)
 	_StatUILogic:UpdateStatBlock()
@@ -25,20 +25,20 @@ elseif name == "job" then
 	_QuestManager:AllUpdateQuest()
 	_Gagebar:UpdateColor()
 elseif name == "hp" or name == "currentHp" then
-	_PlayerStatusUILogic:HpUpdate(self.hp, self.currentHp)
+	_PlayerStatuUILogic:HpUpdate(self.hp, self.currentHp)
 	_StatUILogic:UpdateHp(self.hp .. " / " .. self.currentHp)
 	if name == "hp" then
 		_PetOptionManager:AutoPotion(0, self.hp, self.currentHp)
 	end
 elseif name == "mp" or name == "currentMp" then
-	_PlayerStatusUILogic:MpUpdate(self.mp, self.currentMp)
+	_PlayerStatuUILogic:MpUpdate(self.mp, self.currentMp)
 	_StatUILogic:UpdateMp(self.mp .. " / " .. self.currentMp)
 	if name == "mp" then
 		_PetOptionManager:AutoPotion(1, self.mp, self.currentMp)
 	end
 elseif name == "exp" then
 	local needExp = _GameUtil:NeedExp(self.level)
-	_PlayerStatusUILogic:ExpUpdate(value, needExp)
+	_PlayerStatuUILogic:ExpUpdate(value, needExp)
 	_StatUILogic:UpdateExp(value .. " (" .. math.floor(value / needExp * 100) .. "%)")
 elseif name == "sp" then
 	_SkillManager:UpdateSP()

@@ -1,7 +1,7 @@
 return function (self) 
 local player = _UserService.LocalPlayer
 ---@type CollisionSimulator
-local simul = _SkillBegin.simulator
+local simul = _Tr0de2Manager.simulator
 local playerPos = _PlayerComponent.trans.Position:ToVector2()
 local tri = player.TriggerComponent
 

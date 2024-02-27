@@ -7,5 +7,5 @@ local info = data["info"]
 if info == nil then
 	return ""
 end
-return _SkillStart:ConvertString(info["name"], "")
+return _GameUtil:ConvertString(info["name"], "")
 end

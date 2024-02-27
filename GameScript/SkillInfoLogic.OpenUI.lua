@@ -15,8 +15,8 @@ local iconRUID = skillData["ruid"]
 local skillName = skillData["name"]
 local skillDesc = _GameUtil:MapleSkillStr(_UtilLogic:Trim(skillData["desc"], "\n"), info)
 local skillH = skillData["h"]
-local skillMasterLevel = _SkillStart:ConvertValue(skillData["masterLevel"], 0)
-local baseLevel = _SkillStart:ConvertValue(skillData["baseLevel"], -1)
+local skillMasterLevel = _GameUtil:ConvertValue(skillData["masterLevel"], 0)
+local baseLevel = _GameUtil:ConvertValue(skillData["baseLevel"], -1)
 --local sInfo = skillData["info"]
 
 self.main:GetChildByName("Name").TextComponent.Text = skillName

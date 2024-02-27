@@ -30,24 +30,24 @@ if items ~= nil then
 		if self:CheckGetItem(player, v) then
 			local id = v["id"]
 			local itemType = math.floor(id / 1000000)
-			local count = _SkillStart:ConvertValue(v["count"], 0)
+			local count = _GameUtil:ConvertValue(v["count"], 0)
 			if count > 0 then
-				local prop = _SkillStart:ConvertValue(v["prop"], 0)
+				local prop = _GameUtil:ConvertValue(v["prop"], 0)
 				if prop > 0 then
 					nProps[itemType] = 1
 				elseif prop < 0 then
 					nProps2[itemType] = 1
 				else
-					nItems[itemType] = _SkillStart:ConvertValue(nItems[itemType], 0) + 1
+					nItems[itemType] = _GameUtil:ConvertValue(nItems[itemType], 0) + 1
 				end
 			end
 		end
 	end
 	for k, v in pairs(nProps) do
-		nItems[k] = _SkillStart:ConvertValue(nItems[k], 0) + 1
+		nItems[k] = _GameUtil:ConvertValue(nItems[k], 0) + 1
 	end
 	for k, v in pairs(nProps2) do
-		nItems[k] = _SkillStart:ConvertValue(nItems[k], 0) + 1
+		nItems[k] = _GameUtil:ConvertValue(nItems[k], 0) + 1
 	end
 	for k, v in pairs(nItems) do
 		if player.PlayerInventory:GetFreeSlotCount(k) < v then
