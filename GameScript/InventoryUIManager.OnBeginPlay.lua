@@ -10,7 +10,6 @@ self.main:SetEnable(false)
 
 self.grid = self.main:GetChildByName("Grid")
 self.lastGain = self.main:GetChildByName("LastGain")
-self.select = self.main:GetChildByName("Select")
 self.mesoBar = self.main:GetChildByName("MesoText").TextComponent
 
 local sample = self.sample

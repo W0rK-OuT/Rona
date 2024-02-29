@@ -10,8 +10,8 @@ else
 end
 if tab == 0 then
 	_EquipmentLogic:UpdateAll()
-elseif tab == _PlayerInventoryUILogic.tab then
-	_PlayerInventoryUILogic:UpdateInventory()
+elseif tab == _InventoryUIManager.tab then
+	_InventoryUIManager:UpdateInventory()
 end
-_PlayerInventoryUILogic:UpdateEtc(tab, nil)
+_InventoryUIManager:UpdateEtc(tab, nil)
 end

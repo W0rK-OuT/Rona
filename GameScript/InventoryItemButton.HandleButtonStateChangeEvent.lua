@@ -8,7 +8,7 @@ return function (self,event)
 local state = event.state
 ---------------------------------------------------------
 if state == ButtonState.Hover or state == ButtonState.Pressed then
-	local inv = _UserService.LocalPlayer.PlayerInventory["inv" .. _PlayerInventoryUILogic.tab]
+	local inv = _UserService.LocalPlayer.PlayerInventory["inv" .. _InventoryUIManager.tab]
 	local item = inv[self.Entity.Name]
 	if item == nil then
 		_ItemInfoLogic:CloseUI()

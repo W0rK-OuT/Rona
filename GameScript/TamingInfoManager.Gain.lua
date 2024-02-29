@@ -840,7 +840,7 @@ else
 			local delay = 50 + math.ceil(1820 * (math.max(2, calcAttackSpeed) + 10) / 16 / 30) * 30
 			local func = function()
 				local now = _UtilLogic.ServerElapsedSeconds
-				if _Tr0de2Manager.nextAttackDelay < now then
+				if _TamingInfoManager.nextAttackDelay < now then
 					self:Gain(skillID, now, -skillID, 0)
 				end
 			end
@@ -1061,7 +1061,7 @@ if roar > 0 then
 	self:RoarStun(roar)
 end
 
-_SkillStart1:Attack(player, finalMobTable, skillID, isLeft, throwSlot, isProneStab, isRangeAttack, playerBasePos, lastTick, healPlayers, isSoulArrow, motion, math.max(2, calcAttackSpeed), finalAttack, charge)
+_SkillStart3:Attack(player, finalMobTable, skillID, isLeft, throwSlot, isProneStab, isRangeAttack, playerBasePos, lastTick, healPlayers, isSoulArrow, motion, math.max(2, calcAttackSpeed), finalAttack, charge)
 
 if fixZero then
 	return 2

@@ -9,6 +9,5 @@ if self.type == "inv" then
 		return
 	end
 	_DragDropManager:OpenUI(tab, slot)
-	_PlayerInventoryUILogic:SetLastClick("")
 end
 end

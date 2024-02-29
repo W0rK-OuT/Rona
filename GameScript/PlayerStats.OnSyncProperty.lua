@@ -19,7 +19,7 @@ elseif name == "job" then
 	local jobName = _GameUtil:JobName(value)
 	_PlayerStatuUILogic:JobUpdate(jobName)
 	_StatUILogic:UpdateJob(jobName)
-	_SkillManager:UpdateSkills(value)
+	_SkillUIManager:UpdateSkills(value)
 	_StatUILogic:UpdateStatBlock()
 	_StatUILogic:UpdateAutoStatByJob(value)
 	_QuestManager:AllUpdateQuest()
@@ -41,13 +41,13 @@ elseif name == "exp" then
 	_PlayerStatuUILogic:ExpUpdate(value, needExp)
 	_StatUILogic:UpdateExp(value .. " (" .. math.floor(value / needExp * 100) .. "%)")
 elseif name == "sp" then
-	_SkillManager:UpdateSP()
-	_SkillManager:UpdateSkills(self.job)
+	_SkillUIManager:UpdateSP()
+	_SkillUIManager:UpdateSkills(self.job)
 elseif name == "pop" then
 	_StatUILogic:UpdatePop(value)
 elseif name == "meso" then
 	local meso = _Util:ConvertComma(math.floor(value))
-	_PlayerInventoryUILogic:MesoUpdate(meso)
+	_InventoryUIManager:MesoUpdate(meso)
 	_ShopUILogic:UpdateMeso(meso)
 	_QuestManager:QuestUpdateMeso()
 elseif name == "str" or name == "localstr" then

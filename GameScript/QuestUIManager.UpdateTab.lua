@@ -7,9 +7,9 @@ local child3 = self.main:GetChildByName("3")
 local chs = {child1, child2, child3}
 for k, v in pairs(chs) do
 	if v.Name == "" .. self.lastTab then
-		v.SpriteGUIRendererComponent:ChangeMaterial("material://96d416d8-274e-47b8-993f-673a2866e3a9")
+		v.SpriteGUIRendererComponent.ImageRUID = "39d7ad8a97ee426f946dcf136aa4ec2c"
 	else
-		v.SpriteGUIRendererComponent:ChangeMaterial("")
+		v.SpriteGUIRendererComponent.ImageRUID = "5dd6518bb00f4b88b013175a12280814"
 	end
 end
 

@@ -17,20 +17,20 @@ end
 inv[slot] = item
 
 if item == nil then
-	if _PlayerInventoryUILogic.lastTab == tab and _PlayerInventoryUILogic.lastSlot == slot then
-		_PlayerInventoryUILogic.lastTab = 0
-		_PlayerInventoryUILogic.lastSlot = ""
-		_PlayerInventoryUILogic:Highlight()
+	if _InventoryUIManager.lastTab == tab and _InventoryUIManager.lastSlot == slot then
+		_InventoryUIManager.lastTab = 0
+		_InventoryUIManager.lastSlot = ""
+		_InventoryUIManager:Highlight()
 	end
 elseif gain then
-	_PlayerInventoryUILogic.lastTab = tab
-	_PlayerInventoryUILogic.lastSlot = slot
-	_PlayerInventoryUILogic:Highlight()
+	_InventoryUIManager.lastTab = tab
+	_InventoryUIManager.lastSlot = slot
+	_InventoryUIManager:Highlight()
 end
-if _PlayerInventoryUILogic.tab == tab then
-	_PlayerInventoryUILogic:UpdateItem(tab, slot, item)
+if _InventoryUIManager.tab == tab then
+	_InventoryUIManager:UpdateItem(tab, slot, item)
 end
-_PlayerInventoryUILogic:UpdateEtc(tab, slot)
+_InventoryUIManager:UpdateEtc(tab, slot)
 
 if itemID ~= nil and oriCount == nil then
 	oriCount = self:ItemQuantity(itemID)

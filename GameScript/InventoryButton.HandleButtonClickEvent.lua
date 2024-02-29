@@ -10,7 +10,7 @@ local Entity = event.Entity
 local name = Entity.Name
 if name == "ExitButton" then
 	_SoundService:PlaySound("69b517263dac4edb8e6f09040177c938", 1)
-	_PlayerInventoryUILogic:CloseUI()
+	_InventoryUIManager:CloseUI()
 elseif name == "SortButton" then
 	if self._T.cool == nil then
 		self._T.cool = 0
@@ -18,14 +18,14 @@ elseif name == "SortButton" then
 	_SoundService:PlaySound("69b517263dac4edb8e6f09040177c938", 1)
 	local now = _UtilLogic.ElapsedSeconds
 	if self._T.cool < now then
-		_PlayerInventoryUILogic:DataClose()
-		_PlayerInventoryUILogic:SortItem(_UserService.LocalPlayer, _PlayerInventoryUILogic.tab)
+		_InventoryUIManager:DataClose()
+		_InventoryUIManager:SortItem(_UserService.LocalPlayer, _InventoryUIManager.tab)
 		self._T.cool = now + 1
 	else
 		_MessageLogic:ChatMessage(5, "1초에 1번만 가능합니다.")
 	end
 elseif _UtilLogic:Contains(name, "inv") then
 	_SoundService:PlaySound("4ea19346d0534fb782fd3a2728e927c5", 1)
-	_PlayerInventoryUILogic:SwitchTab(tonumber(_UtilLogic:SubString(name, 4)))
+	_InventoryUIManager:SwitchTab(tonumber(_UtilLogic:SubString(name, 4)))
 end
 end

@@ -1,10 +1,8 @@
 return function (self) 
-if _UtilLogic:IsNilorEmptyString(self.lastClick) then
-	return
+if _DragBackManager.type == "key" and _DragBackManager.slot == "top" then
+	if not _UtilLogic:IsNilorEmptyString(_DragBackManager.subSlot) then
+		_UserService.LocalPlayer.PlayerKey:NewRemoveKey(_DragBackManager.subSlot)
+	end
 end
-if _UtilLogic:Contains(self.lastClick, "T-") then
-	local slot = string.sub(self.lastClick, 3)
-	_UserService.LocalPlayer.PlayerKey:RemoveMainKey(slot)
-end
-self:SetLastClick("")
+_DragBackManager:CloseUI()
 end

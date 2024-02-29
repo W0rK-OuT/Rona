@@ -1,4 +1,11 @@
-return function (self,player,targetName,senderUserId) 
+return function (self,slot,id,senderUserId) 
+
+
+
+
+
+
+
 
 
 

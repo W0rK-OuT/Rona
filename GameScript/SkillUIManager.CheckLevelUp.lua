@@ -4,7 +4,7 @@ if not _SkillData.init then
 end
 
 local skillType = math.floor(skillID / 10000)
-local jobLevel = _SkillManager:CalcSkillNum(skillType)
+local jobLevel = _SkillUIManager:CalcSkillNum(skillType)
 
 local stat = player.PlayerStats
 

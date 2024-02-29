@@ -11,5 +11,5 @@ local skillID = tonumber(Entity.Parent.Name)
 if skillID == nil then
 	return
 end
-_SkillManager:SkillClick(skillID)
+_SkillUIManager:SkillClick(skillID)
 end

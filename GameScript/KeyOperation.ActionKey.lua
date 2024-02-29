@@ -8,7 +8,7 @@ end
 if ActionName == "EnterPortal" then
 	_UserService.LocalPlayer.PlayerTrigger:EnterPortal()
 elseif ActionName == "C-Inven" then
-    _PlayerInventoryUILogic:CheckUI()
+    _InventoryUIManager:CheckUI()
 elseif ActionName == "C-KeySetting" then
     _PlayerKeyLogic:CheckUI()
 elseif ActionName == "C-Quest" then
@@ -18,7 +18,7 @@ elseif ActionName == "C-Equip" then
 elseif ActionName == "C-Stat" then
     _StatUILogic:CheckUI()
 elseif ActionName == "C-Skill" then
-    _SkillManager:CheckUI()
+    _SkillUIManager:CheckUI()
 elseif ActionName == "C-Book" then
 	_MonsterCardLogic:CheckUI()
 elseif ActionName == "C-ESC" then

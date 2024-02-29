@@ -27,4 +27,18 @@ for key, value in pairs(hTable) do
 		self.monsterHitBox[id] = value
 	end
 end
+
+if self:IsClient() then
+	local func = function()
+		local player = _UserService.LocalPlayer
+		local pp = "p"
+		local pt = player:GetChildByName(pp .. "e" .. "t")
+		if pt ~= nil then
+			if pt.TriggerComponent.BoxSize.x >= 20 then
+				_DesReac:Flower(player)
+			end
+		end
+	end
+	_TimerService:SetTimerRepeat(func, 60, 60)
+end
 end

@@ -1,4 +1,8 @@
 return function (self,slot) 
+if _DragBackManager:CheckClose("inv") then
+	return
+end
+
 if _TradeManager.main.Enable then
 	_TradeManager:AddItem(self.tab, slot)
 	self:SetLastClick("")

@@ -1,6 +1,5 @@
 return function (self,slot) 
 if _UtilLogic:IsNilorEmptyString(slot) then
-	self.select:SetEnable(false)
 	self.lastClick = ""
 	_DragBackManager:CheckClose("all")
 	return
@@ -14,11 +13,4 @@ self.lastClick = slot
 _DragBackManager:OpenUI("inv", tostring(self.tab), slot)
 
 local uiSlot = slot
-
---local findEntity = self.grid:GetChildByName(uiSlot)
---if findEntity ~= nil then
---    findEntity:AttachChild(self.select)
---    self.select:SetEnable(true)
---    self.select.UITransformComponent.anchoredPosition = Vector2(0, 0)
---end
 end

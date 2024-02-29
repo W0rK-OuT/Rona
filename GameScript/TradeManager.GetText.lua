@@ -9,4 +9,5 @@ if playerID == _UserService.LocalPlayer.Name then
 	fontColor.b = 153 / 255
 end
 nText.TextComponent.Text = name .. " : " .. text
+self.textGrid.ScrollLayoutGroupComponent:SetScrollNormalizedPosition(UITransformAxis.Vertical, 1)
 end

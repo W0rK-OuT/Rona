@@ -13,6 +13,7 @@ self.main:SetEnable(false)
 _UIManager:Remove(self.main)
 self.topSample:SetEnable(false)
 self.botSample:SetEnable(false)
+self.main:GetChildByName("Remove"):SetEnable(false)
 
 local size = 70
 local start = 55 -- 처음 위치
@@ -20,11 +21,6 @@ local sizeOne = 80 -- 간격
 local sizeTwo = 30 -- 간격2
 
 local keyTable = self:BaseTable(size, start, sizeOne, sizeTwo)
-
-self.loadMain = self.main:GetChildByName("Load")
-self.loadMain:SetEnable(false)
-self.gridSample = self.loadMain:GetChildByName("Grid"):GetChildByName("Sample")
-self.light = self.main:GetChildByName("Light")
 
 --self:CloseUI()
 local top = self.main:GetChildByName("Top")

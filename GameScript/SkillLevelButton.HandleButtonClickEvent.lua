@@ -11,5 +11,5 @@ local skillID = tonumber(Entity.Parent.Name)
 if skillID == nil then
 	return
 end
-_SkillManager:SkillLevelUpButton(skillID)
+_SkillUIManager:SkillLevelUpButton(skillID)
 end

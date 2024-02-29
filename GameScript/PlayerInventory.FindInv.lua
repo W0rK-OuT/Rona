@@ -1,3 +1,3 @@
 return function (self) 
-return self:GetInv(_PlayerInventoryUILogic.tab)
+return self:GetInv(_InventoryUIManager.tab)
 end

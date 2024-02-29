@@ -3,5 +3,5 @@ if self.Entity ~= _UserService.LocalPlayer then
 	return
 end
 self.skills = skills
-_SkillManager:UpdateSkills(_UserService.LocalPlayer.PlayerStats.job)
+_SkillUIManager:UpdateSkills(_UserService.LocalPlayer.PlayerStats.job)
 end

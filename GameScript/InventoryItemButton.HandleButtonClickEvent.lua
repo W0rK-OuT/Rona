@@ -8,7 +8,7 @@ return function (self,event)
 local Entity = event.Entity
 ---------------------------------------------------------
 local name = Entity.Name
-_PlayerInventoryUILogic:ClickItem(name)
+_InventoryUIManager:ClickItem(name)
 --if self.delay < _UtilLogic.ServerElapsedSeconds then
 --    self.delay = _UtilLogic.ServerElapsedSeconds + 0.2
 --    _PlayerInventoryUILogic:ClickItem(name)

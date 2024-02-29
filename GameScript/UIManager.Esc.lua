@@ -6,8 +6,8 @@ end
 local name = entity.Name
 if name == _TradeManager.entityName then
 	_TradeManager:CloseUI(true)
-elseif name == _PlayerInventoryUILogic.entityName then
-	_PlayerInventoryUILogic:CloseUI()
+elseif name == _InventoryUIManager.entityName then
+	_InventoryUIManager:CloseUI()
 elseif name == _MobileKeyManager.entityName then
 	_MobileKeyManager:CloseUI()
 elseif name == _NpcTalkLogic.entityName then
