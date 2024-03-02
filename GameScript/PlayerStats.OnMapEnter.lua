@@ -45,7 +45,7 @@ else
 		return
 	end
 	_CoolTime.idleTime = 0
-	_TamingInfoManager.simulator = _CollisionService:GetSimulator(enteredMap)
+	_RaidManager.simulator = _CollisionService:GetSimulator(enteredMap)
 
 	local info = enteredMap.MapInfo
 	if info ~= nil then

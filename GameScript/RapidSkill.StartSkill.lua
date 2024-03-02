@@ -17,7 +17,7 @@ end
 if not _PlayerComponent.controller.Enable then
 	return
 end
-if _TamingInfoManager.nextAttackDelay >= _UtilLogic.ServerElapsedSeconds then
+if _RaidManager.nextAttackDelay >= _UtilLogic.ServerElapsedSeconds then
 	return
 end
 
@@ -32,7 +32,7 @@ self:UseSound(id)
 local motion = self:Motion(id)
 local index = self:Index(id)
 local event = ActionStateChangedEvent(motion, motion, 1, SpriteAnimClipPlayType.Loop, index, index)
-_TamingInfoManager.body:SendEvent(event)
+_RaidManager.body:SendEvent(event)
 self:EffectPlayer(player, _PlayerComponent.move:IsFaceLeft(), true, id)
 
 _TimerService:ClearTimer(self._T.timer)
@@ -42,10 +42,10 @@ local func = function()
 		return
 	end
 	local now = _UtilLogic.ServerElapsedSeconds
-	if _TamingInfoManager.nextAttackDelay < now then
-		_TamingInfoManager.nextAttackDelay = now + 0.12
+	if _RaidManager.nextAttackDelay < now then
+		_RaidManager.nextAttackDelay = now + 0.12
 		_SoundService:PlaySound(self:AttackSound(id), 1)
-		local result = _TamingInfoManager:Gain(id, now, 0, 0)
+		local result = _RaidManager:Gain(id, now, 0, 0)
 		if result == 1 then
 			self:EndSkill()
 			_TimerService:ClearTimer(self._T.timer)

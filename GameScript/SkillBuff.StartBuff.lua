@@ -158,7 +158,7 @@ if motion ~= nil then
 			motion = "rope"
 		end
 	end
-	_TamingInfoManager:SpecialAction(skillID, motion, 6, false, lastTick)
+	_RaidManager:SpecialAction(skillID, motion, 6, false, lastTick)
 else
 	_CoolTime.attackDelay = -0.24 -- 모션이 없으면 딜레이
 end
@@ -183,7 +183,7 @@ local buffPlayers = {}
 local partyBuff = skillInfo["partyBuff"]
 if partyBuff ~= nil then
 	---@type CollisionSimulator
-	local simul = _TamingInfoManager.simulator
+	local simul = _RaidManager.simulator
 	local buffPos = _PlayerComponent.trans.Position:ToVector2()
 	
 	---@type Vector2
@@ -196,13 +196,13 @@ if partyBuff ~= nil then
 	for k, v in pairs(box) do
 		table.insert(buffPlayers, v.Entity)
 	end
-	_TamingInfoManager:RangeUI(buffPos, partyBuff, nil)
+	_RaidManager:RangeUI(buffPos, partyBuff, nil)
 end
 
 local buffMonsters = {}
 if mobCount > 0 then
 	---@type CollisionSimulator
-	local simul = _TamingInfoManager.simulator
+	local simul = _RaidManager.simulator
 	local buffPos = _PlayerComponent.trans.Position:ToVector2() + skillInfo["skillPos"]
 	local buffRange = skillInfo["skillRange"]
 	
@@ -212,7 +212,7 @@ if mobCount > 0 then
 			table.insert(buffMonsters, v.Entity)
 		end
 	end
-	_TamingInfoManager:RangeUI(buffPos, buffRange, nil)
+	_RaidManager:RangeUI(buffPos, buffRange, nil)
 end
 
 if _SkillMove.lastNum >= 30 then

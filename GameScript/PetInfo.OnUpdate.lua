@@ -76,7 +76,7 @@ if self.nextMove >= self.nextRandMove then
 	self.nextMove = 0
 	
 	---@type CollisionSimulator
-	local simul = _TamingInfoManager.simulator
+	local simul = _RaidManager.simulator
 	local check = false
 	local tri = self.Entity.TriggerComponent
 	local box = simul:OverlapBoxAll("item", Vector2(mWorld.x, mWorld.y + tri.ColliderOffset.y), Vector2(4, tri.BoxSize.y), 0)

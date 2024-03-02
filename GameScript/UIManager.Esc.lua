@@ -18,6 +18,8 @@ elseif name == _EquipmentLogic.entityName then
 	_EquipmentLogic:CloseUI()
 elseif name == _QuestTalkManager.entityName then
 	_QuestTalkManager:DisposeQuest()
+elseif name == _PlayerKeyLogic.main.Name then
+	_PlayerKeyLogic:CloseUI()
 else	
 	self.closeUI:AttachChild(entity)
 	entity:SetEnable(false)

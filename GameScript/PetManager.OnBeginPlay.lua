@@ -6,7 +6,7 @@ if self:IsClient() then
 	local sample = grid:GetChildByName("Sample")
 	sample:SetEnable(false)
 	
-	local pets = {0, 1, 3, 4, 5, 6, 13, 14, 16, 19, 20, 23, 24, 41, 43, 54, 64}
+	local pets = {0, 1, 3, 4, 5, 6, 13, 14, 16, 19, 20, 23, 24, 41, 43, 54, 64, 83}
 	for k, v in pairs(pets) do
 		local clone = sample:Clone("" .. v)
 		clone:GetChildByName("ruid").SpriteGUIRendererComponent.ImageRUID = self.pets[v]["stand0"]

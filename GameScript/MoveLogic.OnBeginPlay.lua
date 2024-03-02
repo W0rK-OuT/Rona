@@ -25,6 +25,7 @@ self.maps = {
 	{251000000, "59774a3f985c4b7cade397edd9e9cee5"},
 	{260000000, "12d78853131b4fa4a0eed9a7350e5fe9"},
 	{261000000, "76c0aede0c2e4f04bb8413217e82f60b"},
+	{270000000, "fa491b94fecd49418d5c7f74d7602b1f"},
 }
 
 if self:IsClient() then

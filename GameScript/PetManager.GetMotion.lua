@@ -155,5 +155,14 @@ self.pets = {
 		["hang"] = "4714524256994aebb25c651ae118ca61",
 		["eff"] = "145739c3102a4669bd9158e3b23af904",
 	},
+	
+	[83] = {
+		["stand0"] = "4dc8849ce9b64fbd9e1ed9a16204770e",
+		["stand1"] = "030933327a9f4869a91fb2731d87ee1a",
+		["jump"] = "34e1a91a05134410bbdf72447d3069b6",
+		["move"] = "057d81224a8e4cec8fc1240be57bdc86",
+		["hang"] = "551e3c9ebea94ebdadbfea721d8431f3",
+		["eff"] = "09be007c45c14ca29aec8852fefebd64",
+	},
 }
 end

@@ -1,6 +1,6 @@
 return function (self,monster,startPos,offset,damage,delay) 
 ---@type CollisionSimulator
-local simul = _TamingInfoManager.simulator
+local simul = _RaidManager.simulator
 local playerPos = monster.TransformComponent.Position:ToVector2()
 local calcVec = startPos:ToVector2() + Vector2(-0.1, offset.y / 2)
 

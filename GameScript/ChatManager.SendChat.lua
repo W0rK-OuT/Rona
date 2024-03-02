@@ -20,6 +20,14 @@ elseif mm == "@" then
 			return
 		end
 	end
+elseif mm == "#" then
+	if _GameUtil:IsGameMaster3(_UserService.LocalPlayer) then
+		local mm2 = _UtilLogic:SubString(text, 2, 1)
+		if _TextManager:IsHan(mm2) then
+			_GMCommandLogic:Command3(_UserService.LocalPlayer, string.sub(text, 2))
+			return
+		end
+	end
 elseif mm == "/" then
 	local mm2 = _UtilLogic:SubString(text, 2, 1)
 	if _TextManager:IsHan(mm2) then

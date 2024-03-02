@@ -14,15 +14,15 @@ else
 end
 if slot == "31" then
 	if item == nil then
-		_TamingInfoManager.afterImage = ""
-		_TamingInfoManager.attack = 0
-		_TamingInfoManager.sfx = ""
+		_RaidManager.afterImage = ""
+		_RaidManager.attack = 0
+		_RaidManager.sfx = ""
 	else
 		local id = item["id"]
 		local info = _ItemData:GetItemInfo(id)
-		_TamingInfoManager.attack = _Util:ConvertNumber(info["attack"])
-		_TamingInfoManager.afterImage = _Util:ConvertString(info["afterImage"])
-		_TamingInfoManager.sfx = _Util:ConvertString(info["sfx"])
+		_RaidManager.attack = _Util:ConvertNumber(info["attack"])
+		_RaidManager.afterImage = _Util:ConvertString(info["afterImage"])
+		_RaidManager.sfx = _Util:ConvertString(info["sfx"])
 	end
 end
 

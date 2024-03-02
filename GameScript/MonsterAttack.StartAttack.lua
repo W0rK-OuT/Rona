@@ -174,7 +174,7 @@ if type == 0 then
 	
 	local func = function()
 		---@type CollisionSimulator
-		local simul = _TamingInfoManager.simulator
+		local simul = _RaidManager.simulator
 		local nPos = monster.TransformComponent.WorldPosition:ToVector2() + Vector2((isLeft and 1 or -1) * (lt.x + rb.x) / 2 * 0.01, (-lt.y + rb.y) / 2 * 0.01)
 		local nBox = Vector2(rangeX / 100, rangeY / 100)
 		local box = simul:OverlapBoxAll("player", nPos, nBox, 0)
@@ -187,7 +187,7 @@ if type == 0 then
 				break
 			end
 		end
-		_TamingInfoManager:RangeUI(nPos, nBox, nil)
+		_RaidManager:RangeUI(nPos, nBox, nil)
 	end
 	_TimerService:SetTimerOnce(func, attackAfter / 1000)
 elseif type == 1 then
@@ -263,7 +263,7 @@ else
 	
 	local func = function()
 		---@type CollisionSimulator
-		local simul = _TamingInfoManager.simulator
+		local simul = _RaidManager.simulator
 		for k, v in pairs(infos) do
 			if v == 1 then
 				local nPosX = sp + rangeX * (k - 1)
@@ -284,7 +284,7 @@ else
 						break
 					end
 				end
-				_TamingInfoManager:RangeUI(nPos, nBox, nil)
+				_RaidManager:RangeUI(nPos, nBox, nil)
 			end
 		end
 	end

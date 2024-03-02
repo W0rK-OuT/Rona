@@ -2,7 +2,7 @@ return function (self)
 local mobs = {}
 
 ---@type CollisionSimulator
-local simul = _TamingInfoManager.simulator
+local simul = _RaidManager.simulator
 for k, v in pairs(simul:OverlapBoxAll("monster", Vector2.zero, Vector2(99999, 99999), 0)) do
 	mobs[v.Entity.MobInfo.id] = 0
 end

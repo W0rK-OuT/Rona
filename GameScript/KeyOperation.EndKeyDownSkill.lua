@@ -7,5 +7,5 @@ if charge < 1 then
 elseif charge > 100 then
 	charge = 100
 end
-_TamingInfoManager:Gain(id, now, 0, charge)
+_RaidManager:Gain(id, now, 0, charge)
 end
