@@ -2,6 +2,9 @@ return function (self)
 if _RateManager.testVer then
 	return
 end
+if _PetManager.special then
+	return
+end
 
 if self.bug then
 	return

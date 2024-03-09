@@ -80,4 +80,15 @@ return function (self,player,partner)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 end

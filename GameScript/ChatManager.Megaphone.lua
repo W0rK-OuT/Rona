@@ -21,7 +21,7 @@ local clone = self.sample:Clone("msg")
 local textCom = clone.TextComponent
 textCom.Text = base
 
-if type == 0 then
+if typeCode == 0 then
 	clone.SpriteGUIRendererComponent.Color = Color(255 / 255, 159 / 255, 236 / 255, 0.75)
 else
 	clone.SpriteGUIRendererComponent.Color = Color(129 / 255, 237 / 255, 35 / 255, 0.75)

@@ -7,6 +7,14 @@ return function (self,event)
 -- Parameters
 local key = event.key
 ---------------------------------------------------------
+if key == KeyboardKey.RightAlt then
+	key = KeyboardKey.LeftAlt
+elseif key == KeyboardKey.RightControl then
+	key = KeyboardKey.LeftControl
+elseif key == KeyboardKey.RightShift then
+	key = KeyboardKey.LeftShift
+end
+
 _KeyOperation:KeyManager(key, false)
 --_UIManager:OnOffCloseManager()
 

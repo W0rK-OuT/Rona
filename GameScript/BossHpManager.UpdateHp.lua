@@ -17,7 +17,7 @@ if not self.main.Enable then
 	_BuffManager:UpdatePos()
 end
 
-local calcPer = math.floor(hp / math.max(1, maxHp) * 100)
+local calcPer = math.ceil(hp / math.max(1, maxHp) * 100)
 if calcPer < 0 then
 	calcPer = 0
 elseif calcPer > 100 then

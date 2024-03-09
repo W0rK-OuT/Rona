@@ -433,7 +433,7 @@ elseif skillType == 400 then
 		effectTable["effect"] = "1ed68211deb34d4aaabf606af837c768"
 		effectTable["hit"] = "640e5378676043b588ced8af4990b315"
 		effectTable["useSound"] = "5996110d3d194e10967fd3745bd666b3"
-		effectTable["hitSound"] = "a72e3d2418e74ae0a5c4bcb688da564a"
+		--effectTable["hitSound"] = "a72e3d2418e74ae0a5c4bcb688da564a"
 		effectTable["useSounds"] = {_MaplePreferencesLogic.WeaponTGloveSound}
 		effectTable["countSound"] = "a409e66cd6844e2cb4aaa2f2bb9d0530"
 	end

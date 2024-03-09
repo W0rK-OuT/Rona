@@ -11,13 +11,6 @@ end
 
 ---@type KeyboardKey
 local key = anyKey
-if key == KeyboardKey.RightAlt then
-	key = KeyboardKey.LeftAlt
-elseif key == KeyboardKey.RightControl then
-	key = KeyboardKey.LeftControl
-elseif key == KeyboardKey.RightShift then
-	key = KeyboardKey.LeftShift
-end
 
 local value = _PlayerKeyLogic.holdKey[key]
 local darkSight = _UserService.LocalPlayer.PlayerBuff.darkSight

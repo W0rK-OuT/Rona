@@ -394,12 +394,12 @@ elseif specialEffect == "tile" then
 elseif specialEffect == "chargeBlow" then
 	local attr = effectPlayer.PlayerBuff.incElemAttr
 	local ruid
-	if attr == 1 then
-		ruid = "c1ee9fe7eaf4475d82a45d8017a7b6b5"
+	if attr == 1 then -- 라이트닝
+		ruid = "893b9575ad5441979d81fb11281629bf"
 	elseif attr == 2 then
 		ruid = "aff8c4140c3f4c5db9adb085a40a1f96"
-	elseif attr == 3 then
-		ruid = "893b9575ad5441979d81fb11281629bf"
+	elseif attr == 3 then -- 얼음
+		ruid = "c1ee9fe7eaf4475d82a45d8017a7b6b5"
 	else
 		ruid = "a81814910cf9476da12bf9305ee99e0e"
 	end

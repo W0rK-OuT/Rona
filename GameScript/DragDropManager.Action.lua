@@ -35,6 +35,11 @@ if not _ItemData:IsOneItem(item) then
 	end
 end
 
+if player.PlayerLie:GetTotal() >= 5 then
+	_MessageLogic:DropMessage("거짓말 탐지기 패널티로 버릴 수 없습니다.")
+	return
+end
+
 player.PlayerInventory:PlayerDropItem(self.tab, self.slot, bunddd)
 self:CloseUI()
 end
