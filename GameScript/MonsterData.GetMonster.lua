@@ -34,6 +34,11 @@ if value ~= nil then
 			end
 			nTable[splName] = revTable
 		else
+			if splName == "exp" then
+				if id // 10000 == 881 then
+					splValue = 0
+				end
+			end
 			nTable[splName] = splValue
 		end		
 	end

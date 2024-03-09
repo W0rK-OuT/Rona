@@ -827,7 +827,7 @@ else
 	if finalAttack == 0 and playerBuff.finalRand > 0 and playerBuff.finalAttack > 0 then
 		local ableFinal = _GameUtil:ConvertValue(skillInfo["ableFinal"], 0)
 		if ableFinal > 0 and math.random(1, 100) <= playerBuff.finalRand then
-			local delay = math.ceil(600 * (math.max(2, calcAttackSpeed) + 10) / 16 / 30) * 30
+			local delay = _Util:MathRound(600 * (math.max(2, calcAttackSpeed) + 10) / 16 / 30) * 30
 			local func = function()
 				self:Gain(playerBuff.finalAttack, _UtilLogic.ServerElapsedSeconds, skillID, 0)
 			end
@@ -837,7 +837,7 @@ else
 	
 	if skillID == 4221001 then
 		if finalAttack == 0 then
-			local delay = 50 + math.ceil(1820 * (math.max(2, calcAttackSpeed) + 10) / 16 / 30) * 30
+			local delay = 50 + _Util:MathRound(1820 * (math.max(2, calcAttackSpeed) + 10) / 16 / 30) * 30
 			local func = function()
 				local now = _UtilLogic.ServerElapsedSeconds
 				if _RaidManager.nextAttackDelay < now then

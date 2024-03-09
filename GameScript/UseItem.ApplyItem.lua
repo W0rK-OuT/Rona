@@ -72,4 +72,10 @@ return function (self,player,id,newTime,show)
 
 
 
+
+
+
+
+
+
 end

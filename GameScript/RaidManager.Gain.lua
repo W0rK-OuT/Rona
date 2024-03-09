@@ -77,6 +77,7 @@ local roar = 0
 local isRapid = false
 local cancelRapid = false
 local isReactorAttack = false
+local weaponName = stats.weaponName
 
 ::back::
 
@@ -87,7 +88,7 @@ if isProneStab then
 	sMotion = false
 	_CoolTime.attackDelay = -self:ProneStab(motion, calcAttackSpeed) / 1000
 	
-	local posAndBox = _SkillData:GetNormalRange(self.afterImage .. "_" .. motion)
+	local posAndBox = _SkillData:GetNormalRange(weaponName .. "_" .. motion)
 	local calPos = playerBasePos + Vector2(isLeft and -posAndBox.pos.x or posAndBox.pos.x, posAndBox.pos.y)
 	
 	local reactorBox = simul:OverlapBoxAll("reactor", calPos, posAndBox.box, 0)
@@ -117,7 +118,7 @@ elseif skillID == 0 then
 	--local isNormalMotion = true
 	if not fixZero then
 		motion = _SkillData:GetNormalRandMotion(self.attack)
-		local posAndBox = _SkillData:GetNormalRange(self.afterImage .. "_" .. motion)
+		local posAndBox = _SkillData:GetNormalRange(weaponName .. "_" .. motion)
 		local calPos = playerBasePos + Vector2(isLeft and -posAndBox.pos.x or posAndBox.pos.x, posAndBox.pos.y)
 		
 		local reactorBox = simul:OverlapBoxAll("reactor", calPos, posAndBox.box, 0)
@@ -256,7 +257,7 @@ elseif finalAttack > 0 then -- 파이널 어택
 		local zeroAttack = _GameUtil:ConvertValue(oriSkillInfo["zeroAttack"], 0)
 		if zeroAttack > 0 then
 			local zeroMotion = _SkillData:GetNormalRandMotion(self.attack)
-			local posAndBox = _SkillData:GetNormalRange(self.afterImage .. "_" .. zeroMotion)
+			local posAndBox = _SkillData:GetNormalRange(weaponName .. "_" .. zeroMotion)
 			local calPos = playerBasePos + Vector2(isLeft and -posAndBox.pos.x or posAndBox.pos.x, posAndBox.pos.y)
 			local zeroBox = simul:OverlapBoxAll("monster", calPos, posAndBox.box, 0)
 			self:RangeUI(calPos, posAndBox.box, nil)		
@@ -291,7 +292,7 @@ elseif finalAttack > 0 then -- 파이널 어택
 		box = simul:OverlapBoxAll("monster", calcVec, range, 0)
 		self:RangeUI(calcVec, range, nil)
 	else
-		local no = _SkillData:GetNormalRange(self.afterImage .. "_" .. motion)
+		local no = _SkillData:GetNormalRange(weaponName .. "_" .. motion)
 		if no == nil then
 			return 1
 		end
@@ -483,7 +484,7 @@ else
 	local zeroAttack = _GameUtil:ConvertValue(skillInfo["zeroAttack"], 0)
 	if zeroAttack > 0 then
 		local zeroMotion = _SkillData:GetNormalRandMotion(self.attack)
-		local posAndBox = _SkillData:GetNormalRange(self.afterImage .. "_" .. zeroMotion)
+		local posAndBox = _SkillData:GetNormalRange(weaponName .. "_" .. zeroMotion)
 		local calPos = playerBasePos + Vector2(isLeft and -posAndBox.pos.x or posAndBox.pos.x, posAndBox.pos.y)
 		local zeroBox = simul:OverlapBoxAll("monster", calPos, posAndBox.box, 0)
 		self:RangeUI(calPos, posAndBox.box, nil)		
@@ -584,7 +585,7 @@ else
 	else
 		range = skillInfo["skillRange"]
 		if range == nil then
-			local no = _SkillData:GetNormalRange(self.afterImage .. "_" .. motion)
+			local no = _SkillData:GetNormalRange(weaponName .. "_" .. motion)
 			if no ~= nil then
 				range = no.box
 				skillPos = Vector2(-no.pos.x, no.pos.y)
@@ -827,7 +828,7 @@ else
 	if finalAttack == 0 and playerBuff.finalRand > 0 and playerBuff.finalAttack > 0 then
 		local ableFinal = _GameUtil:ConvertValue(skillInfo["ableFinal"], 0)
 		if ableFinal > 0 and math.random(1, 100) <= playerBuff.finalRand then
-			local delay = math.ceil(600 * (math.max(2, calcAttackSpeed) + 10) / 16 / 30) * 30
+			local delay = _Util:MathRound(600 * (math.max(2, calcAttackSpeed) + 10) / 16 / 30) * 30
 			local func = function()
 				self:Gain(playerBuff.finalAttack, _UtilLogic.ServerElapsedSeconds, skillID, 0)
 			end
@@ -837,7 +838,7 @@ else
 	
 	if skillID == 4221001 then
 		if finalAttack == 0 then
-			local delay = 50 + math.ceil(1820 * (math.max(2, calcAttackSpeed) + 10) / 16 / 30) * 30
+			local delay = 50 + _Util:MathRound(1820 * (math.max(2, calcAttackSpeed) + 10) / 16 / 30) * 30
 			local func = function()
 				local now = _UtilLogic.ServerElapsedSeconds
 				if _RaidManager.nextAttackDelay < now then

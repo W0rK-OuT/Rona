@@ -10,7 +10,7 @@ end
 if _GameUtil:IsBadge(equipID) then
 	return false
 end
-if _GameUtil:IsCrape(equipID) then
+if _GameUtil:IsPocket(equipID) then
 	return false
 end
 

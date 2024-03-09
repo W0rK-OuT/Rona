@@ -47,6 +47,9 @@ for _, effStr in pairs(effects) do
 	if effect ~= nil then
 		local effType = _GameUtil:ConvertValue(effect["effectType"], 0)
 		local effFunc = function()
+			if not isvalid(monster) then
+				return
+			end
 			if effType == 0 then
 				_EffectService:PlayEffectAttached(effect, monster, Vector3.zero, 0, Vector3.one)
 			elseif effType == 1 then
@@ -173,6 +176,9 @@ if type == 0 then
 	local isJumpAttack = _GameUtil:ConvertValue(attackInfo["jumpAttack"], 0) > 0
 	
 	local func = function()
+		if not isvalid(monster) then
+			return
+		end
 		---@type CollisionSimulator
 		local simul = _RaidManager.simulator
 		local nPos = monster.TransformComponent.WorldPosition:ToVector2() + Vector2((isLeft and 1 or -1) * (lt.x + rb.x) / 2 * 0.01, (-lt.y + rb.y) / 2 * 0.01)
@@ -192,6 +198,9 @@ if type == 0 then
 	_TimerService:SetTimerOnce(func, attackAfter / 1000)
 elseif type == 1 then
 	local func = function()
+		if not isvalid(monster) then
+			return
+		end
 		_PlayerHitByMonster:MonsterAttack(monster, attackName)
 	end
 	_TimerService:SetTimerOnce(func, attackAfter / 1000)
@@ -208,7 +217,9 @@ elseif type == 2 then
 	local speed = _GameUtil:ConvertValue(attackInfo["bulletSpeed"], 200)
 	
 	local func = function()
-	
+		if not isvalid(monster) then
+			return
+		end
 		local ball = _SpawnService:SpawnByModelId("model://0e7aaa67-ed82-4d12-b8b0-70bac2f79949", "ball", Vector3(nX, nY, 0), monster.CurrentMap)
 		ball.SpriteRendererComponent.SpriteRUID = ruid
 		local monsterBall = ball.MonsterBall
@@ -245,6 +256,9 @@ else
 	local y = monster.TransformComponent.WorldPosition.y
 	
 	local effFunc = function()
+		if not isvalid(monster) then
+			return
+		end
 		for k, v in pairs(infos) do
 			if v == 1 then
 				local nPosX = sp + rangeX * (k - 1)
@@ -262,6 +276,9 @@ else
 	_TimerService:SetTimerOnce(effFunc, effectAfter / 1000)
 	
 	local func = function()
+		if not isvalid(monster) then
+			return
+		end
 		---@type CollisionSimulator
 		local simul = _RaidManager.simulator
 		for k, v in pairs(infos) do

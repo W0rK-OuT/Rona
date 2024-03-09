@@ -6,7 +6,7 @@ end
 if itemType == 181 then -- 뱃지
 	return true
 end
-if itemType == 182 then -- 상장
+if itemType == 182 then -- 포켓
 	return true
 end
 if itemType == 111 then -- 반지

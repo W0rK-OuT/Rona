@@ -1,6 +1,7 @@
 return function (self) 
 self.main:SetEnable(false)
-_EffectService:RemoveEffect(self._T.effectTimer)
+self.chargeEffectEntity.ChargeEffect:ChangeRUID(nil, 0)
+
 if self._T.timer ~= nil and self._T.timer.IsPlaying then
 	self._T.timer:Destroy()
 end

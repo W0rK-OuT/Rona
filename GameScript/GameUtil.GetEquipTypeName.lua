@@ -71,6 +71,6 @@ elseif calcID == 180 then
 elseif calcID == 181 then
 	return "뱃지"
 elseif calcID == 182 then
-	return "상장"
+	return "포켓"
 end
 end

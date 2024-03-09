@@ -1,6 +1,6 @@
-return function (self,hp,maxHp) 
+return function (self,isBoss,hp,maxHp) 
 if self.clientTColor == 0 and self.clientBColor == 0 then
-	if self.hpBar ~= nil then
+	if not isBoss and self.hpBar ~= nil then
 		local per = math.floor(hp / maxHp * 100) / 100
 		if per < 0 then
 			per = 0

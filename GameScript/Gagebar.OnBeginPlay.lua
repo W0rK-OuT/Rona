@@ -7,6 +7,12 @@ if bar == nil then
 end
 self.main = bar
 self.bar = bar:GetChildByName("Bar")
+
+if self.chargeEffectEntity == nil then
+	self.chargeEffectEntity = _SpawnService:SpawnByModelId("model://f89f2e3b-8969-4ee1-a689-dfe788327646", "ChargeEffect", Vector3(0, 0, 0), _UserService.LocalPlayer)
+	self.chargeEffectEntity:SetEnable(false)
+end
+
 for k, v in pairs(self.main.Children) do
 	local order = _UserService.LocalPlayer.AvatarRendererComponent.OrderInLayer
 	v.SpriteRendererComponent.OrderInLayer = order == 0 and 3 or order

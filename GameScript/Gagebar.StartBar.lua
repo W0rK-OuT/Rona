@@ -6,10 +6,7 @@ self.bar.TransformComponent.Scale.x = 1
 local effect = self:GetRUID(id, "effect")
 local sound = self:GetRUID(id, "sound")
 
-_EffectService:RemoveEffect(self._T.effectTimer)
-if not _UtilLogic:IsNilorEmptyString(effect) then
-	self._T.effectTimer = _EffectService:PlayEffectAttached(effect, _UserService.LocalPlayer, Vector3.zero, 0, Vector3.one, true)
-end
+self.chargeEffectEntity.ChargeEffect:ChangeRUID(effect, id)
 
 if not _UtilLogic:IsNilorEmptyString(sound) then
 	self:SetSound(sound)

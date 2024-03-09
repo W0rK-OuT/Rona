@@ -499,15 +499,15 @@ elseif skillType == 422 then
 		effectTable["effect"] = "858f70ee2a8e4a06a5880efc41bbbfe3"
 		effectTable["fEffect"] = "5c14a21b90f640b9af04d8cfb8b379ec"
 		effectTable["useSound"] = "80bf12d6373a4889bf2f51c49e7af837"
-		effectTable["baseHitDelay"] = 660
-		effectTable["attackDelay"] = 480
+		effectTable["baseHitDelay"] = 760 -- 660
+		effectTable["attackDelay"] = 360 --480
 	elseif skillID == 4221007 then -- 부메랑 스탭
 		effectTable["effect"] = "3ad556d9a8774330a137231745449ab0"
 		effectTable["hit"] = "0cf7ab1df23d4dae950a7ee355b22447"
 		effectTable["useSound"] = "d660881ad7fb4124b029172169b0c918"
 		effectTable["hitSound"] = "092bda6cfb7d400b9d19dbfcf1a81ca5"
-		effectTable["baseHitDelay"] = 360
-		effectTable["attackDelay"] = 420
+		effectTable["baseHitDelay"] = 320 -- 360
+		effectTable["attackDelay"] = 390 -- 420
 	end
 elseif skillType == 500 then
 	if skillID == 5001001 then -- 스트레이프

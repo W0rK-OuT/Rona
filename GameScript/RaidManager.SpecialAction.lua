@@ -11,7 +11,7 @@ end
 
 _TimerService:ClearTimer(self._T.endTimer)
 
-local delay = math.ceil(oriDelay * (math.max(2, weaponSpeed) + 10) / 16 / 30) * 30
+local delay = _Util:MathRound(oriDelay * (math.max(2, weaponSpeed) + 10) / 16 / 30) * 30
 local playRate = oriDelay / delay 
 
 local actionTable = _MotionDelayManager.motionAction[actionName]
@@ -26,6 +26,10 @@ if skillID == 4221007 then
 	if _PlayerHitByMonster.nextHitTime < cal then -- 무적 시간
 		_PlayerHitByMonster.nextHitTime = cal
 	end
+	local option = {}
+	option["PlayRate"] = playRate
+	log(playRate)
+	--_EffectService:PlayEffectAttached("3ad556d9a8774330a137231745449ab0", _UserService.LocalPlayer, Vector3.zero, 0, Vector3.one, false, option)
 end
 
 if not isHide and not self.root.Visible then

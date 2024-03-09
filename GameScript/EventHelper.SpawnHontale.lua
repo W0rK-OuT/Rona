@@ -1,10 +1,4 @@
-return function (self,playerID) 
-
-
-
-
-
-
+return function (self,map,pos) 
 
 
 

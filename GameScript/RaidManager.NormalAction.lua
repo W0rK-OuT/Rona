@@ -2,7 +2,7 @@ return function (self,actionName,weaponSpeed,masteryEff,lastTick)
 _TimerService:ClearTimer(self._T.endTimer)
 
 local oriDelay = _MotionDelayManager.motionDelay[actionName]
-local delay = math.ceil(oriDelay * (math.max(2, weaponSpeed) + 10) / 16 / 30) * 30
+local delay = _Util:MathRound(oriDelay * (math.max(2, weaponSpeed) + 10) / 16 / 30) * 30
 local playRate = oriDelay / delay
 
 self.nextAttackDelay = lastTick + delay / 1000
