@@ -1,6 +1,8 @@
 return function (self,name,value) 
 if name == "hp" or name == "currentHp" then
 	_UserService.LocalPlayer.PlayerParty:UpdatePartyHpBar(self.hp, self.currentHp, self.Entity)
+elseif name == "deco" then
+	_DecoManager:UpdateDecoRUID(self.Entity, value)
 end
 
 if self.Entity ~= _UserService.LocalPlayer then

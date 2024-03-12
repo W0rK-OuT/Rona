@@ -62,27 +62,31 @@ elseif mmm == "시간표시" then
 	self:Option(_UserService.LocalPlayer, "time", 0)
 elseif mmm == "카메라" then
 	self:Option(_UserService.LocalPlayer, "camera", 0)
+elseif mmm == "조이스틱고정" then
+	self:Option(_UserService.LocalPlayer, "fix", 0)
 elseif mmm == "조이스틱x" then
 	self:SetJoy("x", tonumber(msgTable[2]))
 elseif mmm == "조이스틱y" then
 	self:SetJoy("y", tonumber(msgTable[2]))
+elseif mmm == "상태" then
+	self:StatusCheck(_UserService.LocalPlayer)
 elseif mmm == "명령어" then
-	_MessageLogic:BigDropMessage(
-		"/펫확률"
-		.. "\n/뱃지확률"
-		.. "\n/주문서확률"
-		.. "\n/전직 <전직명>"
-		.. "\n/교환 <닉네임>"
-		.. "\n/채팅지우기"
-		.. "\n/채팅크기 <1~20> : 기본 5"
-		.. "\n/채팅위치 <1~20> : 기본 1"
-		.. "\n/채팅길이 <1~20> : 기본 20"
-		.. "\n/충전포인트표시 : 캐시샵 충전 포인트 on/off"
-		.. "\n/시간표시 : 우측 하단 시간 on/off"
-		.. "\n/카메라 : 카메라 설정 변경"
-		.. "\n/조이스틱x <0~3000> : x축 조정 (기본 210)"
-		.. "\n/조이스틱y <0~3000> : y축 조정 (기본 130)"
-	, 600)
+	local msg = "/펫확률"
+	msg ..= "\n/뱃지확률"
+	msg ..= "\n/주문서확률"
+	msg ..= "\n/전직 <전직명>"
+	msg ..= "\n/교환 <닉네임>"
+	msg ..= "\n/채팅지우기"
+	msg ..= "\n/채팅크기 <1~20> : 기본 5"
+	msg ..= "\n/채팅위치 <1~20> : 기본 1"
+	msg ..= "\n/채팅길이 <1~20> : 기본 20"
+	msg ..= "\n/충전포인트표시 : 캐시샵 충전 포인트 on/off"
+	msg ..= "\n/시간표시 : 우측 하단 시간 on/off"
+	msg ..= "\n/카메라 : 카메라 설정 변경"
+	msg ..= "\n/조이스틱x <0~3000> : x축 조정 (기본 210)"
+	msg ..= "\n/조이스틱y <0~3000> : y축 조정 (기본 130)"
+	msg ..= "\n/상태 : 패널티 확인"
+	_MessageLogic:BigDropMessage(msg, 600)
 else
 	_MessageLogic:ChatMessage(5, "존재하지 않는 명령어입니다. '/명령어'를 입력하세요.")
 end

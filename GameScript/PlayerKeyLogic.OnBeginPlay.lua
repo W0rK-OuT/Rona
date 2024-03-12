@@ -15,12 +15,7 @@ self.topSample:SetEnable(false)
 self.botSample:SetEnable(false)
 self.main:GetChildByName("Remove"):SetEnable(false)
 
-local size = 70
-local start = 55 -- 처음 위치
-local sizeOne = 80 -- 간격
-local sizeTwo = 30 -- 간격2
-
-local keyTable = self:BaseTable(size, start, sizeOne, sizeTwo)
+local keyTable = self:BaseTable()
 
 --self:CloseUI()
 local top = self.main:GetChildByName("Top")

@@ -747,6 +747,8 @@ else
 			isLastMobCalc = false
 		end
 	end
+
+	monsterAttackCount = _GameUtil:ConvertValue(skillInfo["mobCount"], 1)
 	
 	local chain = skillInfo["chain"]
 	if chain ~= nil then
@@ -775,31 +777,29 @@ else
 		
 		local firstMob = chTable[1]
 		if firstMob ~= nil then
-			local chX = 1.1
-			local chY = 0.5
+			local chX = 0.9
+			local chY = 1.2
 			local chainTable = {}
+			---@type Vector2
 			local chPos = firstMob.TransformComponent.WorldPosition:ToVector2() + firstMob.TriggerComponent.ColliderOffset
 			
-			for idx = 1, 100 do
+			for idx = 1, monsterAttackCount do
 				local oriLen = _Util:TableKeyLen(chainTable)
 				if idx == 1 then
 					chainTable[firstMob] = true
+					oriLen = 1
 				end
+				if oriLen >= 6 then
+					break
+				end
+
 				self:BoxMonster2(chainTable, chPos + Vector2((isLeft and -chX or chX) / 2, 0), Vector2(chX, chY))
 				local len = _Util:TableKeyLen(chainTable)
 				
-				if len >= 6 then
+				if len == oriLen or len >= monsterAttackCount then
 					break
 				end
-				
-				if oriLen <= len then
-					chPos.y += 0.6
-					self:BoxMonster2(chainTable, chPos + Vector2((isLeft and -chX or chX) / 2, chY / 2), Vector2(chX, chY))
-					len = _Util:TableKeyLen(chainTable)
-					if oriLen <= len or len >= 6 then
-						break
-					end
-				end
+
 				chPos.x += isLeft and -chX or chX
 			end
 			
@@ -853,7 +853,6 @@ else
 	
 	masteryEff = _GameUtil:ConvertValue(skillInfo["noMastery"], 0) == 0
 	noHitCancel = _GameUtil:ConvertValue(skillInfo["noHitCancel"], 0) > 0
-	monsterAttackCount = _GameUtil:ConvertValue(skillInfo["mobCount"], 1)
 	attackCount = _GameUtil:ConvertValue(skillInfo["attackCount"], 1)
 	sMotion = true
 	
@@ -1062,7 +1061,7 @@ if roar > 0 then
 	self:RoarStun(roar)
 end
 
-_SkillStart3:Attack(player, finalMobTable, skillID, isLeft, throwSlot, isProneStab, isRangeAttack, playerBasePos, lastTick, healPlayers, isSoulArrow, motion, math.max(2, calcAttackSpeed), finalAttack, charge)
+_SkillStart2:Attack(player, finalMobTable, skillID, isLeft, throwSlot, isProneStab, isRangeAttack, playerBasePos, lastTick, healPlayers, isSoulArrow, motion, math.max(2, calcAttackSpeed), finalAttack, charge)
 
 if fixZero then
 	return 2

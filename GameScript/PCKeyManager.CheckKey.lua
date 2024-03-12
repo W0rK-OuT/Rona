@@ -12,7 +12,7 @@ for k, v in pairs(player.PlayerKey.pcButtons) do
 	end
 end
 
-local nTable = _PlayerKeyLogic:BaseTable(0, 0, 0, 0)
+local nTable = _PlayerKeyLogic:BaseTable()
 for k, v in pairs(nTable) do
 	if v[1] == key then
 		return 0

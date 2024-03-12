@@ -3,4 +3,5 @@ return function (self,event)
 local OrderInLayer = event.OrderInLayer
 ---------------------------------------------------------
 _TamingManager:UpdateOrder(self.Entity, OrderInLayer)
+_DecoManager:UpdateOrder(self.Entity, OrderInLayer)
 end

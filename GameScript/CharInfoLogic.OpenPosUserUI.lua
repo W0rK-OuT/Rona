@@ -11,6 +11,13 @@ local sample = grid:GetChildByName("Sample")
 
 local myName = _UserService.LocalPlayer.Name
 local nTable = _HttpService:JSONDecode(str)
+
+table.sort(nTable,
+	function(a, b)
+		return a["level"] < b["level"]
+	end
+)
+
 for k, playerData in pairs(nTable) do
 	local clone = grid:GetChildByName("" .. k)
 	if clone == nil then

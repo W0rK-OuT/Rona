@@ -2,6 +2,7 @@ return function (self,text)
 local tag_map = {
 	["#r"] = "red",
 	["#b"] = "blue",
+	["#d"] = "navy",
 	["#k"] = "black",
 	["#g"] = "green",
 }

@@ -1,5 +1,5 @@
 return function (self,quick) 
-local baseTable = _PlayerKeyLogic:BaseTable(0, 0, 0, 0)
+local baseTable = _PlayerKeyLogic:BaseTable()
 local buttons = _UserService.LocalPlayer.PlayerKey.pcButtons
 ---@type Entity
 local grid = quick and self.openBox:GetChildByName("Grid") or self.pcButtons
