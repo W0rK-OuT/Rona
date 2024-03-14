@@ -10,6 +10,9 @@ if not player.PlayerStats:IsActing() then
 	_MessageLogic:DropMessage("죽은 상태에선 행동이 불가능합니다.")
 	return
 end
+if _PlayerWeather:IsPotionStop() then
+	return
+end
 
 local itemID = item["id"]
 

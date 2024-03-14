@@ -1,6 +1,6 @@
 return function (self,sort) 
-local pet = _UserService.LocalPlayer:GetChildByName("pet")
-if pet ~= nil then
+local pet = self.pet
+if isvalid(pet) then
 	pet.SpriteRendererComponent.SortingLayer = sort
 end
 end

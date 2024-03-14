@@ -8,18 +8,24 @@ self.name = split[2]
 
 if self:IsClient() then
     ---@type Sprite
-    local spr
-    local bool, action = self.Entity.StateAnimationComponent.ActionSheet:TryGetValue("stand")
-    
-    if self.isSprite then
-        spr = _ResourceService:LoadSpriteAndWait(action)
-    else
-        local ani = _ResourceService:LoadAnimationClipAndWait(action)
-        spr = ani.Frames:ToTable()[1].FrameSprite
-    end
-    
-    self.sizeX = spr.Width
-    self.sizeY = spr.Height
+   
+	if self.Entity.StateAnimationComponent then
+	    local bool, action = self.Entity.StateAnimationComponent.ActionSheet:TryGetValue("stand")
+		if bool then
+			local spr
+		    if _ResourceService:GetTypeAndWait(action) == ResourceType.Sprite then
+		        spr = _ResourceService:LoadSpriteAndWait(action)
+		    else
+		        local ani = _ResourceService:LoadAnimationClipAndWait(action)
+		        spr = ani.Frames:ToTable()[1].FrameSprite
+		    end
+	    	self.sizeX = spr.Width
+		    self.sizeY = spr.Height
+		end
+	else
+    	self.sizeX = 40
+	    self.sizeY = 70
+	end
 	
 	local sortLayer = self.Entity.SpriteRendererComponent.SortingLayer
 	local orderLayer = self.Entity.SpriteRendererComponent.OrderInLayer

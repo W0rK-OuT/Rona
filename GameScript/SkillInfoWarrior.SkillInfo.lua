@@ -527,6 +527,12 @@ elseif type == 112 then
 		skillTable["time"] = level <= 20 and 10 * level or 200 + 4 * (level - 20)
 		skillTable["cooltime"] = 360
 		skillTable["buff"] = 1
+	elseif id == 1121011 then -- 용사의 의지
+		skillTable["calTime"] = math.max(1, 11 - level)
+		skillTable["mpCon"] = 30
+		skillTable["herowill"] = 1
+		skillTable["cooltime"] = math.max(60, 660 - 60 * level)
+		skillTable["buff"] = 1
 	end
 elseif type == 122 then
 	if id == 1221000 then -- 메이플 용사
@@ -593,6 +599,12 @@ elseif type == 122 then
 		skillTable["skillPos"] = Vector2(0, 0.5)
 		skillTable["weapon"] = {130, 132, 140, 142}
 		skillTable["elemAttr"] = "H"
+	elseif id == 1121012 then -- 용사의 의지
+		skillTable["calTime"] = math.max(1, 11 - level)
+		skillTable["mpCon"] = 30
+		skillTable["herowill"] = 1
+		skillTable["cooltime"] = math.max(60, 660 - 60 * level)
+		skillTable["buff"] = 1
 	end
 elseif type == 132 then
 	if id == 1321000 then -- 메이플 용사
@@ -668,6 +680,12 @@ elseif type == 132 then
 		end
 		skillTable["beholderBCTime"] = level <= 21 and 50 - 2 * level or math.max(4, 29 - level)
 		skillTable["beholderBDTime"] = 20 * math.ceil(level / 5)
+	elseif id == 1321010 then -- 용사의 의지
+		skillTable["calTime"] = math.max(1, 11 - level)
+		skillTable["mpCon"] = 30
+		skillTable["herowill"] = 1
+		skillTable["cooltime"] = math.max(60, 660 - 60 * level)
+		skillTable["buff"] = 1
 	end
 end
 

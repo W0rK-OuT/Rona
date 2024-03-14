@@ -17,6 +17,11 @@ if _UtilLogic:IsNilorEmptyString(findSlot) then
 	return
 end
 
+if self.invSlot == 0 or self.invSlot == 5 then
+	_MessageLogic:DropMessage("해당 아이템은 판매할 수 없습니다.")
+	return
+end
+
 local item = inv[findSlot]
 if item == nil then
 	return

@@ -71,5 +71,7 @@ else
 	if mapInfo ~= nil then
 		_ScreenManager:UpdateScreen(mapInfo.id)
 	end
+	
+	_PetManager:ChildPet(false)
 end
 end

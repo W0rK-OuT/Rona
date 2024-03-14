@@ -1,5 +1,5 @@
 return function (self,id) 
-if _PlayerWeather.stun then
+if _PlayerWeather:CheckSkillStop(id) then
 	return
 end
 

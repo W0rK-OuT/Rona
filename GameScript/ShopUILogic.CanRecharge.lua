@@ -1,4 +1,7 @@
 return function (self,player,slot) 
+if _UtilLogic:IsNilorEmptyString(slot) then
+	return false
+end
 local item = player.PlayerInventory.inv2[slot]
 if item == nil then
 	return false

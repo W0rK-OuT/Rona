@@ -1,4 +1,4 @@
-return function (self,x,y) 
+return function (self,isRapid,x,y) 
 
 
 

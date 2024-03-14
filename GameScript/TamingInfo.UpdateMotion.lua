@@ -1,5 +1,10 @@
 return function (self) 
 if self.root == nil then
+	local player = self.Entity.Parent
+	local body = player.AvatarRendererComponent:GetAvatarRootEntity()
+	if body ~= nil then
+		self.root = body
+	end
 	return
 end
 local pos = self.root.TransformComponent.Position

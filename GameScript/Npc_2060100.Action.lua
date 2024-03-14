@@ -1,7 +1,4 @@
-return function (self,player,slot,bunddd,senderUserId) 
-
-
-
+return function (self,player,mode,selection) 
 
 
 

@@ -14,7 +14,11 @@ local npcEntity
 if findModel ~= nil then
 	npcEntity = _SpawnService:SpawnByModelId(findModel, "dummy", Vector3(99999, 99999, 0), _UserService.LocalPlayer.CurrentMap)
 	if npcEntity ~= nil then
-		ruid = npcEntity.SpriteRendererComponent.SpriteRUID
+		if npcEntity.AvatarRendererComponent then
+			ruid = ""
+		else
+			ruid = npcEntity.SpriteRendererComponent.SpriteRUID
+		end
 		npcEntity:Destroy()
 	end
 end

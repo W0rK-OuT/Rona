@@ -21,8 +21,6 @@ if ori ~= 1932000 and code == 1932000 then
 end
 taming.TamingInfo.id = code
 
-local body = player.AvatarRendererComponent:GetAvatarRootEntity()
-local pos = body.TransformComponent.Position
 if code <= 0 then
 	if isPlayer then
 		_PlayerComponent:SetState(true, true)
@@ -31,8 +29,13 @@ if code <= 0 then
 		end
 	end
 	taming:SetEnable(false)
-	pos.x = 0
-	pos.y = 0
+	
+	local body = player.AvatarRendererComponent:GetAvatarRootEntity()
+	if body ~= nil then
+		local pos = body.TransformComponent.Position
+		pos.x = 0
+		pos.y = 0
+	end
 else
 	if isPlayer then
 		player.StateComponent:ChangeState("TAMING")

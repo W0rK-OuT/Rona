@@ -1,5 +1,5 @@
 return function (self) 
-if _PlayerWeather.stun then
+if _PlayerWeather:IsKeyStop() then
 	return
 end
 

@@ -15,7 +15,7 @@ local key = anyKey
 local value = _PlayerKeyLogic.holdKey[key]
 local darkSight = _UserService.LocalPlayer.PlayerBuff.darkSight
 if darkSight > 0 and value ~= "S-4221001" then
-	if _PlayerWeather.stun then
+	if _PlayerWeather:IsKeyStop() then
 		return
 	end
 	if value == "S-0" then

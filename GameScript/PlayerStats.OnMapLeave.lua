@@ -11,5 +11,7 @@ else
 	end
 	self.Entity.RigidbodyComponent.Enable = false
 	self.Entity.TriggerComponent.Enable = false
+	
+	_PetManager:ChildPet(true)
 end
 end

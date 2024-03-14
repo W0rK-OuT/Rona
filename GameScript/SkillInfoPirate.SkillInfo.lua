@@ -408,6 +408,12 @@ elseif type == 512 then
 		skillTable["timeleap"] = math.max(20, 50 - level)
 		skillTable["buff"] = 1
 		skillTable["partyBuff"] = Vector2(8, 6)
+	elseif id == 5121008 then -- 용사의 의지
+		skillTable["calTime"] = math.max(1, 11 - level)
+		skillTable["mpCon"] = 30
+		skillTable["herowill"] = 1
+		skillTable["cooltime"] = math.max(60, 660 - 60 * level)
+		skillTable["buff"] = 1
 	end
 elseif type == 522 then
 	if id == 5221000 then -- 메이플 용사
@@ -494,6 +500,12 @@ elseif type == 522 then
 		skillTable["skillRange"] = Vector2(3.5, 0.4)
 		skillTable["skillPos"] = Vector2(-1.75, 0.2)
 		skillTable["weapon"] = {149}
+	elseif id == 5221010 then -- 용사의 의지
+		skillTable["calTime"] = math.max(1, 11 - level)
+		skillTable["mpCon"] = 30
+		skillTable["herowill"] = 1
+		skillTable["cooltime"] = math.max(60, 660 - 60 * level)
+		skillTable["buff"] = 1
 	end
 end
 return skillTable

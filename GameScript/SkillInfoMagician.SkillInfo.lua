@@ -518,6 +518,12 @@ elseif type == 212 then
 		skillTable["mastery"] = 10
 		skillTable["skillRange"] = Vector2(8, 6)
 		skillTable["skillPos"] = Vector2(0, 0.5)
+	elseif id == 2121008 then -- 용사의 의지
+		skillTable["calTime"] = math.max(1, 11 - level)
+		skillTable["mpCon"] = 30
+		skillTable["herowill"] = 1
+		skillTable["cooltime"] = math.max(60, 660 - 60 * level)
+		skillTable["buff"] = 1
 	end
 elseif type == 222 then
 	if id == 2221000 then -- 메이플 용사
@@ -608,6 +614,12 @@ elseif type == 222 then
 				["value"] = 1,
 			},
 		}
+	elseif id == 2221008 then -- 용사의 의지
+		skillTable["calTime"] = math.max(1, 11 - level)
+		skillTable["mpCon"] = 30
+		skillTable["herowill"] = 1
+		skillTable["cooltime"] = math.max(60, 660 - 60 * level)
+		skillTable["buff"] = 1
 	end
 elseif type == 232 then
 	if id == 2321000 then -- 메이플 용사
@@ -684,6 +696,12 @@ elseif type == 232 then
 		skillTable["mastery"] = 10
 		skillTable["skillRange"] = Vector2(8, 6)
 		skillTable["skillPos"] = Vector2(0, 0.5)
+	elseif id == 2321009 then -- 용사의 의지
+		skillTable["calTime"] = math.max(1, 11 - level)
+		skillTable["mpCon"] = 30
+		skillTable["herowill"] = 1
+		skillTable["cooltime"] = math.max(60, 660 - 60 * level)
+		skillTable["buff"] = 1
 	end
 end
 

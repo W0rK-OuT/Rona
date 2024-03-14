@@ -93,6 +93,9 @@ elseif skillType == 112 then
 	elseif skillID == 1121010 then -- 인레이지
 		effectTable["effect"] = "4706e268789643b9ad49180748b86b6e"
 		effectTable["useSound"] = "eaf9bac16cc6420ca50aa46401f385a4"
+	elseif skillID == 1121011 then -- 용사의 의지
+		effectTable["effect"] = "29ac7e5ba0eb45179ec99eb76846325b"
+		effectTable["useSound"] = "11271fec9d6842b5b8b0cf67f198869d"
 	end
 elseif skillType == 122 then
 	if skillID == 1221000 then -- 메이플 용사
@@ -105,6 +108,9 @@ elseif skillType == 122 then
 	elseif skillID == 1221003 or skillID == 1221004 then -- 홀리 차지
 		effectTable["effect"] = "cef2d6659a1343eca9b6512f81cd2452"
 		effectTable["useSound"] = "f8f89439d00a40149a884b20022c12a2"
+	elseif skillID == 1221012 then -- 용사의 의지
+		effectTable["effect"] = "29ac7e5ba0eb45179ec99eb76846325b"
+		effectTable["useSound"] = "11271fec9d6842b5b8b0cf67f198869d"
 	end
 elseif skillType == 132 then
 	if skillID == 1321000 then -- 메이플 용사
@@ -116,6 +122,9 @@ elseif skillType == 132 then
 		effectTable["useSound"] = "00858ec8dfd54ecd9a3fff804607cff9"
 	elseif skillID == 1321007 then -- 비홀더
 		effectTable["useSound"] = "5e133009681947c1a96c2382d79a2802"
+	elseif skillID == 1321010 then -- 용사의 의지
+		effectTable["effect"] = "29ac7e5ba0eb45179ec99eb76846325b"
+		effectTable["useSound"] = "11271fec9d6842b5b8b0cf67f198869d"
 	end
 elseif skillType == 200 then
 	if skillID == 2001002 then -- 매직 가드
@@ -200,6 +209,9 @@ elseif skillType == 212 then
 		effectTable["useSound"] = "f2e54b0c13e2494b8aed8f18cde28cda"
 	elseif skillID == 2121005 then -- 엘퀴네스
 		effectTable["useSound"] = "26f62380a10a49678c5ef66f40913bed"
+	elseif skillID == 2121008 then -- 용사의 의지
+		effectTable["effect"] = "29ac7e5ba0eb45179ec99eb76846325b"
+		effectTable["useSound"] = "11271fec9d6842b5b8b0cf67f198869d"
 	end
 elseif skillType == 222 then
 	if skillID == 2221000 then -- 메이플 용사
@@ -217,6 +229,9 @@ elseif skillType == 222 then
 		effectTable["useSound"] = "f2e54b0c13e2494b8aed8f18cde28cda"
 	elseif skillID == 2221005 then -- 이프리트
 		effectTable["useSound"] = "46f237b295794976b1b73b30877fad12"
+	elseif skillID == 2221008 then -- 용사의 의지
+		effectTable["effect"] = "29ac7e5ba0eb45179ec99eb76846325b"
+		effectTable["useSound"] = "11271fec9d6842b5b8b0cf67f198869d"
 	end
 elseif skillType == 232 then
 	if skillID == 2321000 then -- 메이플 용사
@@ -242,6 +257,9 @@ elseif skillType == 232 then
 		effectTable["affected"] = "41b04525b897482490a8340fd3eaf773"
 		effectTable["effect"] = "a64938eb6d9b4a3cbe027534597f7fc7"
 		effectTable["useSound"] = "fda4b4350ef14f07b2de294974efe1aa"
+	elseif skillID == 2321009 then -- 용사의 의지
+		effectTable["effect"] = "29ac7e5ba0eb45179ec99eb76846325b"
+		effectTable["useSound"] = "11271fec9d6842b5b8b0cf67f198869d"
 	end
 elseif skillType == 300 then
 	if skillID == 3001003 then -- 포커스
@@ -295,6 +313,9 @@ elseif skillType == 312 then
 	elseif skillID == 3121008 then -- 집중
 		effectTable["effect"] = "edc954a85374489fbc78b13a0851e2cc"
 		effectTable["useSound"] = "26448161151448aa927b82ae58333e51"
+	elseif skillID == 3121009 then -- 용사의 의지
+		effectTable["effect"] = "29ac7e5ba0eb45179ec99eb76846325b"
+		effectTable["useSound"] = "11271fec9d6842b5b8b0cf67f198869d"
 	end
 elseif skillType == 322 then
 	if skillID == 3221000 then -- 메이플 용사
@@ -310,6 +331,9 @@ elseif skillType == 322 then
 	elseif skillID == 3221006 then -- 블라인드
 		effectTable["effect"] = "85b455dba19546bb961a245270273bf8"
 		effectTable["useSound"] = "4e24c14a7c364f068acfd56b56d5f918"
+	elseif skillID == 3221008 then -- 용사의 의지
+		effectTable["effect"] = "29ac7e5ba0eb45179ec99eb76846325b"
+		effectTable["useSound"] = "11271fec9d6842b5b8b0cf67f198869d"
 	end
 elseif skillType == 400 then
 	if skillID == 4001003 then -- 다크사이트
@@ -361,12 +385,18 @@ elseif skillType == 412 then
 	elseif skillID == 4121006 then -- 스피릿 자벨린
 		effectTable["effect"] = "3c84e20fe91d4a7c98597556dc1a46dc"
 		effectTable["useSound"] = "8bc5a241032b4311a4cdd49946eda8d8"
+	elseif skillID == 4121009 then -- 용사의 의지
+		effectTable["effect"] = "29ac7e5ba0eb45179ec99eb76846325b"
+		effectTable["useSound"] = "11271fec9d6842b5b8b0cf67f198869d"
 	end
 elseif skillType == 422 then
 	if skillID == 4221000 then -- 메이플 용사
 		effectTable["effects"] = {{"a3cafd0a691c499da8b0f2356b2dd7e5", -1}}
 		effectTable["affected"] = "791637fc40ea48a2a2f458e0900f1ceb"
 		effectTable["useSound"] = "38de015026a14c0ebe29188a364eff00"
+	elseif skillID == 4221008 then -- 용사의 의지
+		effectTable["effect"] = "29ac7e5ba0eb45179ec99eb76846325b"
+		effectTable["useSound"] = "11271fec9d6842b5b8b0cf67f198869d"
 	end
 elseif skillType == 500 then
 	if skillID == 5001005 then -- 대쉬
@@ -405,6 +435,9 @@ elseif skillType == 512 then
 		effectTable["effects"] = {{"a3cafd0a691c499da8b0f2356b2dd7e5", -1}}
 		effectTable["affected"] = "791637fc40ea48a2a2f458e0900f1ceb"
 		effectTable["useSound"] = "38de015026a14c0ebe29188a364eff00"
+	elseif skillID == 5121008 then -- 용사의 의지
+		effectTable["effect"] = "29ac7e5ba0eb45179ec99eb76846325b"
+		effectTable["useSound"] = "11271fec9d6842b5b8b0cf67f198869d"
 	elseif skillID == 5121009 then -- 윈드 부스터
 		effectTable["effect"] = "f76fde4979184627babc81cdf3254126"
 		effectTable["affected"] = "d16a1b39fc654ed5965c321a55424870"
@@ -425,6 +458,9 @@ elseif skillType == 522 then
 		effectTable["effects"] = {{"aa7c8e6a75064aefb7a170b63f8ad40b", -1}}
 		effectTable["effect"] = "52ea05d56ce442928b24d4013043dff1"
 		effectTable["useSound"] = "4cae7563193a41ffbee86200ced23888"
+	elseif skillID == 5221010 then -- 용사의 의지
+		effectTable["effect"] = "29ac7e5ba0eb45179ec99eb76846325b"
+		effectTable["useSound"] = "11271fec9d6842b5b8b0cf67f198869d"
 	end
 end
 return effectTable

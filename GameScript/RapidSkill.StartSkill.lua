@@ -8,7 +8,7 @@ end
 if _PlayerComponent.state.CurrentStateName == "CROUCH" then
 	return
 end
-if _PlayerWeather.stun then
+if _PlayerWeather:IsKeyStop() then
 	return
 end
 if not _PlayerComponent.state.Enable then

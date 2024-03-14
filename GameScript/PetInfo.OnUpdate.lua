@@ -9,11 +9,11 @@ local pWorld = self.parent.TransformComponent.WorldPosition
 local stateName = self.parent.StateComponent.CurrentStateName
 if stateName == "LADDER" or stateName == "CLIMB" then
 	if self.Entity.RigidbodyComponent.Enable then
-		self.Entity.RigidbodyComponent:SetPosition(Vector2(0, 0))
 		self.Entity.RigidbodyComponent.MoveVelocity.x = 0
 		self.Entity.RigidbodyComponent.Enable = false
 		self.Entity.SpriteRendererComponent.SortingLayer = _UserService.LocalPlayer.AvatarRendererComponent.SortingLayer
 	end
+	self.Entity.RigidbodyComponent:SetWorldPosition(pWorld:ToVector2())
 	self:ChangeMotion("hang")
 	self.forceMove = false
 	return
@@ -29,13 +29,28 @@ end
 local disX = math.abs(mWorld.x - pWorld.x)
 local disY = math.abs(mWorld.y - pWorld.y)
 
-if disX >= 2.5 or disY >= 1.8 then
-	if self.parent.RigidbodyComponent:IsOnGround() then
+if _PlayerWeather.swim then
+	if disX >= 2.5 or disY >= 2 then
 		_EffectService:PlayEffectAttached("59a792ec0d8c4e559bcd7e47ec51ee48", self.Entity, Vector3.zero, 0, Vector3.one)
-		self.Entity.RigidbodyComponent:SetPosition(Vector2(0, 0.3))
+		self.Entity.RigidbodyComponent:SetWorldPosition(pWorld:ToVector2())
 		self.Entity.RigidbodyComponent.MoveVelocity.x = 0
 		self:ChangeMotion("stand0")
 		return
+	end
+	if mWorld.y < pWorld.y and disY > 1.8 then
+		if self.Entity.RigidbodyComponent.RealMoveVelocity.y < 0 then
+			self.Entity.RigidbodyComponent:AddForce(Vector2(0, 8.5))
+		end
+	end
+else
+	if disX >= 2.5 or disY >= 1.8 then
+		if self.parent.RigidbodyComponent:IsOnGround() then
+			_EffectService:PlayEffectAttached("59a792ec0d8c4e559bcd7e47ec51ee48", self.Entity, Vector3.zero, 0, Vector3.one)
+			self.Entity.RigidbodyComponent:SetWorldPosition(pWorld:ToVector2())
+			self.Entity.RigidbodyComponent.MoveVelocity.x = 0
+			self:ChangeMotion("stand0")
+			return
+		end
 	end
 end
 

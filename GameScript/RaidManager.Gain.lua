@@ -777,8 +777,8 @@ else
 		
 		local firstMob = chTable[1]
 		if firstMob ~= nil then
-			local chX = 0.9
-			local chY = 1.2
+			local chX = 1
+			local chY = 1.8
 			local chainTable = {}
 			---@type Vector2
 			local chPos = firstMob.TransformComponent.WorldPosition:ToVector2() + firstMob.TriggerComponent.ColliderOffset

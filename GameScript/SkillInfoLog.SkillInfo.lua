@@ -289,6 +289,12 @@ elseif type == 412 then
 		skillTable["damage"] = level <= 20 and 100 + 2 * level or 120 + level
 		skillTable["mpCon"] = 10 + math.ceil(level / 3)
 		skillTable["weapon"] = {147}
+	elseif id == 4121009 then -- 용사의 의지
+		skillTable["calTime"] = math.max(1, 11 - level)
+		skillTable["mpCon"] = 30
+		skillTable["herowill"] = 1
+		skillTable["cooltime"] = math.max(60, 660 - 60 * level)
+		skillTable["buff"] = 1
 	end
 elseif type == 422 then
 	if id == 4221000 then --  메이플 용사
@@ -329,6 +335,12 @@ elseif type == 422 then
 				["value"] = 1,
 			},
 		}
+	elseif id == 4221008 then -- 용사의 의지
+		skillTable["calTime"] = math.max(1, 11 - level)
+		skillTable["mpCon"] = 30
+		skillTable["herowill"] = 1
+		skillTable["cooltime"] = math.max(60, 660 - 60 * level)
+		skillTable["buff"] = 1
 	end
 end
 return skillTable
