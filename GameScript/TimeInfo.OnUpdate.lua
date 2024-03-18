@@ -47,6 +47,12 @@ else
 	local left1 = minutes % 100 // 10
 	local left2 = minutes % 10
 	_ClockManager.left1.ImageRUID = _ClockManager.numberTable[left1 + 1]
+	if left1 == 0 then
+		_ClockManager.left1.Enable = false
+	else
+		_ClockManager.left1.Enable = true
+	end
+	
 	_ClockManager.left2.ImageRUID = _ClockManager.numberTable[left2 + 1]
 	
 	local right1 = seconds % 100 // 10
@@ -57,8 +63,6 @@ else
 	if self.isHour then
 		self.isHour = false
 		self.Entity.SpriteGUIRendererComponent.ImageRUID = "10715bf47e324653ad14519dcee4b5d2"
-		
-		_ClockManager.left1.Enable = true
 	end
 end
 end

@@ -20,7 +20,7 @@ elseif id == 1002 then -- 민첩한 몸놀림
 	skillTable["cooltime"] = 60
 	skillTable["time"] = 4 * level
 	skillTable["buff"] = 1
-elseif id == 1012 then -- 민첩한 몸놀림
+elseif id == 1012 then -- 정령의 축복
 	skillTable["pad"] = level
 	skillTable["mad"] = level * 2
 	skillTable["acc"] = level

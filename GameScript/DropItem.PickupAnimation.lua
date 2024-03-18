@@ -13,9 +13,9 @@ tweenLine.Enable = false
 
 ani.DropAni.start = false
 
-local duration = 1.2
+local duration = 1
 local time = duration
-local magTime = 0.6 -- 투명 타임
+local magTime = 0.5 -- 투명 타임
 
 ---@type Vector2
 local startPos

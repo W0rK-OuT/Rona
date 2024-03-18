@@ -159,7 +159,7 @@ elseif skillID == 0 then
 					else
 						motion = "shoot2"
 					end
-					local x = 2.5 + playerSkill.rangeX / 100 
+					local x = 2.5 + playerSkill.rangeX / 100 + 0.3
 					local y = 1 -- 2
 					range.x = x
 					local nPos = playerPos + Vector2((isLeft and -1 or 1) * (x + y) / 2, 0)
@@ -219,9 +219,8 @@ elseif skillID == 0 then
 				throwSlot = nil
 			end
 		end
-		_SkillData:GetNormalSound(self.sfx)
 	end
-	
+	_SkillData:GetNormalSound(self.sfx)
     --if throwSlot == nil then
     --    _SkillData:GetNormalSound(self.sfx)
     --end
@@ -257,7 +256,11 @@ elseif finalAttack > 0 then -- 파이널 어택
 		local zeroAttack = _GameUtil:ConvertValue(oriSkillInfo["zeroAttack"], 0)
 		if zeroAttack > 0 then
 			local zeroMotion = _SkillData:GetNormalRandMotion(self.attack)
-			local posAndBox = _SkillData:GetNormalRange(weaponName .. "_" .. zeroMotion)
+			local posAndBox = _SkillData:GetZeroRange(weaponName .. "_" .. zeroMotion)
+			if posAndBox == nil then
+				return 1
+			end
+			
 			local calPos = playerBasePos + Vector2(isLeft and -posAndBox.pos.x or posAndBox.pos.x, posAndBox.pos.y)
 			local zeroBox = simul:OverlapBoxAll("monster", calPos, posAndBox.box, 0)
 			self:RangeUI(calPos, posAndBox.box, nil)		
@@ -273,7 +276,7 @@ elseif finalAttack > 0 then -- 파이널 어택
 		end
 		isRangeAttack = true
 		
-		local x = 2.5 + playerSkill.rangeX / 100 
+		local x = 2.5 + playerSkill.rangeX / 100 + 0.3
 		local y = 1 -- 2
 		range = Vector2(x, 0.4)
 		local nPos = playerPos + Vector2((isLeft and -1 or 1) * (x + y) / 2, 0)
@@ -475,6 +478,10 @@ else
 		if throwConsume > 0 then
 			throwSlot = player.PlayerInventory:CalcThrow(canConsume, stats.weaponID, throwConsume, stats.level)
 			if _UtilLogic:IsNilorEmptyString(throwSlot) then
+				--fixZero = true
+				isRapid = false
+				isRangeAttack = false
+				throwSlot = nil
 				skillID = 0
 				goto back
 			end
@@ -484,7 +491,13 @@ else
 	local zeroAttack = _GameUtil:ConvertValue(skillInfo["zeroAttack"], 0)
 	if zeroAttack > 0 then
 		local zeroMotion = _SkillData:GetNormalRandMotion(self.attack)
-		local posAndBox = _SkillData:GetNormalRange(weaponName .. "_" .. zeroMotion)
+		local posAndBox = _SkillData:GetZeroRange(weaponName .. "_" .. zeroMotion)
+		if posAndBox == nil then
+			if Environment:IsMakerPlay() then
+				log(weaponName .. "_" .. zeroMotion .. " nil")
+			end
+			return 1
+		end
 		local calPos = playerBasePos + Vector2(isLeft and -posAndBox.pos.x or posAndBox.pos.x, posAndBox.pos.y)
 		local zeroBox = simul:OverlapBoxAll("monster", calPos, posAndBox.box, 0)
 		self:RangeUI(calPos, posAndBox.box, nil)		
@@ -494,6 +507,12 @@ else
 			end
 			local mobInfo = value.Entity.MobInfo
 			if mobInfo ~= nil and mobInfo:IsAlive() then
+				if math.floor(weaponID / 10000) == playerSkill.mortalWeapon and playerSkill.mortalBlow > 0 and math.random(1, 100) <= playerSkill.mortalBlowRand then
+					box = zeroBox
+					skillID = playerSkill.mortalBlow
+					goto back
+				end
+				
 				motion = zeroMotion
 				box = zeroBox
 				fixZero = true
@@ -537,7 +556,7 @@ else
 	local range
 	local baseRange = _GameUtil:ConvertValue(skillInfo["baseRange"], 0)
 	if baseRange == 1 then
-		local x = 2.5 + playerSkill.rangeX / 100 
+		local x = 2.5 + playerSkill.rangeX / 100 + 0.3
 		local y = 1 -- 2
 		range = Vector2(x, 0.4)
 		local nPos = playerPos + Vector2((isLeft and -1 or 1) * (x + y) / 2, 0)
@@ -1059,6 +1078,13 @@ end
 
 if roar > 0 then
 	self:RoarStun(roar)
+end
+if isRapid then
+	_RaidManager.nextAttackDelay = lastTick + 0.105
+	_RapidSkill:StartSkill(skillID)
+	_SoundService:PlaySound(_RapidSkill:AttackSound(skillID), 1)
+else
+	_RapidSkill:EndSkill()
 end
 
 _SkillStart2:Attack(player, finalMobTable, skillID, isLeft, throwSlot, isProneStab, isRangeAttack, playerBasePos, lastTick, healPlayers, isSoulArrow, motion, math.max(2, calcAttackSpeed), finalAttack, charge)

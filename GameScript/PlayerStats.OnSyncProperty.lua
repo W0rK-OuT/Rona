@@ -1,6 +1,7 @@
 return function (self,name,value) 
 if name == "hp" or name == "currentHp" then
 	_UserService.LocalPlayer.PlayerParty:UpdatePartyHpBar(self.hp, self.currentHp, self.Entity)
+	_DeadManager:Tomb(self.Entity, self.hp <= 0)
 elseif name == "deco" then
 	_DecoManager:UpdateDecoRUID(self.Entity, value)
 end

@@ -11,6 +11,7 @@ end
 
 _TimerService:ClearTimer(self._T.endTimer)
 
+self.isMotion = true
 local delay = _Util:MathRound(oriDelay * (math.max(2, weaponSpeed) + 10) / 16 / 30) * 30
 local playRate = oriDelay / delay 
 
@@ -28,7 +29,6 @@ if skillID == 4221007 then
 	end
 	local option = {}
 	option["PlayRate"] = playRate
-	log(playRate)
 	--_EffectService:PlayEffectAttached("3ad556d9a8774330a137231745449ab0", _UserService.LocalPlayer, Vector3.zero, 0, Vector3.one, false, option)
 end
 
@@ -80,6 +80,7 @@ for key, value in pairs(actionTable) do
     --log("기본 " .. oriDelay .. " / 변형 " .. attackDelay .. " / 누적 " .. pDelay .. " / " .. attackActionName .. "_" .. attackFrame .. " / 속도 " .. calRate)
 end
 local motionDelay = function()
+	self.isMotion = false
 	if not isTaming then
 		if rootTrans.Position.x ~= 0 then
 			rootTrans.Position.x = 0

@@ -6,6 +6,8 @@ local delay = _Util:MathRound(oriDelay * (math.max(2, weaponSpeed) + 10) / 16 / 
 local playRate = oriDelay / delay
 
 self.nextAttackDelay = lastTick + delay / 1000
+self.isMotion = true
+
 _PlayerComponent:SetState(false, false)
 _PlayerComponent.controller.Enable = false
 
@@ -18,6 +20,7 @@ end
 
 local motionDelay = function()
 	_UserService.LocalPlayer.PlayerMotion.attState = ""
+	self.isMotion = false
 	if not _RapidSkill.rapid then
 		_PlayerComponent:SetState(false, true)
 		_PlayerComponent.controller.Enable = true

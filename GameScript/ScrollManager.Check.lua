@@ -1,6 +1,6 @@
-return function (self,player,equipSlot,scrollSlot) 
+return function (self,player,isEquip,equipSlot,scrollSlot) 
 local playerInventory = player.PlayerInventory
-local inv0 = playerInventory.inv0
+local findInv = playerInventory:GetInv(isEquip and 0 or 1)
 local inv2 = playerInventory.inv2
 
 if _UtilLogic:IsNilorEmptyString(equipSlot) then
@@ -9,7 +9,7 @@ end
 if _UtilLogic:IsNilorEmptyString(scrollSlot) then
 	return 2
 end
-local eq = inv0[equipSlot]
+local eq = findInv[equipSlot]
 if eq == nil then
 	return 3
 end
@@ -24,6 +24,10 @@ if not _GameUtil:IsScroll(scrollID) then
 end
 if not self:CheckEquipAndScroll(equipID, scrollID) then
 	return 6
+end
+
+if not isEquip and player.PlayerSkill:GetSkillLevel(_SkillUIManager:BaseSkillByJob(1003, player.PlayerStats.job)) <= 0 then
+	return 7
 end
 
 return 0

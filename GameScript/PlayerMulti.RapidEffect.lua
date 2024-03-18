@@ -4,11 +4,16 @@ if not isvalid(player) then
 	return
 end
 
-if isStart and player ~= _UserService.LocalPlayer then
-	local motion = _RapidSkill:Motion(id)
-	local index = _RapidSkill:Index(id)
-	local event = ActionStateChangedEvent(motion, motion, 1, SpriteAnimClipPlayType.Loop, index, index)
-	player.AvatarRendererComponent:GetBodyEntity():SendEvent(event)
+if player ~= _UserService.LocalPlayer then
+	if isStart then
+		local motion = _RapidSkill:Motion(id)
+		local index = _RapidSkill:Index(id)
+		local event = ActionStateChangedEvent(motion, motion, 1, SpriteAnimClipPlayType.Loop, index, index)
+		player.AvatarRendererComponent:GetBodyEntity():SendEvent(event)
+	else
+		local event = ActionStateChangedEvent("stand1", "stand1", 10, SpriteAnimClipPlayType.Onetime, 0, 0)
+		player.AvatarRendererComponent:GetBodyEntity():SendEvent(event)
+	end
 end
 
 local rapidEffect = player:GetChildByName("RapidEffect")

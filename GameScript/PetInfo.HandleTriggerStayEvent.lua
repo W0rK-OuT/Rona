@@ -7,8 +7,8 @@ return function (self,event)
 -- Parameters
 local TriggerBodyEntity = event.TriggerBodyEntity
 ---------------------------------------------------------
-local drop = TriggerBodyEntity.DropItem
-if drop ~= nil and drop:CheckPickup(_UserService.LocalPlayer, true) then
-	_DropData:SetPickup(_UserService.LocalPlayer, TriggerBodyEntity, true)
+local ani = TriggerBodyEntity.DropAni
+if ani ~= nil then
+	ani:Pickup(true)
 end
 end

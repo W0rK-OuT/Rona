@@ -1,4 +1,7 @@
 return function (self,index) 
+if index == nil then
+	return
+end
 if index < 1 then
 	return
 end

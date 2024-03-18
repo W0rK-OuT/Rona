@@ -8,11 +8,13 @@ if self.rapid then
     --self.lastTick = now + 0.12
 	self.rapid = false
 	
-	_PlayerComponent:SetState(true, true)
-	_PlayerComponent.controller.Enable = true
-	if _PlayerComponent.state.CurrentStateName ~= "DEAD" then
-		_PlayerComponent.state:ChangeState("MOVE")
-		_PlayerComponent.state:ChangeState("IDLE")
+	if not _RaidManager.isMotion then
+		_PlayerComponent:SetState(true, true)
+		_PlayerComponent.controller.Enable = true
+		if _PlayerComponent.state.CurrentStateName ~= "DEAD" then
+			_PlayerComponent.state:ChangeState("MOVE")
+			_PlayerComponent.state:ChangeState("IDLE")
+		end
 	end
 end
 end

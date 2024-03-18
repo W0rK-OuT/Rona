@@ -1,5 +1,5 @@
 return function (self) 
-local msgType = self:Check(_UserService.LocalPlayer, self.equipSlot, self.scrollSlot)
+local msgType = self:Check(_UserService.LocalPlayer, true, self.equipSlot, self.scrollSlot)
 if msgType == 0 then
 	self:UseScroll(_UserService.LocalPlayer, self.equipSlot, self.scrollSlot)
 elseif msgType == 1 then
@@ -14,5 +14,7 @@ elseif msgType == 5 then
 	_MessageLogic:DropMessage("사용한 아이템이 주문서가 아닙니다.")
 elseif msgType == 6 then
 	_MessageLogic:DropMessage("주문서와 아이템의 매칭이 다릅니다.")
+elseif msgType == 7 then
+	_MessageLogic:DropMessage("장인의 혼이 없습니다.")
 end
 end

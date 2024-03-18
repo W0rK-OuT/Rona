@@ -3,11 +3,17 @@ local chars = self.main:GetChildByName("Chars")
 local sample = chars:GetChildByName("Sample")
 sample:SetEnable(false)
 
-for idx = 1, self.showCount do
+for idx = self.showCount, 1, -1 do
 	local clone = chars:GetChildByName("Char" .. idx)
 	if clone == nil then
 		clone = sample:Clone("Char" .. idx)
-		clone.UITransformComponent.anchoredPosition.x = -500 + 250 * idx
+		if idx <= 3 then
+			clone.UITransformComponent.anchoredPosition.x = -500 + 250 * idx
+		else
+			local anPos = clone.UITransformComponent.anchoredPosition
+			anPos.y = 162
+			anPos.x = -600 + 250 * (idx - 3)
+		end
 		clone:GetChildByName("Light"):SetEnable(false)
 		clone:GetChildByName("Char"):SetEnable(false)
 		clone:GetChildByName("Char2"):SetEnable(false)

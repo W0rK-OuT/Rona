@@ -58,7 +58,7 @@ for idx = 0, 5 do
 	end
 end
 
-local normal = _Util:FindTable_All("NortalAttack")
+local normal = _Util:FindTable_All("NormalAttack")
 for key, value in pairs(normal) do
 	local name = value["weapon"]
 	local motion = value["motion"]
@@ -78,6 +78,18 @@ for key, value in pairs(normal) do
     --end
     --::continue::
 end
+
+local zero = _Util:FindTable_All("ZeroAttack")
+for key, value in pairs(zero) do
+	local name = value["weapon"]
+	local motion = value["motion"]
+	local boxX = tonumber(value["boxX"]) / 100
+	local boxY = tonumber(value["boxY"]) / 100
+	local posX = tonumber(value["posX"]) / 100
+	local posY = tonumber(value["posY"]) / 100
+	self.zeroRange[name .. "_" .. motion] = NormalRange(Vector2(boxX, boxY), Vector2(posX, posY))
+end
+
 local skillAction = _Util:FindTable_All("SkillAction")
 for key, value in pairs(skillAction) do
 	local id = tonumber(value["id"])

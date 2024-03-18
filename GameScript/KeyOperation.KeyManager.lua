@@ -2,9 +2,9 @@ return function (self,anyKey,hold)
 if self.keyDonwID > 0 then
 	return
 end
-if self.rapidID > 0 then
-	return
-end
+--if self.rapidID > 0 then
+--    return
+--end
 if self.openShopAndNpc then
 	return
 end

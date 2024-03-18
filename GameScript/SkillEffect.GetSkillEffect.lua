@@ -325,7 +325,10 @@ elseif skillType == 320 then
 		effectTable["noBallEffect"] = 2
 	end
 elseif skillType == 311 then
-	if skillID == 3111003 then -- 파이어 샷
+	if skillID == 3110001 then -- 모탈 블로우
+		effectTable["effect"] = "06111f2890954500adc3a4d2a0228e78"
+		effectTable["useSound"] = _MaplePreferencesLogic.WeaponBowSound
+	elseif skillID == 3111003 then -- 파이어 샷
 		effectTable["ball"] = "c88bc152a7714deb8d439cf79a138d54"
 		effectTable["effect"] = "ea86e9cccf7e4b37abcfbe86a99795f7"
 		effectTable["hit"] = "cf1065a749db456e86957eafc1fbf450"
@@ -354,7 +357,10 @@ elseif skillType == 311 then
 		effectTable["attackDelay"] = 20
 	end
 elseif skillType == 321 then
-	if skillID == 3211003 then -- 아이스 샷
+	if skillID == 3210001 then -- 모탈 블로우
+		effectTable["effect"] = "06111f2890954500adc3a4d2a0228e78"
+		effectTable["useSound"] = _MaplePreferencesLogic.WeaponCrossBowSound
+	elseif skillID == 3211003 then -- 아이스 샷
 		effectTable["effect"] = "7fdfe173a3a24f4193efa1b90d47c8b7"
 		effectTable["effects"] = {{"34a304183bbc4ac099932e57c651a59a", 0}}
 		--effectTable["hit"] = "6bfce3aecefd41fcbd142c943f47fd71"

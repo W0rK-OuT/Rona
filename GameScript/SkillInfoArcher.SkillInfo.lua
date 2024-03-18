@@ -150,6 +150,20 @@ elseif type == 320 then
 elseif type == 311 then
 	if id == 3110000 then -- 쓰러스트
 		skillTable["speed"] = level <= 10 and level * 2 or level + 10
+	elseif id == 3110001 then -- 모탈 블로우
+		skillTable["throwConsume"] = 1
+		skillTable["weapon"] = {145}
+		skillTable["setRange"] = 1
+		skillTable["noActive"] = 1
+		skillTable["mpCon"] = 0
+		skillTable["damage"] = level <= 10 and 100 + 10 * level or 150 + 5 * level
+		skillTable["mortalWeapon"] = 145
+		skillTable["mortalBlow"] = id
+		skillTable["mortalBlowRand"] = 30 + 3 * level
+		skillTable["mortalBlowHp"] = 20 + math.ceil((level - 1) / 2) * 3
+		skillTable["mortalBlowCut"] = math.ceil(level / 2)
+		skillTable["skillRange"] = Vector2(0.4, 0.8)
+		skillTable["skillPos"] = Vector2(-0.25, 0.3)
 	elseif id == 3111003 then -- 파이어 샷
 		skillTable["zeroAttack"] = 1
 		skillTable["baseRange"] = 1
@@ -218,6 +232,20 @@ elseif type == 311 then
 elseif type == 321 then
 	if id == 3210000 then -- 쓰러스트
 		skillTable["speed"] = level <= 10 and level * 2 or level + 10
+	elseif id == 3210001 then -- 모탈 블로우
+		skillTable["throwConsume"] = 1
+		skillTable["weapon"] = {146}
+		skillTable["setRange"] = 1
+		skillTable["noActive"] = 1
+		skillTable["mpCon"] = 0
+		skillTable["damage"] = level <= 10 and 100 + 10 * level or 150 + 5 * level
+		skillTable["mortalWeapon"] = 146
+		skillTable["mortalBlow"] = id
+		skillTable["mortalBlowRand"] = 30 + 3 * level
+		skillTable["mortalBlowHp"] = 20 + math.ceil((level - 1) / 2) * 3
+		skillTable["mortalBlowCut"] = math.ceil(level / 2)
+		skillTable["skillRange"] = Vector2(0.4, 0.8)
+		skillTable["skillPos"] = Vector2(-0.25, 0.3)
 	elseif id == 3211003 then -- 아이스 샷
 		skillTable["zeroAttack"] = 1
 		skillTable["baseRange"] = 1

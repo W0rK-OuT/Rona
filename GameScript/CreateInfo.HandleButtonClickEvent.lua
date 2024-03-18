@@ -14,13 +14,8 @@ if name == "Arrow1" then
 elseif name == "Arrow2" then
 	_StartGame:ClickArrow(false)
 elseif name == "Button" then
-	if Entity.Parent.Name == "Char1" then
-		_StartGame:ClickChar(1)
-	elseif Entity.Parent.Name == "Char2" then
-		_StartGame:ClickChar(2)
-	elseif Entity.Parent.Name == "Char3" then
-		_StartGame:ClickChar(3)
-	end
+	local num = tonumber(_UtilLogic:SubString(Entity.Parent.Name, 5, 1))
+	_StartGame:ClickChar(num)
 elseif name == "Start" then
 	_StartGame:StartChar()
 elseif name == "Remove" then

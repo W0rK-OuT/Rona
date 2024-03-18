@@ -588,4 +588,14 @@ return function (self,player,mobTable,skillID,isLeft,throwSlot,isProneStab,isRan
 
 
 
+
+
+
+
+
+
+
+
+
+
 end

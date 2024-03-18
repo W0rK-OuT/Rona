@@ -48,6 +48,12 @@ elseif mmm == "랜덤주문서확률" then
 	_RandomBoxManager:UpdateUI(_RandItemData:GetCurseScrollTable(), 1, 2)
 elseif mmm == "주문서확률" then
 	_RandomBoxManager:DropRand()
+elseif mmm == "캐시확률" then
+	_MessageLogic:BigDropMessage("0~1 상승 : 0 (50%), 1 (50%)"
+		.. "\n0~2 상승 : 0 (33.33%), 1 (33.33%), 2 (33.33%)"
+		.. "\n0~3 상승 : 0 (25%), 1 (25%), 2 (25%), 3 (25%)"
+		.. "\n0~4 상승 : 0 (20%), 1 (20%), 3( 20%), 4(20%)"
+		.. "\n0~5 상승 : 0 (16.66%), 2 (16.66%), 3 (16.66%), 4 (16.66%), 5 (16.66%)", 900)
 elseif mmm == "채팅지우기" then
 	_ChatManager:RestMessage()
 elseif mmm == "채팅크기" then
@@ -70,10 +76,13 @@ elseif mmm == "조이스틱y" then
 	self:SetJoy("y", tonumber(msgTable[2]))
 elseif mmm == "상태" then
 	self:StatusCheck(_UserService.LocalPlayer)
+elseif mmm == "환승" then
+	self:MoveWorld(_UserService.LocalPlayer)
 elseif mmm == "명령어" then
 	local msg = "/펫확률"
 	msg ..= "\n/뱃지확률"
 	msg ..= "\n/주문서확률"
+	msg ..= "\n/캐시확률"
 	msg ..= "\n/전직 <전직명>"
 	msg ..= "\n/교환 <닉네임>"
 	msg ..= "\n/채팅지우기"
@@ -86,6 +95,7 @@ elseif mmm == "명령어" then
 	msg ..= "\n/조이스틱x <0~3000> : x축 조정 (기본 210)"
 	msg ..= "\n/조이스틱y <0~3000> : y축 조정 (기본 130)"
 	msg ..= "\n/상태 : 패널티 확인"
+	msg ..= "\n/환승 : 환승 구역으로 이동"
 	_MessageLogic:BigDropMessage(msg, 600)
 else
 	_MessageLogic:ChatMessage(5, "존재하지 않는 명령어입니다. '/명령어'를 입력하세요.")
