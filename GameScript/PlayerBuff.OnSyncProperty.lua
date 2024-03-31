@@ -38,5 +38,7 @@ elseif name == "weakness" then
 	_PlayerWeather:UpdateWeakness(value)
 elseif name == "slow" then
 	_StatUILogic:UpdateSpeed()
+elseif name == "homingMonster" or name == "homingObj" then
+	_HomingManager:CalcHoming(self.homingMonster, self.homingObj)
 end
 end

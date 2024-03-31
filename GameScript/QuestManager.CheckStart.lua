@@ -177,12 +177,17 @@ for k, v in pairs(checkData) do
 	elseif k == "mbcard" then
 		local cards = player.PlayerStats.card
 		for _, vv in pairs(v) do
-			local id = vv["id"]
+			local id = tonumber(vv["id"])
 			local min = _GameUtil:ConvertValue(vv["min"], 0)
 			local cardCount = _GameUtil:ConvertValue(cards[tostring(id % 10000)], 0)
 			if cardCount < min then
 				return 0
 			end
+		end
+	elseif k == "mbmin" then
+		local cardCount = _Util:TableKeyLen(player.PlayerStats.card)
+		if cardCount < v then
+			return 0
 		end
 	elseif k == "pop" then
 		if player.PlayerStats.pop < v then
@@ -190,7 +195,7 @@ for k, v in pairs(checkData) do
 		end		
 	--------
 	-- 코딩 필요
-	elseif k == "partyQuest_S" or k == "questComplete" or k == "mbcard" or k == "mbmin" or k == "buff" or k == "exceptbuff" or k == "equipSelectNeed" then
+	elseif k == "partyQuest_S" or k == "questComplete" or k == "buff" or k == "exceptbuff" or k == "equipSelectNeed" then
 		return 0
 	--------
 	elseif k == "pet" or k == "tamingmoblevelmin" or k == "pettamenessmin" then -- 불가능 퀘스트

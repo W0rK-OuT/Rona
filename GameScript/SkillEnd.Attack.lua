@@ -649,4 +649,25 @@ return function (self,player,monster,motion,atRate,skillInfo,skillEffect,basePos
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 end

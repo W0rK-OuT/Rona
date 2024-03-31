@@ -1,4 +1,4 @@
-return function (self,spawnPos,ruid,isLeft,ddd,mobHitCount,attackCount,time,desVector,isOneBall,baseDelay,noBallEffect,findRange,rotate,ballSpeed) 
+return function (self,spawnPos,ruid,isLeft,ddd,mobHitCount,attackCount,time,desVector,isOneBall,baseDelay,noBallEffect,findRange,rotate,ballSpeed,rangeDelay) 
 if noBallEffect > 0 then
 	time = findRange / (ballSpeed / 0.75)
 end
@@ -37,7 +37,7 @@ local del = function()
 		end
 		
         if not isOneBall then
-            wait(0.12)
+            wait(rangeDelay / 1000)
         end
 	end
 end

@@ -1,4 +1,8 @@
 return function (self,type,value,curValue) 
+if _PlayerWeather.seduce > 0 then
+	return
+end
+
 local oriValue = type == 0 and self.oriHp or self.oriMp
 if type == 0 then
 	self.oriHp = value

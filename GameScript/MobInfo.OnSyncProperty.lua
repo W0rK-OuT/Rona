@@ -2,7 +2,9 @@ return function (self,name,value)
 --if name == "noHit" then
 --    self.Entity.TriggerComponent.Enable = not value
 --else
-if name == "level" then
+if name == "obj" then
+	_HomingManager:CalcHoming(self.Entity, value)
+elseif name == "level" then
 	local modelName = self.Entity.Model.Name
 	local spl = _UtilLogic:Split(modelName, "_")
 	local mobName = spl[2]

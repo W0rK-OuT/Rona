@@ -13,6 +13,9 @@ nTable[2201003] = "ec7a0b11a6f34e40b17c875d360ee24c" -- 슬로우
 nTable[2111004] = "7f8c0f4a52da4fb387c91d2f056296fd" -- 씰
 nTable[2211004] = "7f8c0f4a52da4fb387c91d2f056296fd" -- 씰
 
+nTable[3121007] = "ec7a0b11a6f34e40b17c875d360ee24c" -- 슬로우 햄스트링
+nTable[3221006] = "0547c30fd21342df8ccb28ff543c09cb" -- 암흑 블라인드
+
 self.ruid = nTable
 
 local mobUseTable = {}

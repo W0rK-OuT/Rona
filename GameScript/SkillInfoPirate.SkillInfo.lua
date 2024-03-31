@@ -321,6 +321,7 @@ elseif type == 521 then
 			},
 		}
 	elseif id == 5211006 then -- 호밍
+		skillTable["jumpAttack"] = 1
 		skillTable["mpCon"] = 15 + 5 * math.ceil(level / 10)
 		skillTable["damage"] = 140 + 8 * level
 		skillTable["setRange"] = 1
@@ -353,7 +354,7 @@ elseif type == 512 then
 		skillTable["mobCount"] = 1 + math.ceil(level / 6)
 		skillTable["skillRange"] = Vector2(2, 0.4)
 		skillTable["skillPos"] = Vector2(-1, 0.2)
-		skillTable["chain"] = 1
+		skillTable["chain"] = 2
 		skillTable["yRange"] = 75
 		skillTable["canEnergy"] = 1
 		skillTable["weapon"] = {0, 148}
@@ -490,6 +491,7 @@ elseif type == 522 then
 		skillTable["skillPos"] = Vector2(-2.05, 0.3)
 		skillTable["weapon"] = {149}
 	elseif id == 5220011 then -- 어드밴스드 호밍
+		skillTable["jumpAttack"] = 1
 		skillTable["noActive"] = 1
 		skillTable["mpCon"] = 30 + 5 * math.ceil(level / 10)
 		skillTable["damage"] = 380 + 10 * level

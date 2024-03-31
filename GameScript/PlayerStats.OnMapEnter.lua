@@ -15,12 +15,14 @@ if self:IsServer() then
 		return
 	end
 	
+	local player = self.Entity
+	
 	if mapInfo.bgm == nil then
-		_SoundService:StopBGM(true, self.Entity)
+		_SoundService:StopBGM(true, player)
 		self.sound = ""
 	else
 		if self.sound ~= mapInfo.bgm then
-			_SoundService:PlayBGM(mapInfo.bgm, 1, self.Entity.Name)
+			_SoundService:PlayBGM(mapInfo.bgm, 1, player.Name)
 			self.sound = mapInfo.bgm
 		end
 	end
@@ -31,13 +33,15 @@ if self:IsServer() then
 		lastMap = mapInfo.id
 	end
 	if lastMap > 0 then
-		self.Entity.PlayerStats.mapid = lastMap
+		player.PlayerStats.mapid = lastMap
 	end
 	
-	self.Entity.PlayerEventStat.state = mapInfo.fieldType == 140
+	player.PlayerEventStat.state = mapInfo.fieldType == 140
 	
 	mapInfo:EnterPlayer()
-	self.Entity.PlayerNpcTalk:Dispose()
+	player.PlayerNpcTalk:Dispose()
+	player.PlayerBuff.homingObj = 0
+	player.PlayerBuff.homingMonster = nil
 	
 	self.lastMapEnter = _UtilLogic.ServerElapsedSeconds
 else

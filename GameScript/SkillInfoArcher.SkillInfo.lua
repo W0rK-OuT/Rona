@@ -4,8 +4,8 @@ local type = math.floor(id / 10000)
 if type == 300 then
 	if id == 3000000 then -- 아마존의 축복
 		skillTable["acc"] = level
-	elseif id == 3000001 then -- 크리티컬 
-		skillTable["criticalProp"] = 10 + level * 2
+	elseif id == 3000001 then -- 크리티컬
+		skillTable["criticalProp"] = level <= 10 and 10 + level * 2 or 20 + level
 		skillTable["criticalDamage"] = 5 * level
 	elseif id == 3000002 then -- 아마존의 눈
 		skillTable["rangeX"] = 15 * level
@@ -297,6 +297,7 @@ elseif type == 321 then
 		skillTable["damage"] = 70 + level
 		skillTable["attackCount"] = 4
 		skillTable["throwConsume"] = 4
+		skillTable["freezeKill"] = math.ceil(level / 10)
 		skillTable["weapon"] = {146}
 	end
 elseif type == 312 then
@@ -434,6 +435,7 @@ elseif type == 322 then
 	elseif id == 3221007 then -- 스나이핑
 		skillTable["zeroAttack"] = 1
 		skillTable["baseRange"] = 1
+		skillTable["sniping"] = 1
 		skillTable["mpCon"] = 41 - level
 		skillTable["cooltime"] = level <= 5 and 265 - 15 * level or level <= 17 and 240 - 10 * level or level >= 30 and 4 or 155 - 5 * level
 		skillTable["damage"] = 100

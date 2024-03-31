@@ -77,6 +77,7 @@ local roar = 0
 local isRapid = false
 local cancelRapid = false
 local isReactorAttack = false
+local isHomingSkill = false
 local weaponName = stats.weaponName
 
 ::back::
@@ -86,7 +87,7 @@ if isProneStab then
 	skillID = 0
 	motion = "proneStab"
 	sMotion = false
-	_CoolTime.attackDelay = -self:ProneStab(motion, calcAttackSpeed) / 1000
+	_CoolTime.attackDelay = -_SkillHelper:ProneStab(motion, calcAttackSpeed) / 1000
 	
 	local posAndBox = _SkillData:GetNormalRange(weaponName .. "_" .. motion)
 	local calPos = playerBasePos + Vector2(isLeft and -posAndBox.pos.x or posAndBox.pos.x, posAndBox.pos.y)
@@ -743,7 +744,7 @@ else
 		for k, v in pairs(firstMobTable) do
 			table.insert(bombTable, k)
 		end
-		self:SortMonsters(bombTable, playerPos)
+		_SkillHelper:SortMonsters(bombTable, playerPos)
 		
 		---@type Entity
 		local bombMonster = bombTable[1]
@@ -761,7 +762,7 @@ else
 				if mobInfo ~= nil and mobInfo:IsAlive() then
 					table.insert(mobTable, value.Entity)
 				end
-				self:SortMonsters(mobTable, bombPos)
+				_SkillHelper:SortMonsters(mobTable, bombPos)
 			end
 			isLastMobCalc = false
 		end
@@ -792,7 +793,7 @@ else
 				table.insert(chTable, k)
 			end
 		end
-		self:SortMonsters(chTable, playerPos)
+		_SkillHelper:SortMonsters(chTable, playerPos)
 		
 		local firstMob = chTable[1]
 		if firstMob ~= nil then
@@ -826,7 +827,7 @@ else
 				for k, _ in pairs(chainTable) do
 					table.insert(mobTable, k)
 				end
-				self:SortMonsters(mobTable, playerPos)
+				_SkillHelper:SortMonsters(mobTable, playerPos)
 			end
 		end
 		isLastMobCalc = false
@@ -847,7 +848,7 @@ else
 	if finalAttack == 0 and playerBuff.finalRand > 0 and playerBuff.finalAttack > 0 then
 		local ableFinal = _GameUtil:ConvertValue(skillInfo["ableFinal"], 0)
 		if ableFinal > 0 and math.random(1, 100) <= playerBuff.finalRand then
-			local delay = _Util:MathRound(600 * (math.max(2, calcAttackSpeed) + 10) / 16 / 30) * 30
+			local delay = _SkillHelper:CalcSpeed(600, calcAttackSpeed)
 			local func = function()
 				self:Gain(playerBuff.finalAttack, _UtilLogic.ServerElapsedSeconds, skillID, 0)
 			end
@@ -857,7 +858,7 @@ else
 	
 	if skillID == 4221001 then
 		if finalAttack == 0 then
-			local delay = 50 + _Util:MathRound(1820 * (math.max(2, calcAttackSpeed) + 10) / 16 / 30) * 30
+			local delay = 50 + _SkillHelper:CalcSpeed(1820, calcAttackSpeed)
 			local func = function()
 				local now = _UtilLogic.ServerElapsedSeconds
 				if _RaidManager.nextAttackDelay < now then
@@ -873,6 +874,7 @@ else
 	masteryEff = _GameUtil:ConvertValue(skillInfo["noMastery"], 0) == 0
 	noHitCancel = _GameUtil:ConvertValue(skillInfo["noHitCancel"], 0) > 0
 	attackCount = _GameUtil:ConvertValue(skillInfo["attackCount"], 1)
+	isHomingSkill = _GameUtil:ConvertValue(skillInfo["homing"], 0) > 0
 	sMotion = true
 	
 	if delayTime > 0 then
@@ -900,10 +902,24 @@ if isLastMobCalc then
 		end
 	end
 	
+	local findHoming
+	local isHoming = not isHomingSkill and isvalid(playerBuff.homingMonster)
 	for key, value in pairs(firstMobTable) do
-		table.insert(mobTable, key)
+		---@type Entity
+		local monster = key
+		if isHoming then
+			if playerBuff.homingMonster == monster and monster.MobInfo.obj == playerBuff.homingObj then
+				findHoming = monster
+				continue
+			end
+		end
+		table.insert(mobTable, monster)
 	end
-	self:SortMonsters(mobTable, playerPos)
+	_SkillHelper:SortMonsters(mobTable, playerPos)
+	
+	if findHoming ~= nil then
+		table.insert(mobTable, 1, findHoming)
+	end
 end
 
 if not isRangeAttack and isSoulArrow then
@@ -940,16 +956,20 @@ if not player.PlayerEvent.isEvent then
 		self.count = 0
 		self.lastPos = lastPos
 	end
+	
+	if mobTableCount > 0 then
+		if _SkillMove.lastNum >= 30 then
+			if sMotion then
+				self:SpecialAction(skillID, motion, calcAttackSpeed, masteryEff, lastTick)
+			end
+			_MessageLogic:ShowMessage("클릭이 감지되지 않아서 공격이 취소되었습니다.")
+			return 1
+		end
+		_SkillMove.lastNum += isRapid and 0.1 or 1
+	end
 end
 
 if mobTableCount > 0 then
-	if _SkillMove.lastNum >= 30 then
-		if sMotion then
-			self:SpecialAction(skillID, motion, calcAttackSpeed, masteryEff, lastTick)
-		end
-		_MessageLogic:ShowMessage("클릭이 감지되지 않아서 공격이 취소되었습니다.")
-		return 1
-	end
 	local hitInvincibility = _GameUtil:ConvertValue(skillInfo["hitInvincibility"], 0)
 	if hitInvincibility > 0 then
 		local cal = lastTick + hitInvincibility
@@ -1003,8 +1023,6 @@ if mobTableCount > 0 then
 		end
 		_TweenLogic:PlayTween(0, hitSlide, 0.15, EaseType.Linear, tweenFunc)
 	end
-	
-	_SkillMove.lastNum += isRapid and 0.1 or 1
 end
 
 if finalAttack == -4221001 then
@@ -1058,22 +1076,25 @@ else
 	if attackCount > 1 then
 		local countSound = effect["countSound"]
 		if not _UtilLogic:IsNilorEmptyString(countSound) then
+			local baseDelay = _GameUtil:ConvertValue(effect["baseDelay"], 300) / 1
+			local nextDelay = _GameUtil:ConvertValue(effect["rangeDelay"], 120)
 			if playerBuff.incShadow > 0 then
 				attackCount *= 2
 			end
 			local soundFunc = function()
 				for idx = 1, attackCount do
 					_SoundService:PlaySound(countSound, 1)
-					wait(0.12)
+					wait(nextDelay / 1000)
 				end
 			end
-			_TimerService:SetTimerOnce(soundFunc, 0.3)
+			_TimerService:SetTimerOnce(soundFunc, baseDelay / 1000)
 		end
 	end
 end
 
+local atRate = 1
 if sMotion and not isRapid then
-	self:SpecialAction(skillID, motion, calcAttackSpeed, masteryEff, lastTick)
+	atRate = self:SpecialAction(skillID, motion, calcAttackSpeed, masteryEff, lastTick)
 end
 
 if roar > 0 then
@@ -1087,7 +1108,7 @@ else
 	_RapidSkill:EndSkill()
 end
 
-_SkillStart2:Attack(player, finalMobTable, skillID, isLeft, throwSlot, isProneStab, isRangeAttack, playerBasePos, lastTick, healPlayers, isSoulArrow, motion, math.max(2, calcAttackSpeed), finalAttack, charge)
+_SkillStart1:Attack(player, finalMobTable, skillID, isLeft, throwSlot, isProneStab, isRangeAttack, playerBasePos, lastTick, healPlayers, isSoulArrow, motion, math.max(2, calcAttackSpeed), finalAttack, charge)
 
 if fixZero then
 	return 2

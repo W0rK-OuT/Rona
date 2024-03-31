@@ -1,13 +1,13 @@
 return function (self,count) 
-if count >= 16 then
+if count >= 12 then
 	return 5
-elseif count >= 11 then
+elseif count >= 8 then
 	return 4
-elseif count >= 7 then
+elseif count >= 5 then
 	return 3
-elseif count >= 4 then
+elseif count >= 3 then
 	return 2
-elseif count >= 2 then
+elseif count >= 1 then
 	return 1
 else
 	return 0

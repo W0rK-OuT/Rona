@@ -354,7 +354,9 @@ elseif skillType == 311 then
 		effectTable["hit"] = "15934274abc24c799b034cbca26fea02"
 		effectTable["ball"] = "9383e948cdd74330b1fe286d54444433"
 		effectTable["useSound"] = "3f1b23ab0ef14ee48906be92494786d9"
-		effectTable["attackDelay"] = 20
+		effectTable["baseDelay"] = 600
+		effectTable["rangeDelay"] = 60
+		effectTable["countSound"] = "80727a22cd3b470680c528c14f5909ca"
 	end
 elseif skillType == 321 then
 	if skillID == 3210001 then -- 모탈 블로우
@@ -386,7 +388,9 @@ elseif skillType == 321 then
 		effectTable["hit"] = "15934274abc24c799b034cbca26fea02"
 		effectTable["ball"] = "9383e948cdd74330b1fe286d54444433"
 		effectTable["useSound"] = "3f1b23ab0ef14ee48906be92494786d9"
-		effectTable["attackDelay"] = 20
+		effectTable["baseDelay"] = 600
+		effectTable["rangeDelay"] = 60
+		effectTable["countSound"] = "46a1d96716e54c42b8419410d3f896ed"
 	end
 elseif skillType == 312 then
 	if skillID == 3121003 then -- 드래곤 펄스
@@ -682,9 +686,6 @@ elseif skillType == 522 then
 		effectTable["useSound"] = "e5c99860742b4bef968675cb05b001c0"
 		effectTable["hitSound"] = "4ddab2bb34a04845939a4ac31e0b4a83"
 		effectTable["baseDelay"] = 720
-		
-		--호밍 aaf9764fc3fb4c89abc7c6fb0394e1f5
-		--어드호밍 d78fb4a901fb417381ed7a76f184c0e4
 	end
 end
 return effectTable

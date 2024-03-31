@@ -599,7 +599,7 @@ elseif type == 122 then
 		skillTable["skillPos"] = Vector2(0, 0.5)
 		skillTable["weapon"] = {130, 132, 140, 142}
 		skillTable["elemAttr"] = "H"
-	elseif id == 1121012 then -- 용사의 의지
+	elseif id == 1221012 then -- 용사의 의지
 		skillTable["calTime"] = math.max(1, 11 - level)
 		skillTable["mpCon"] = 30
 		skillTable["herowill"] = 1

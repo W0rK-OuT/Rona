@@ -1,18 +1,17 @@
 return function (self,skillID,actionName,weaponSpeed,masteryEff,lastTick) 
 if actionName == nil then
-	return
+	return 1
 end
 
 local oriDelay = _MotionDelayManager.motionActionTotalDelay[actionName]
 if oriDelay == nil then
-	self:NormalAction(actionName, weaponSpeed, masteryEff, lastTick)
-	return
+	return self:NormalAction(actionName, weaponSpeed, masteryEff, lastTick)
 end
 
 _TimerService:ClearTimer(self._T.endTimer)
 
 self.isMotion = true
-local delay = _Util:MathRound(oriDelay * (math.max(2, weaponSpeed) + 10) / 16 / 30) * 30
+local delay = _SkillHelper:CalcSpeed(oriDelay, weaponSpeed)
 local playRate = oriDelay / delay 
 
 local actionTable = _MotionDelayManager.motionAction[actionName]
@@ -102,4 +101,6 @@ local motionDelay = function()
 	end
 end
 self._T.endTimer = _TimerService:SetTimerOnce(motionDelay, delay / 1000)
+
+return playRate
 end
