@@ -399,7 +399,7 @@ elseif type == 512 then
 	elseif id == 5121009 then -- 윈드 부스터
 		skillTable["hpCon"] = 80 - level * 2
 		skillTable["mpCon"] = 80 - level * 2
-		skillTable["incInfusion"] = -1
+		skillTable["incInfusion"] = level <= 10 and -1 or -2
 		skillTable["time"] = 100 + 10 * level
 		skillTable["buff"] = 1
 		skillTable["partyBuff"] = Vector2(5, 3)

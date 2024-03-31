@@ -5,6 +5,9 @@ if monster == nil or obj == 0 then
 end
 
 local player = _UserService.LocalPlayer
+if not isvalid(player) then
+	return
+end
 local playerBuff = player.PlayerBuff
 local myMonster = playerBuff.homingMonster
 if playerBuff.homingObj ~= obj then

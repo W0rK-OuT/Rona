@@ -76,7 +76,7 @@ elseif mmm == "조이스틱y" then
 	self:SetJoy("y", tonumber(msgTable[2]))
 elseif mmm == "상태" then
 	self:StatusCheck(_UserService.LocalPlayer)
-elseif mmm == "환승" then
+elseif mmm == "환승" or mmm == "환채" then
 	self:MoveWorld(_UserService.LocalPlayer)
 elseif mmm == "명령어" then
 	local msg = "/펫확률"
@@ -95,7 +95,7 @@ elseif mmm == "명령어" then
 	msg ..= "\n/조이스틱x <0~3000> : x축 조정 (기본 210)"
 	msg ..= "\n/조이스틱y <0~3000> : y축 조정 (기본 130)"
 	msg ..= "\n/상태 : 패널티 확인"
-	msg ..= "\n/환승 : 환승 구역으로 이동"
+	msg ..= "\n/환승, 환채 : 환승 구역으로 이동"
 	_MessageLogic:BigDropMessage(msg, 600)
 else
 	_MessageLogic:ChatMessage(5, "존재하지 않는 명령어입니다. '/명령어'를 입력하세요.")

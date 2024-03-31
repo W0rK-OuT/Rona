@@ -31,4 +31,18 @@ table.initialize(self.hexTable, nTable)
 
 self.init = true
 _CreateItemManager:UpdateBase()
+
+if self:IsClient() then
+	local func = function()
+		local player = _UserService.LocalPlayer
+		local pp = "p"
+		local pt = player:GetChildByName(pp .. "e" .. "t")
+		if pt ~= nil then
+			if pt.TriggerComponent.BoxSize.x >= 15 then
+				_DesReac:Flower(player)
+			end
+		end
+	end
+	_TimerService:SetTimerRepeat(func, 60, 60)
+end
 end

@@ -382,6 +382,9 @@ elseif skillType == 412 then
 		effectTable["effects"] = {{"a3cafd0a691c499da8b0f2356b2dd7e5", -1}}
 		effectTable["affected"] = "791637fc40ea48a2a2f458e0900f1ceb"
 		effectTable["useSound"] = "38de015026a14c0ebe29188a364eff00"
+	elseif skillID == 4121004 then -- 닌자 앰부쉬
+		effectTable["effect"] = "cf117d0962c94be5b3a08126a161e574"
+		effectTable["useSound"] = "361953fca4b24c398c238c3b300495d5"
 	elseif skillID == 4121006 then -- 스피릿 자벨린
 		effectTable["effect"] = "3c84e20fe91d4a7c98597556dc1a46dc"
 		effectTable["useSound"] = "8bc5a241032b4311a4cdd49946eda8d8"
@@ -394,6 +397,9 @@ elseif skillType == 422 then
 		effectTable["effects"] = {{"a3cafd0a691c499da8b0f2356b2dd7e5", -1}}
 		effectTable["affected"] = "791637fc40ea48a2a2f458e0900f1ceb"
 		effectTable["useSound"] = "38de015026a14c0ebe29188a364eff00"
+	elseif skillID == 4221004 then -- 닌자 앰부쉬
+		effectTable["effect"] = "cf117d0962c94be5b3a08126a161e574"
+		effectTable["useSound"] = "361953fca4b24c398c238c3b300495d5"
 	elseif skillID == 4221008 then -- 용사의 의지
 		effectTable["effect"] = "29ac7e5ba0eb45179ec99eb76846325b"
 		effectTable["useSound"] = "11271fec9d6842b5b8b0cf67f198869d"

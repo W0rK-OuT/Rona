@@ -1,4 +1,6 @@
-return function (self,player,time) 
+return function (self,player,time,showRate) 
+
+
 
 
 

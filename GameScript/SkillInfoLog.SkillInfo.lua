@@ -166,6 +166,21 @@ elseif type == 411 then
 			skillTable["time"] = 180
 		end
 		skillTable["buff"] = 1
+	elseif id == 4111004 then -- 쉐도우 메소
+		if self:IsClient() then
+			skillTable["moneyConMin"] = 40 + level * 10
+			skillTable["moneyConMax"] = 200 + level * 20
+		end
+		skillTable["zeroAttack"] = 1
+		skillTable["baseRange"] = 2
+		skillTable["jumpAttack"] = 1
+		skillTable["ignoreDD"] = 1
+		skillTable["damage"] = 100
+		skillTable["moneyCon"] = 120 + 15 * level
+		skillTable["aRand"] = math.ceil(level / 3)
+		skillTable["bCriticalDamage"] = 50
+		skillTable["mpCon"] = 0
+		skillTable["weapon"] = {147}
 	elseif id == 4111005 then -- 어벤져
 		skillTable["zeroAttack"] = 1
 		skillTable["baseRange"] = 5
@@ -258,8 +273,13 @@ elseif type == 412 then
 	elseif id == 4120002 then -- 페이크
 		skillTable["fake"] = level
 	elseif id == 4121003 then -- 쇼다운
+		skillTable["calValue"] = 10 + level
+		skillTable["mobCount"] = 6
 		skillTable["mpCon"] = level <= 25 and 20 + level or 70 - level
 		skillTable["damage"] = 100
+		skillTable["skillRange"] = Vector2(3, 0.4)
+		skillTable["skillPos"] = Vector2(-1.5, 0.3)
+		
 		skillTable["debTime"] = 120
 		skillTable["debBuffs"] = {
 			{
@@ -268,10 +288,26 @@ elseif type == 412 then
 			},
 		}
 	elseif id == 4121004 then -- 닌자 앰부쉬
+		skillTable["calRange"] = 100 + math.ceil(level / 3) * 10
+		skillTable["skillRange"] = Vector2(2 * (100 + math.ceil(level / 3) * 10) / 100, 2)
+		skillTable["skillPos"] = Vector2(0, 0.3)
+		skillTable["noRope"] = 1
+		skillTable["buff"] = 1
+		skillTable["mobCount"] = 6
+		skillTable["mpCon"] = level >= 30 and 43 or 16 * math.ceil(level / 10)
+		skillTable["calValue"] = level <= 10 and 60 + 2 * level or 70 + level
 		
+		skillTable["debTime"] = 4 * math.ceil(level / 10)
+		skillTable["debBuffs"] = {
+			{
+				["key"] = "ninja",
+				["value"] = level <= 10 and 60 + 2 * level or 70 + level,
+			},
+		}
 	elseif id == 4120005 then -- 베놈
+		skillTable["venomCode"] = id
 		skillTable["venomDamage"] = 30 + level
-		skillTable["venomTime"] = 2 + math.ceil(level / 10) * 2
+		skillTable["venomTime"] = 1 + math.ceil(level / 10)
 		skillTable["venomRand"] = 10 + 2 * math.ceil(level / 3)
 	elseif id == 4121006 then -- 스피릿 자벨린
 		skillTable["mpCon"] = 10 + 5 * math.ceil(level / 10)
@@ -316,6 +352,43 @@ elseif type == 422 then
 		skillTable["weapon"] = {133}
 	elseif id == 4220002 then -- 페이크
 		skillTable["fake"] = 10 + level
+	elseif id == 4221003 then -- 쇼다운
+		skillTable["calValue"] = 10 + level
+		skillTable["mobCount"] = 6
+		skillTable["mpCon"] = level <= 25 and 20 + level or 70 - level
+		skillTable["damage"] = 100
+		skillTable["skillRange"] = Vector2(3, 0.4)
+		skillTable["skillPos"] = Vector2(-1.5, 0.3)
+		
+		skillTable["debTime"] = 120
+		skillTable["debBuffs"] = {
+			{
+				["key"] = "showdown",
+				["value"] = 10 + level,
+			},
+		}
+	elseif id == 4221004 then -- 닌자 앰부쉬
+		skillTable["calRange"] = 100 + math.ceil(level / 3) * 10
+		skillTable["skillRange"] = Vector2(2 * (100 + math.ceil(level / 3) * 10) / 100, 2)
+		skillTable["skillPos"] = Vector2(0, 0.3)
+		skillTable["noRope"] = 1
+		skillTable["buff"] = 1
+		skillTable["mobCount"] = 6
+		skillTable["mpCon"] = level >= 30 and 43 or 16 * math.ceil(level / 10)
+		skillTable["calValue"] = level <= 10 and 60 + 2 * level or 70 + level
+		
+		skillTable["debTime"] = 4 * math.ceil(level / 10)
+		skillTable["debBuffs"] = {
+			{
+				["key"] = "ninja",
+				["value"] = level <= 10 and 60 + 2 * level or 70 + level,
+			},
+		}
+	elseif id == 4220005 then -- 베놈
+		skillTable["venomCode"] = id
+		skillTable["venomDamage"] = 30 + level
+		skillTable["venomTime"] = 2 + math.ceil(level / 10) * 2
+		skillTable["venomRand"] = 30 + 2 * math.ceil(level / 3)
 	elseif id == 4221007 then -- 부메랑 스탭
 		skillTable["jumpAttack"] = 1
 		skillTable["mpCon"] = level <= 25 and 13 + 3 * math.ceil(level / 5) or 26

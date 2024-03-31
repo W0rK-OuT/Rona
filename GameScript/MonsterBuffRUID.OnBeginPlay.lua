@@ -16,6 +16,15 @@ nTable[2211004] = "7f8c0f4a52da4fb387c91d2f056296fd" -- 씰
 nTable[3121007] = "ec7a0b11a6f34e40b17c875d360ee24c" -- 슬로우 햄스트링
 nTable[3221006] = "0547c30fd21342df8ccb28ff543c09cb" -- 암흑 블라인드
 
+nTable[4121003] = "f5701f1c8df54202bc55e31b47a9526b" -- 쇼다운
+nTable[4221003] = "f5701f1c8df54202bc55e31b47a9526b" -- 쇼다운
+
+nTable[4121004] = "40f3b4e9d3c44100a4f8fd55e6b75551" -- 닌자 앰부쉬
+nTable[4221004] = "40f3b4e9d3c44100a4f8fd55e6b75551" -- 닌자 앰부쉬
+
+nTable[4120005] = "c3d148029c7b4f419086ba0990887af9" -- 베놈
+nTable[4220005] = "c3d148029c7b4f419086ba0990887af9" -- 베놈
+
 self.ruid = nTable
 
 local mobUseTable = {}

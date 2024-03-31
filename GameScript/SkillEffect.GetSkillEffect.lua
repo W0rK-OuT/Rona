@@ -191,12 +191,12 @@ elseif skillType == 221 then
 		effectTable["effect"] = "0e32870501064a28a6d34df0f885c56e"
 		effectTable["hit"] = "1a75b416575544198c509dd37c0bdf6e"
 		effectTable["useSound"] = "df6ab97a09494affbf9ea00e961caf0d"
-		effectTable["baseDelay"] = 600
+		effectTable["baseHitDelay"] = 400
 	elseif skillID == 2211003 then -- 썬더 스피어
 		effectTable["effect"] = "b8ed39dae8784f698d616beb7d06dbcb"
 		effectTable["hit"] = "c0dcf483ade04ae7a6150b6af211609f"
 		effectTable["useSound"] = "635a114613ad45a2b746f8e4873c0f04"
-		effectTable["baseDelay"] = 800
+		effectTable["baseHitDelay"] = 800
 	elseif skillID == 2211006 then -- 매직 컴포지션
 		effectTable["effect"] = "1380b841fceb4d6f908f59ae5b699604"
 		effectTable["hit"] = "0f024421739b4e0988366995409017a4"
@@ -253,9 +253,11 @@ elseif skillType == 222 then
 		effectTable["noBallEffect"] = 2
 	elseif skillID == 2221006 then -- 체인 라이트닝
 		effectTable["effect"] = "82f9a75a70f14f7793ac7a82919a7d12"
-		effectTable["hit"] = "1c73b44494124b919e4d4509d1bb6efe"
+		--effectTable["hit"] = "1c73b44494124b919e4d4509d1bb6efe"
 		effectTable["hitSound"] = "17f35637474145378ef74677d807e870"
 		effectTable["useSound"] = "3c837a89f39e4e038b0a3a378de9a377"
+		effectTable["baseDelay"] = 400
+		effectTable["nextHitDelay"] = 120
 		effectTable["chain"] = 1
 	elseif skillID == 2221007 then -- 블리자드
 		effectTable["effects"] = {{"446ad95bcca143f69cf19af23ad1bc21", -1}}
@@ -354,7 +356,7 @@ elseif skillType == 311 then
 		effectTable["hit"] = "15934274abc24c799b034cbca26fea02"
 		effectTable["ball"] = "9383e948cdd74330b1fe286d54444433"
 		effectTable["useSound"] = "3f1b23ab0ef14ee48906be92494786d9"
-		effectTable["baseDelay"] = 600
+		effectTable["baseDelay"] = 700
 		effectTable["rangeDelay"] = 60
 		effectTable["countSound"] = "80727a22cd3b470680c528c14f5909ca"
 	end
@@ -388,7 +390,7 @@ elseif skillType == 321 then
 		effectTable["hit"] = "15934274abc24c799b034cbca26fea02"
 		effectTable["ball"] = "9383e948cdd74330b1fe286d54444433"
 		effectTable["useSound"] = "3f1b23ab0ef14ee48906be92494786d9"
-		effectTable["baseDelay"] = 600
+		effectTable["baseDelay"] = 200
 		effectTable["rangeDelay"] = 60
 		effectTable["countSound"] = "46a1d96716e54c42b8419410d3f896ed"
 	end
@@ -453,7 +455,21 @@ elseif skillType == 410 then
 		effectTable["useSounds"] = {"a409e66cd6844e2cb4aaa2f2bb9d0530", _MaplePreferencesLogic.WeaponTGloveSound}
 	end
 elseif skillType == 411 then
-	if skillID == 4111005 then -- 어벤져
+	if skillID == 4111004 then -- 쉐도우 메소
+		if level <= 10 then
+			effectTable["ball"] = "6ed8770442074df59dcb79a6653ef685"
+			effectTable["hit"] = "83e5b0a2f6b44d8b9c895fa6e29b9bb5"
+		elseif level <= 20 then
+			effectTable["ball"] = "1e43ed898b324b138a800e283c69bdc0"
+			effectTable["hit"] = "5bdeab3074f14cc695e829d1163bb6e8"
+		else
+			effectTable["ball"] = "fda041e578784d31809e26263bfcf1b8"
+			effectTable["hit"] = "96c043198f41443b93e856c279a29c74"
+		end
+		effectTable["effect"] = "fbf29cf0ea5b421181d779cd3dcea443"
+		effectTable["useSound"] = "2205468d99934b83ac1632cab8c954ef"
+		effectTable["hitSound"] = "1aac9b189ece4195abda02f3498c3485"
+	elseif skillID == 4111005 then -- 어벤져
 		effectTable["ball"] = "760858fed304422494e8b7a627efd164"
 		effectTable["effect"] = "318224c1aed544139afad41e316065ad"
 		effectTable["useSound"] = "28d565bf11b242f8b55b05c1fe252b69"
@@ -495,7 +511,15 @@ elseif skillType == 421 then
 		effectTable["useSound"] = "450bcd83df174d82bda0e3bcb512ad5f"
 	end
 elseif skillType == 412 then
-	if skillID == 4121007 then -- 트리플 스로우
+	if skillID == 4121003 then -- 쇼다운
+		effectTable["noBallEffect"] = 2
+		effectTable["ball"] = "148d8c54a4cb44ed80d5274fe15bf601"
+		effectTable["effect"] = "6ebca90090804d69a4de72b6690ca612"
+		effectTable["hit"] = "24a66f7fe23847bfa9d69735b5a1a4d3"
+		effectTable["useSound"] = "c19ed287e9d04b8fa74e6b511671f960"
+		effectTable["hitSound"] = "9158fa216c1541e9b47ff245b7aa2580"
+		effectTable["baseDelay"] = 990
+	elseif skillID == 4121007 then -- 트리플 스로우
 		effectTable["base"] = 1
 		effectTable["effect"] = "57ed09e2b50a440cbf37c07ec7a7551e"
 		effectTable["hit"] = "50f17cdc93e84047a0d33740a9dc0721"
@@ -511,6 +535,14 @@ elseif skillType == 422 then
 		effectTable["useSound"] = "80bf12d6373a4889bf2f51c49e7af837"
 		effectTable["baseHitDelay"] = 760 -- 660
 		effectTable["attackDelay"] = 360 --480
+	elseif skillID == 4221003 then -- 쇼다운
+		effectTable["noBallEffect"] = 2
+		effectTable["ball"] = "148d8c54a4cb44ed80d5274fe15bf601"
+		effectTable["effect"] = "6ebca90090804d69a4de72b6690ca612"
+		effectTable["hit"] = "24a66f7fe23847bfa9d69735b5a1a4d3"
+		effectTable["useSound"] = "c19ed287e9d04b8fa74e6b511671f960"
+		effectTable["hitSound"] = "9158fa216c1541e9b47ff245b7aa2580"
+		effectTable["baseDelay"] = 990
 	elseif skillID == 4221007 then -- 부메랑 스탭
 		effectTable["effect"] = "3ad556d9a8774330a137231745449ab0"
 		effectTable["hit"] = "0cf7ab1df23d4dae950a7ee355b22447"

@@ -471,6 +471,12 @@ else
 		return 1
 	end
 	
+	local moneyCon = _GameUtil:ConvertValue(skillInfo["moneyCon"], 0)
+	if moneyCon > 0 and player.PlayerInventory:GetMeso() < moneyCon then
+		_MessageLogic:ShowMessage("스킬을 사용하는 데 필요한 메소가 부족합니다.")
+		return 1
+	end
+	
 	local skillAttackSpeed = _GameUtil:ConvertValue(skillInfo["attackSpeed"], 0)
 	
 	if not isSoulArrow then
@@ -797,7 +803,7 @@ else
 		
 		local firstMob = chTable[1]
 		if firstMob ~= nil then
-			local chX = 1
+			local chX = 1.3
 			local chY = 1.8
 			local chainTable = {}
 			---@type Vector2
@@ -1073,22 +1079,20 @@ else
 		end
 	end
 	
-	if attackCount > 1 then
-		local countSound = effect["countSound"]
-		if not _UtilLogic:IsNilorEmptyString(countSound) then
-			local baseDelay = _GameUtil:ConvertValue(effect["baseDelay"], 300) / 1
-			local nextDelay = _GameUtil:ConvertValue(effect["rangeDelay"], 120)
-			if playerBuff.incShadow > 0 then
-				attackCount *= 2
-			end
-			local soundFunc = function()
-				for idx = 1, attackCount do
-					_SoundService:PlaySound(countSound, 1)
-					wait(nextDelay / 1000)
-				end
-			end
-			_TimerService:SetTimerOnce(soundFunc, baseDelay / 1000)
+	local countSound = effect["countSound"]
+	if not _UtilLogic:IsNilorEmptyString(countSound) then
+		local baseDelay = _GameUtil:ConvertValue(effect["baseDelay"], 300) / 1
+		local nextDelay = _GameUtil:ConvertValue(effect["rangeDelay"], 120)
+		if playerBuff.incShadow > 0 then
+			attackCount *= 2
 		end
+		local soundFunc = function()
+			for idx = 1, attackCount do
+				_SoundService:PlaySound(countSound, 1)
+				wait(nextDelay / 1000)
+			end
+		end
+		_TimerService:SetTimerOnce(soundFunc, baseDelay / 1000)
 	end
 end
 
@@ -1108,7 +1112,7 @@ else
 	_RapidSkill:EndSkill()
 end
 
-_SkillStart1:Attack(player, finalMobTable, skillID, isLeft, throwSlot, isProneStab, isRangeAttack, playerBasePos, lastTick, healPlayers, isSoulArrow, motion, math.max(2, calcAttackSpeed), finalAttack, charge)
+_SkillStart6:Attack(player, finalMobTable, skillID, isLeft, throwSlot, isProneStab, isRangeAttack, playerBasePos, lastTick, healPlayers, isSoulArrow, motion, math.max(2, calcAttackSpeed), finalAttack, charge)
 
 if fixZero then
 	return 2
