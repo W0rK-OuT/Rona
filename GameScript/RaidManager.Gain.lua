@@ -946,35 +946,6 @@ if noHitCancel and mobTableCount == 0 then
 	return 1
 end
 
-if not player.PlayerEvent.isEvent then
-	local lastPos = _PlayerComponent.trans.Position.x
-	local cal = math.abs(lastPos - self.lastPos)
-	if cal < 0.25 then
-		self.count += isRapid and 0.1 or 1
-		if self.count >= 30 then
-			if sMotion then
-				self:SpecialAction(skillID, motion, calcAttackSpeed, masteryEff, lastTick)
-			end
-			_MessageLogic:ShowMessage("반복된 제자리 공격으로 취소되었습니다.")
-			return 1
-		end
-	else
-		self.count = 0
-		self.lastPos = lastPos
-	end
-	
-	if mobTableCount > 0 then
-		if _SkillMove.lastNum >= 30 then
-			if sMotion then
-				self:SpecialAction(skillID, motion, calcAttackSpeed, masteryEff, lastTick)
-			end
-			_MessageLogic:ShowMessage("클릭이 감지되지 않아서 공격이 취소되었습니다.")
-			return 1
-		end
-		_SkillMove.lastNum += isRapid and 0.1 or 1
-	end
-end
-
 if mobTableCount > 0 then
 	local hitInvincibility = _GameUtil:ConvertValue(skillInfo["hitInvincibility"], 0)
 	if hitInvincibility > 0 then
@@ -1028,6 +999,35 @@ if mobTableCount > 0 then
 			end
 		end
 		_TweenLogic:PlayTween(0, hitSlide, 0.15, EaseType.Linear, tweenFunc)
+	end
+end
+
+if not player.PlayerEvent.isEvent then
+	local lastPos = _PlayerComponent.trans.Position.x
+	local cal = math.abs(lastPos - self.lastPos)
+	if cal < 0.25 then
+		self.count += isRapid and 0.1 or 1
+		if self.count >= 30 then
+			if sMotion then
+				self:SpecialAction(skillID, motion, calcAttackSpeed, masteryEff, lastTick)
+			end
+			_MessageLogic:ShowMessage("반복된 제자리 공격으로 취소되었습니다.")
+			return 1
+		end
+	else
+		self.count = 0
+		self.lastPos = lastPos
+	end
+	
+	if mobTableCount > 0 then
+		if _SkillMove.lastNum >= 30 then
+			if sMotion then
+				self:SpecialAction(skillID, motion, calcAttackSpeed, masteryEff, lastTick)
+			end
+			_MessageLogic:ShowMessage("클릭이 감지되지 않아서 공격이 취소되었습니다.")
+			return 1
+		end
+		_SkillMove.lastNum += isRapid and 0.1 or 1
 	end
 end
 

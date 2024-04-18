@@ -176,6 +176,32 @@ elseif specialEffect == "coma" then
 		return
 	end
 	_EffectService:PlayEffectAttached(ruid, effectPlayer, Vector3.zero, 0, Vector3(isLeft and 1 or -1, 1, 1))
+elseif specialEffect == "panic" then
+	local ruid
+	if oriCombo == 1 then
+		ruid = "73ca2da2e4174b88b79b2f53aec7d231"
+	elseif oriCombo == 2 then
+		ruid = "59220240d7004a439c16329b829a6900"
+	elseif oriCombo == 3 then
+		ruid = "e150a53e0a61454b9fde4e53380cd9ab"
+	elseif oriCombo == 4 then
+		ruid = "3e7aef83235b4e8ebd28ba9462d9b8c0"
+	elseif oriCombo == 5 then
+		ruid = "1be23b85b0b44b84bc6e88a2caf986de"
+	elseif oriCombo == 6 then
+		ruid = "8cbbf339d9de40b09d933cc9d4e8b803"
+	elseif oriCombo == 7 then
+		ruid = "9c267e7da01c4c34992cfbfd02132a5f"
+	elseif oriCombo == 8 then
+		ruid = "4561e55a44f74a3086d4e88a4c2c8f01"
+	elseif oriCombo == 9 then
+		ruid = "aab1604317524fc78ab79e23416d6947"
+	elseif oriCombo >= 10 then
+		ruid = "426e210a0c734a339e46a3075eaa0975"
+	else
+		return
+	end
+	_EffectService:PlayEffectAttached(ruid, effectPlayer, Vector3.zero, 0, Vector3(isLeft and 1 or -1, 1, 1))
 elseif specialEffect == "shockwave" then
 	local ruid = "9b47e23edbcf4313ac61bd7ea13bc74b"
 	local pos = effectPlayer.TransformComponent.WorldPosition

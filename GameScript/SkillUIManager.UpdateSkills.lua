@@ -21,6 +21,11 @@ for key, value in pairs(codes) do
 	end
 end
 
+self.tabs:GetChildByName("Tab1"):SetEnable(math.floor(job % 1000 / 100) * 100 ~= 0)
+self.tabs:GetChildByName("Tab2"):SetEnable(math.floor(job % 100 / 10) * 10 ~= 0)
+self.tabs:GetChildByName("Tab3"):SetEnable(job % 10 >= 1)
+self.tabs:GetChildByName("Tab4"):SetEnable(job % 10 >= 2)
+
 local enableTable = {}
 
 for key, value in pairs(skills) do
@@ -47,19 +52,19 @@ for key, value in pairs(skills) do
 		local oriSkillLevel = playerSkill:GetSkillLevel(key)
 		local masterLevel = tonumber(skill["masterLevel"])
 		if oriSkillLevel >= masterLevel then
-			spawn:GetChildByName("Button").SpriteGUIRendererComponent.Color = Color(204 / 255, 204 / 255, 204 / 255)
+			spawn:GetChildByName("Button").SpriteGUIRendererComponent.ImageRUID = "17d5223c1b074592bbe05a7b188a5dda"
 			spawn:GetChildByName("Back"):SetVisible(false)
 		elseif not _SkillData:CheckReqSkill(player, skill["req"]) then
-			spawn:GetChildByName("Button").SpriteGUIRendererComponent.Color = Color(204 / 255, 204 / 255, 204 / 255)
+			spawn:GetChildByName("Button").SpriteGUIRendererComponent.ImageRUID = "17d5223c1b074592bbe05a7b188a5dda"
 			spawn:GetChildByName("Back"):SetVisible(true)
 		elseif _GameUtil:ConvertValue(sInfo["noTeach"], 0) == 1 or sp <= 0 then
-			spawn:GetChildByName("Button").SpriteGUIRendererComponent.Color = Color(204 / 255, 204 / 255, 204 / 255)
+			spawn:GetChildByName("Button").SpriteGUIRendererComponent.ImageRUID = "17d5223c1b074592bbe05a7b188a5dda"
 			spawn:GetChildByName("Back"):SetVisible(false)
 		elseif _GameUtil:ConvertValue(skill["baseLevel"], -1) >= 0 and oriSkillLevel >= playerSkill:GetMasterLevel(key) then
-			spawn:GetChildByName("Button").SpriteGUIRendererComponent.Color = Color(204 / 255, 204 / 255, 204 / 255)
+			spawn:GetChildByName("Button").SpriteGUIRendererComponent.ImageRUID = "17d5223c1b074592bbe05a7b188a5dda"
 			spawn:GetChildByName("Back"):SetVisible(false)
 		else
-			spawn:GetChildByName("Button").SpriteGUIRendererComponent.Color = Color(255 / 255, 153 / 255, 51 / 255)
+			spawn:GetChildByName("Button").SpriteGUIRendererComponent.ImageRUID = "21eec1e109b74cd1a37b1bdd21362158"
 			spawn:GetChildByName("Back"):SetVisible(false)
 		end
 		spawn:GetChildByName("ruid").SpriteGUIRendererComponent.ImageRUID = value["ruid"]

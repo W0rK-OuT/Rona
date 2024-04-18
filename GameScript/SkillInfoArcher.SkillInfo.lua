@@ -359,7 +359,7 @@ elseif type == 312 then
 		skillTable["buff"] = 1
 	elseif id == 3121008 then -- 집중
 		skillTable["mpCon"] = level <= 25 and 12 * math.ceil(level / 10) or 60 - level
-		skillTable["time"] = 30 + 5 * level
+		skillTable["time"] = 60 + math.ceil(level / 10) * 60
 		skillTable["cooltime"] = 360
 		skillTable["incPAD"] = 10 + math.ceil((level - 1) / 2)
 		skillTable["incManaRate"] = level <= 20 and 2 * level or 20 + level

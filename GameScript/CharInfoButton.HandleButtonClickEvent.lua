@@ -14,6 +14,15 @@ elseif name == "Up" then
 	_CharInfoLogic:PopButton("up")
 elseif name == "Down" then
 	_CharInfoLogic:PopButton("down")
+elseif name == "Move" then
+	if _UtilLogic:IsNilorEmptyString(_CharInfoLogic.userID) then
+		return
+	end
+	if _UserService.LocalPlayer.Name == _CharInfoLogic.userID then
+		_MessageLogic:DropMessage("자신에게 이동할 수 없습니다.")
+		return
+	end
+	_TeleportUIManager:TargetMove2(_UserService.LocalPlayer, _CharInfoLogic.userID)
 elseif name == "Trade" then
 	if _UtilLogic:IsNilorEmptyString(_CharInfoLogic.userID) then
 		_MessageLogic:DropMessage("대상이 없습니다.")

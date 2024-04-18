@@ -354,6 +354,7 @@ elseif type == 512 then
 		skillTable["mobCount"] = 1 + math.ceil(level / 6)
 		skillTable["skillRange"] = Vector2(2, 0.4)
 		skillTable["skillPos"] = Vector2(-1, 0.2)
+		skillTable["penetrate"] = 70
 		skillTable["chain"] = 2
 		skillTable["yRange"] = 75
 		skillTable["canEnergy"] = 1

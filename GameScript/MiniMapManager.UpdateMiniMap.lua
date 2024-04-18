@@ -111,7 +111,7 @@ for _, nTable in pairs(tables) do
 						continue
 					end
 					spawn = _SpawnService:SpawnByModelId("model://d0ba5491-ef9a-4cc9-928d-800637a118f1", nTable[2], Vector3.zero, self.static)
-					spawn.miniNpc.id = v.NpcInfo.id
+					spawn.TouchTooltip.code = v.NpcInfo.id
 				else
 					spawn = _SpawnService:SpawnByModelId("model://d99096db-d79a-45f6-9077-4d7e8b016912", nTable[2], Vector3.zero, self.static)
 				end

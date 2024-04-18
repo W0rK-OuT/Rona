@@ -1,5 +1,9 @@
-return function (self,chainType,monsters,atRate) 
+return function (self,chainType,monsters,atRate,skillEffect) 
+local baseDelay = _GameUtil:ConvertValue(skillEffect["baseDelay"], 300)
+local nextHitDelay = _GameUtil:ConvertValue(skillEffect["nextHitDelay"], 75)
+
 local mine = _UserService.LocalPlayer
+local map = mine.CurrentMap
 local player = self.Entity
 local pos = player.TransformComponent.WorldPosition
 
@@ -49,11 +53,26 @@ local func = function()
 		
 			startPos.x = nextPos.x
 			startPos.y = nextPos.y
-			wait(0.12 / atRate)
+			wait(nextHitDelay / 1000 / atRate)
 		end
-	else
+	elseif chainType == 2 then
+		local spawn = _SpawnService:SpawnByModelId("model://31629ffc-110b-4b30-9e18-d3790dc69ed1", "ball", Vector3(pos.x, pos.y + 0.3, 0), map)
+		spawn.SpriteRendererComponent.SpriteRUID = "6b0a100e41eb45ccab303ce074f69a22"
 		
+		for _, v in pairs(monsters) do
+			---@type Entity
+			local monster = v
+			if not isvalid(monster) then
+				continue
+			end
+			---@type Vector2
+			local nextPos = monster.TransformComponent.WorldPosition:ToVector2() + monster.TriggerComponent.ColliderOffset
+			_TweenLogic:MoveTo(spawn, nextPos, 0.2 / atRate, EaseType.Linear)
+			wait(nextHitDelay / 1000 / atRate)
+			_EffectService:PlayEffect("d7704217d8f547c1825d48d36aaa45f8", mine, nextPos:ToVector3(), 0, Vector3.one)
+		end
+		spawn:Destroy()
 	end
 end
-_TimerService:SetTimerOnce(func, 0.4 / atRate)
+_TimerService:SetTimerOnce(func, baseDelay / 1000 / atRate)
 end

@@ -130,4 +130,5 @@ return function (self,player,monster,isSkill,id,level,force)
 
 
 
+
 end

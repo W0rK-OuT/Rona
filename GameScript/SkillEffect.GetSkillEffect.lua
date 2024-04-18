@@ -42,7 +42,11 @@ elseif skillType == 130 then
 		effectTable["hitSound"] = "12bb6dcd790440e3b1d7b9a320bcbb2d"
 	end
 elseif skillType == 111 then
-	if skillID >= 1111003 and skillID <= 1111006 then
+	if skillID == 1111003 or skillID == 1111004 then
+		effectTable["specialEffect"] = "panic"
+		effectTable["hit"] = "1e409b4dac8444618aa58cb62b2da5c3"
+		effectTable["useSound"] = "a5cef85ea78443e59ce51f883693549d"
+	elseif skillID == 1111005 or skillID == 1111006 then
 		effectTable["specialEffect"] = "coma"
 		effectTable["hit"] = "1e409b4dac8444618aa58cb62b2da5c3"
 		effectTable["useSound"] = "a5cef85ea78443e59ce51f883693549d"
@@ -50,7 +54,7 @@ elseif skillType == 111 then
 		effectTable["effect"] = "a046bc3c022d43d688f052dc2b608ba1"
 		effectTable["hit"] = "7f88ddebed414a8fabc00c308558a32f"
 		effectTable["useSound"] = "5976d4e8ce0d423386db6b1580e5cdcb"
-		effectTable["baseHitDelay"] = 700
+		effectTable["baseDelay"] = 700
 		effectTable["nextHitDelay"] = 50
 	end
 elseif skillType == 121 then
@@ -65,12 +69,12 @@ elseif skillType == 131 then
 		effectTable["specialEffect"] = level <= 15 and "buster1" or "buster2"
 		effectTable["hit"] = "58f357449dd94cde8efc9e02e28efc49"
 		effectTable["useSound"] = "fcac442d953049d980da4b8d7bd766d8"
-		effectTable["baseHitDelay"] = 400
+		effectTable["baseDelay"] = 400
 	elseif skillID == 1311003 or skillID == 1311004 then -- 쓰레셔
 		effectTable["specialEffect"] = "thrasher"
 		effectTable["hit"] = "0c4832acfaed49a097da5b667894dcb0"
 		effectTable["useSound"] = "482235d632bf48398fca6a0e73d82946"
-		effectTable["baseHitDelay"] = 325
+		effectTable["baseDelay"] = 325
 	elseif skillID == 1311005 then -- 새크리파이스
 		effectTable["useSound"] = "32e99148fb3647c9847fa52d1358d5c0"
 		effectTable["specialEffect"] = "sacrifice"
@@ -78,7 +82,7 @@ elseif skillType == 131 then
 		effectTable["effect"] = "5468cadd2f60428e925bc368968e1a1e"
 		effectTable["hit"] = "01c803531e2c4e5aa3c3ef66f14711b8"
 		effectTable["useSound"] = "eec2f5d35c6f4f6ebe8f19bb52dbf1d1"
-		effectTable["baseHitDelay"] = 700
+		effectTable["baseDelay"] = 700
 		effectTable["nextHitDelay"] = 50
 	end
 elseif skillType == 112 then
@@ -191,12 +195,12 @@ elseif skillType == 221 then
 		effectTable["effect"] = "0e32870501064a28a6d34df0f885c56e"
 		effectTable["hit"] = "1a75b416575544198c509dd37c0bdf6e"
 		effectTable["useSound"] = "df6ab97a09494affbf9ea00e961caf0d"
-		effectTable["baseHitDelay"] = 400
+		effectTable["baseDelay"] = 400
 	elseif skillID == 2211003 then -- 썬더 스피어
 		effectTable["effect"] = "b8ed39dae8784f698d616beb7d06dbcb"
 		effectTable["hit"] = "c0dcf483ade04ae7a6150b6af211609f"
 		effectTable["useSound"] = "635a114613ad45a2b746f8e4873c0f04"
-		effectTable["baseHitDelay"] = 800
+		effectTable["baseDelay"] = 800
 	elseif skillID == 2211006 then -- 매직 컴포지션
 		effectTable["effect"] = "1380b841fceb4d6f908f59ae5b699604"
 		effectTable["hit"] = "0f024421739b4e0988366995409017a4"
@@ -341,7 +345,7 @@ elseif skillType == 311 then
         --    ["effect"] = {"a77a0c40485b4d27b857bd76ef3b136d", "d2c869f4b986475b8bfe75de0b209c22", "f0d959d0ff5248a893a785e4eea9a46b"}
         --}
 		effectTable["specialEffect"] = "rain"
-		effectTable["baseHitDelay"] = 100
+		effectTable["baseDelay"] = 100
 		effectTable["nextHitDelay"] = 50
 	elseif skillID == 3111004 then -- 에로우 레인
 		effectTable["effect"] = "144d28d774a848dc9309a208433e1a3e"
@@ -375,7 +379,7 @@ elseif skillType == 321 then
         --    ["effect"] = {"a77a0c40485b4d27b857bd76ef3b136d", "d2c869f4b986475b8bfe75de0b209c22", "f0d959d0ff5248a893a785e4eea9a46b"}
         --}
 		effectTable["specialEffect"] = "rain"
-		effectTable["baseHitDelay"] = 100
+		effectTable["baseDelay"] = 100
 		effectTable["nextHitDelay"] = 50
 	elseif skillID == 3211004 then -- 이럽션
 		effectTable["effect"] = "178d9d2e9cc34240931ce62e301cfc20"
@@ -533,7 +537,7 @@ elseif skillType == 422 then
 		effectTable["effect"] = "858f70ee2a8e4a06a5880efc41bbbfe3"
 		effectTable["fEffect"] = "5c14a21b90f640b9af04d8cfb8b379ec"
 		effectTable["useSound"] = "80bf12d6373a4889bf2f51c49e7af837"
-		effectTable["baseHitDelay"] = 760 -- 660
+		effectTable["baseDelay"] = 760 -- 660
 		effectTable["attackDelay"] = 360 --480
 	elseif skillID == 4221003 then -- 쇼다운
 		effectTable["noBallEffect"] = 2
@@ -548,7 +552,7 @@ elseif skillType == 422 then
 		effectTable["hit"] = "0cf7ab1df23d4dae950a7ee355b22447"
 		effectTable["useSound"] = "d660881ad7fb4124b029172169b0c918"
 		effectTable["hitSound"] = "092bda6cfb7d400b9d19dbfcf1a81ca5"
-		effectTable["baseHitDelay"] = 320 -- 360
+		effectTable["baseDelay"] = 320 -- 360
 		effectTable["attackDelay"] = 390 -- 420
 	end
 elseif skillType == 500 then
@@ -589,7 +593,7 @@ elseif skillType == 510 then
 		--effectTable["useSound"] = "6d9d7f0d0c5e4b8f891788722aff5395" -- 리소스에 있는 것, 소리가 평타로 들림
 		effectTable["useSound"] = _MaplePreferencesLogic.WeaponKnuckleSound
 		effectTable["hitSound"] = "1b536a49aabb430ca40a3e39c4f1a986"
-		effectTable["baseHitDelay"] = 0
+		effectTable["baseDelay"] = 0
 		effectTable["nextHitDelay"] = 0
 	end
 elseif skillType == 511 then
@@ -610,7 +614,7 @@ elseif skillType == 511 then
 		effectTable["effect"] = "a5fd51c1b1b743d1a70b180aa5796435"
 		effectTable["hitSound"] = "20a66c70d1cc427ca4c4e18d755c34a0"
 		effectTable["useSound"] = "0072eb27080e4d49b1dc52515912eacc"
-		effectTable["baseHitDelay"] = 1430
+		effectTable["baseDelay"] = 1430
 	end
 elseif skillType == 512 then
 	if skillID == 5121001 then -- 드래곤 스트라이크
@@ -621,11 +625,12 @@ elseif skillType == 512 then
 	elseif skillID == 5121002 then -- 에너지 오브
 		effectTable["effect"] = "8a33692b0a56423d92fa396ffe92f09f"
 		effectTable["effects"] = {{"71ee20d1aa604d119a19286e7113e55d", -1}}
-		effectTable["hit"] = "d7704217d8f547c1825d48d36aaa45f8"
-		--effectTable["chainBall"] = "6b0a100e41eb45ccab303ce074f69a22"
+		--effectTable["hit"] = "d7704217d8f547c1825d48d36aaa45f8"
 		effectTable["hitSound"] = "e41edb00c73545e3a5ab5da0801a87ac"
 		effectTable["useSound"] = "c47c266c9e4f44a8ab5482016423f2bd"
-		effectTable["baseHitDelay"] = 820
+		effectTable["baseDelay"] = 820
+		effectTable["nextHitDelay"] = 120
+		effectTable["chain"] = 2
 	elseif skillID == 5121004 then -- 데몰리션
 		effectTable["hits"] = {"c5d8133329524d84b8cecf6629e69880"}
 		effectTable["useSounds"] = {"a352a348d9b047c0bc2eae538708b982", "a3d5afcbaea8495dac79f34a0091744b"}
@@ -695,7 +700,7 @@ elseif skillType == 522 then
 		effectTable["hitSound"] = "185d756b79c54a5bad4e15d225d2f13f"
 		effectTable["noRange"] = 1
 		effectTable["effectSpeed"] = 1
-		effectTable["baseHitDelay"] = 1725
+		effectTable["baseDelay"] = 1725
 		--effectTable["nextHitDelay"] = 75
 	elseif skillID == 5221004 then -- 래피드 파이어
 		effectTable["hitSound"] = "83a7bbd854fc4bddaf79af3de916f7de"
